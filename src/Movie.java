@@ -5,6 +5,8 @@ public class Movie {
     protected int rating;
     protected int benis;
     protected int badabing;
+    protected boolean familyFriendly;
+
     public Movie(String title, double length, boolean doSuck, int rating, boolean familyFriendly) {
         this.title = title;
         this.length = length;
