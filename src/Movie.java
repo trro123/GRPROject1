@@ -3,7 +3,8 @@ public class Movie {
     protected double length;
     protected boolean doSuck;
     protected int rating;
-
+    protected int benis;
+    protected int badabing;
     public Movie(String title, double length, boolean doSuck, int rating) {
         this.title = title;
         this.length = length;
