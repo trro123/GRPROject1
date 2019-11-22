@@ -5,11 +5,12 @@ public class Movie {
     protected int rating;
     protected int benis;
     protected int badabing;
-    public Movie(String title, double length, boolean doSuck, int rating) {
+    public Movie(String title, double length, boolean doSuck, int rating, boolean familyFriendly) {
         this.title = title;
         this.length = length;
         this.doSuck = doSuck;
         this.rating=rating;
+        this.familyFriendly = familyFriendly;
     }
 
 }
