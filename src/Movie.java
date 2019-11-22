@@ -10,6 +10,7 @@ public class Movie {
         this.length = length;
         this.doSuck = doSuck;
         this.rating=rating;
+        //this is my comment
     }
 
 }
