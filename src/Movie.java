@@ -1,4 +1,4 @@
-public class Movie {
+public class Movie extends Watchable{
     protected String title;
     protected double length;
     protected boolean doSuck;
