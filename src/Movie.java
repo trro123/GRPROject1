@@ -1,4 +1,4 @@
-public class Movie {
+public class Movie extends Watchable{
     protected String title;
     protected double length;
     protected boolean doSuck;
@@ -11,6 +11,6 @@ public class Movie {
         this.length = length;
         this.doSuck = doSuck;
         this.rating=rating;
-        //this is my comment
+
     }
 }
