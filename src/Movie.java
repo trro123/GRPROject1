@@ -13,6 +13,10 @@ public class Movie extends Watchable{
         this.doSuck = doSuck;
         this.rating=rating;
         this.familyFriendly = familyFriendly;
+        // mikkels comment
+    }
+    public void mikkelsMethod(){
+        System.out.println(badabing);
     }
 
 }
