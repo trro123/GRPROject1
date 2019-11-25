@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 public class GUI_1 {
     private JButton search_confirm;
     private JPanel panel;
+    private JButton button1;
 
     public GUI_1() {
         search_confirm.addActionListener(new ActionListener() {
