@@ -24,7 +24,9 @@ public class GUI_1 {
             // jeg skal nok hitte ud af hvordan man får programmet til at snakke sammen med en controller klasse
             // der ligger ret mange videoer om det på youtube, hvis man er interesseret
             // ps. jeg ved ikke hvor smart det er at have main(String[] args) metoden i GUI klassen.
-            // det er som regel "entry point" til programmet (starter hele molevitten) - jeg ville måske kalde en "opret GUI" metode i main metoden, et andet sted
+            // det er som regel "entry point" til programmet (starter hele molevitten) - jeg ville kalde gui constructor metoden fra main metoden i en anden klasse
+
+            // pps. main metoden virker ikke fordi den er inde i constructoren i GUI klassen. Det kan java slet ikke finde hoved og hale i :)
 
             public static void main(String[] args) {
                 JPanel p = new JPanel("search_button");
