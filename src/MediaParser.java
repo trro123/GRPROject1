@@ -18,4 +18,4 @@ public class MediaParser {
         }
     }
 }
-//undskyld mikkel
+//undskyld mikkel v2.0
