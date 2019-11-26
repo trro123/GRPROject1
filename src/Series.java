@@ -1,4 +1,4 @@
-public class Series{
+public class Series extends Watchable{
     protected int seasons;
     protected int endYear;
 

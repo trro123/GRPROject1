@@ -6,7 +6,7 @@ public class Watchable extends Media{
         onWatchlist = false;
     }
 
-    public addToWatchlist(){
+    public void addToWatchlist(){
         onWatchlist = true;
     }
 
