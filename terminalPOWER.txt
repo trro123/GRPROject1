@@ -1,0 +1,76 @@
+Følgende er brugbare commands til git i terminalen...
+
+	Setup / general:
+
+cd /path/to/directory
+- Navigerer til det angivne directory.
+
+cd ..
+- Går "et skridt tilbage" f.eks. fra /Users/mlip/Desktop til /Users/mlip.
+
+git clone <github url>
+- opretter en mappe i det nuværende directory der svarer til et github repo. Dette gøres kun én gang.
+
+
+	Workflow:
+(Her skal man være navigeret til git mappen)
+
+git branch -r
+- Viser hvilke branches der er i det givne git repo.
+
+git branch
+- Viser hvilken branch man er på.
+
+git checkout <navn på branch>
+- Skifter til den angivne branch.
+
+VIGTIGVIGTIGVIGTIGVIGTIG
+Efter setup/navigation til den rette branch er det her workflowet:
+
+git pull
+- Henter/opdaterer til den nuværende version af github repo.
+
+derefter: arbejd arbejd
+
+git status
+- Viser status på git repo, bl.a. hvilke filer man har modificeret/fjernet/tilføjet.
+
+git add .
+- Tilføjer samtlige filer man har modificeret/fjernet/tilføjet til staging area.
+- Kan alternativt også bruges med 'git add <filename>' for kun at tilføje enkelte filer.
+
+git commit -m "message"
+- Commiter de stagede filer til git repo - udskift message med beskeden der forklarer commiten.
+
+git push
+- "Skubber" de commitede filer til den nuværende branch fra github. Nu kan andre pull'e og arbejde videre i de opdaterede versioner.
+- (NB. Første gang skal denne kommando se således ud:
+git push -u origin <navn på branch>
+derefter kan man bare bruge git push)
+
+
+	General terminulpower stuffs:
+
+ls
+- Viser nuværende directory's indhold.
+
+open <filename>
+- Hmm, hvad mon den gør...
+
+sudo rm -R <filename>
+- Fjerner angivne fil, no mercy.
+
+mkdir <navn på mappe>
+- Opretter en mappe.
+
+mv <filename> <new filename>
+- Ændrer navn på en fil eller mappe.
+
+mv <filename> </path/to/directory/>
+- Flytter filen til en anden mappe.
+
+touch <filename>
+- Opretter en fil med det angivne navn. Husk extensions, f.eks.: touch text.txt
+
+cat <filename>
+- Viser tekst fra filen i terminalen.
