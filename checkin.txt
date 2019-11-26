@@ -1,5 +1,5 @@
 Hvilke(n) class arbejder man på?
 
-Mikkel :
+Mikkel : txtParser
 Trond :
 Veronika :
