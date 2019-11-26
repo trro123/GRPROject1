@@ -1,0 +1,63 @@
+herpaderp
+
+Naviger i terminalen og opret git mappe:
+-----
+
+	cd /path/to/directory
+(Går til den givne mappe)
+
+	cd ..
+(Går én bagud, f.eks. fra /Users/mlip/Desktop --> /Users/mlip)
+
+	git clone <github url>
+(Laver et git repo svarende til github url i den mappe man befinder sig i)
+
+
+
+
+
+git workflow:
+-----
+
+	git branch -r
+(Viser hvilke branches projektet har)
+
+	git checkout <branch-name>
+(Går til den givne branch)
+
+	git pull
+(Henter nuværende git repo for den branch man er på - gør dette inden man går i gang med at arbejde på en fil)
+
+	git status
+(En ægte bror, viser status og hvilke filer der er modificeret/tilføjet/fjernet; altså hvad man skal tilføje til sit staging area og derefter commit'e)
+
+	git add .
+(Tilføjer alle filer i mappen til staging area; kan også bruges til en enkelt fil ved at skrive filnavn i stedet for punktum)
+
+	git commit -m "message"
+(Commiter filer fra staging area med tilhørende besked)
+
+	git push -u origin <branch-name>
+(Pusher ændringer til github. PS. Efter første push kan man nøjes med 'git push', uanset branch)
+
+
+
+
+
+bonus:
+-----
+
+	ls
+(Viser alle elementer i nuværende directory)
+
+	open <filename>
+(hmm :thinking:)
+
+	touch <filename>
+(Opretter en fil)
+
+	mkdir <folder name>
+(Opretter en mappe)
+
+	sudo rm -R <filename>
+(En sand danger noodle, fjerner givne fil/mappe)	
