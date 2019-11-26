@@ -53,11 +53,14 @@ bonus:
 	open <filename>
 (hmm :thinking:)
 
+	open .
+(Åbner nuværende directory)
+
 	touch <filename>
 (Opretter en fil)
 
 	mkdir <folder name>
 (Opretter en mappe)
 
-	sudo rm -R <filename>
-(En sand danger noodle, fjerner givne fil/mappe)	
+	sudo rm -R <name>
+(En sand danger noodle, fjerner givne fil/mappe)
