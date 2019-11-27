@@ -7,51 +7,47 @@ public class TxtParser{
 
     public static void main(String[] args) {
         try {
-            parseSeries();
-
-        }catch(Exception i){
-            i.printStackTrace(); //læs op på hvad det her gør, fundet fra nettet.
+            parseMovies();
+        }catch(Exception e){
+            e.printStackTrace(); //læs op på hvad det her gør, fundet fra nettet.
         }
-        }
+    }
 
     public static void parseMovies() throws Exception {
-        File f = new File("resources\\movies.txt"); //fortæller java hvor .txt-filen er
+        File f = new File("resources/movies.txt"); //fortæller java hvor .txt-filen er
         BufferedReader reader = new BufferedReader(new FileReader(f));
         String line = reader.readLine(); //line = én linje i .txt filen
+
+        //ArrayList burde nok flyttes til en anden klasse med en metode addMovie(), der kaldes i while-løkken
         ArrayList<Movie> movies = new ArrayList<>();
 
-        int i = 0; //index som bruges til at tælle parts.
-        // kører så længe der er flere lines i .txt-filen
         while ((line = reader.readLine()) != null) {
+            // kører så længe der er flere lines i .txt-filen
 
-            String[] parts = line.split("; "); //splitter linjen ved alle "; " og indsætter tekstbidder i et String[]
+            String[] parts = line.split("; "); //splitter linje ved alle "; " og indsætter tekstbidder i et String[]
             
-            String title = parts[i]; //index i da det er første ting på linjen
-            String yearString = parts[i+1]; //+1 da det kommer efter title
-            int year = Integer.parseInt(yearString); //omdanner String year til en int; crasher programmet hvis den læser andet end tal
-            String[] genres = parts[i+2].split(", "); //splitter strengen med genrer ved ", " og indsætter tekstbidder i et String[]
+            String title = parts[0]; //index i, da det er første stykke String på linjen
 
+            String yearString = parts[1]; //+1 da det kommer efter title
+            int year = Integer.parseInt(yearString); //omdanner String year til en int
 
-           String ratingString = parts[i+3].replace(",", ".").replace(";","");
-            // CRASH; prøver at finde en double i ratingString, men der er komma i stedet for punktum
-           double rating = Double.parseDouble(ratingString);
+            String[] genres = parts[2].split(", "); //splitter strengen med genrer ved ", " og indsætter tekstbidder i et nyt String[]
+
+            String ratingString = parts[3].replace(",", ".").replace(";", ""); //ændrer komma til punktum, således at strengen kan parses til en double; fjerner semikolon fra strengen
+            double rating = Double.parseDouble(ratingString);
 
             Movie movie = new Movie(title, year, rating);
             for (String s : genres){
                 movie.addCategory(s);
             }
             movies.add(movie);
+        } reader.close();
 
-            i= i++; //tæller index op.
-
-
-        }
-        reader.close();
-
+        // System.out.println() for test purposes
         for (Movie m : movies){
             System.out.print(m.getTitle() +": "+m.getYear()+": ");
 
-            for(i=0; i < m.numberOfCategories(); i++){
+            for(int i=0; i < m.numberOfCategories(); i++){
                 System.out.print(m.getCategory(i) + ", ");
             }
             System.out.print(": " + m.getRating());
