@@ -37,7 +37,7 @@ public class TxtParser{
             String title = parts[0];
 
             String[] years = parts[1].split("-"); //opretter et array med start og slut år i String form
-            int startYear = Integer.parseInt(years[0]); //omdanner String startYear til en int;
+            int startYear = Integer.parseInt(years[0]); //omdanner String startYear til en int
             int endYear = Integer.parseInt(years[1]); //CRASH; hvis der ikke er noget slutår -> prøver at parse ingenting til en int
 
             String[] genres = parts[2].split(", ");
