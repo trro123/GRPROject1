@@ -3,23 +3,22 @@ import java.util.ArrayList;
 
 // de to parse metoder læser .txt-filer linje for linje og spytter felter ud (title, year, rating osv.)
 public class TxtParser{
-    ArrayList titles = new ArrayList<String>();
 
     public static void main(String[] args) {
         try {
-            parseMovies();
+            parseSeries();
         }catch(Exception e){
             e.printStackTrace(); //læs op på hvad det her gør, fundet fra nettet.
         }
     }
 
     public static void parseMovies() throws Exception {
-        File f = new File("resources/movies.txt"); //fortæller java hvor .txt-filen er
+        File f = new File("resources/movies.txt"); //fortæller java hvor .txt-filen er <-- for at køre på windows: skift fra "resources/movies.txt" til "resources\\movies.txt". Spørg ikke hvorfor...
         BufferedReader reader = new BufferedReader(new FileReader(f));
         String line = reader.readLine(); //line = én linje i .txt filen
 
-        //ArrayList burde nok flyttes til en anden klasse med en metode addMovie(), der kaldes i while-løkken
-        ArrayList<Movie> movies = new ArrayList<>();
+        //ArrayList<Movie> burde nok flyttes til en anden klasse med en metode addMovie(), der kaldes i while-løkken
+        ArrayList<Movie> movieList = new ArrayList<>();
 
         while ((line = reader.readLine()) != null) {
             // kører så længe der er flere lines i .txt-filen
@@ -40,11 +39,11 @@ public class TxtParser{
             for (String s : genres){
                 movie.addCategory(s);
             }
-            movies.add(movie);
+            movieList.add(movie);
         } reader.close();
 
         // System.out.println() for test purposes
-        for (Movie m : movies){
+        for (Movie m : movieList){
             System.out.print(m.getTitle() +": "+m.getYear()+": ");
 
             for(int i=0; i < m.numberOfCategories(); i++){
@@ -58,52 +57,63 @@ public class TxtParser{
 
 
     public static void parseSeries() throws Exception {
-        File f = new File("resources\\series.txt");
+        File f = new File("resources/series.txt");
         BufferedReader reader = new BufferedReader(new FileReader(f));
         String line = reader.readLine();
-        ArrayList<Series> series = new ArrayList<>();
-        int i = 0;
-        while ((line = reader.readLine()) != null) {
-            String[] parts = line.split("; ");
-            String title = parts[i];
 
-            //der går noget galt her - den er fuldstændig på afveje. Kør main metode og se fejlbesked.
+        // igen, listen af serier burde nok flyttes til en anden klasse
+        ArrayList<Series> seriesList = new ArrayList<>();
+        
+        while ((line = reader.readLine()) != null) {
+            
+            String[] parts = line.split("; ");
+
+            String title = parts[0];
+
             int startYear = 0;
             int endYear = 0;
-            if(parts[i+1].contains("-1") || parts[i+1].contains("-2")){
-                String[] years = parts[i+1].split("-");
+            
+            /* fix dis
+
+            if(parts[1].contains("-1") || parts[1].contains("-2")){
+                String[] years = parts[1].split("-");
                 startYear = Integer.parseInt(years[0]);
                 endYear = Integer.parseInt(years[1]);
             } else {
-                String[] years = parts[i+1].split("-");
+                String[] years = parts[1].split("-");
                 startYear = Integer.parseInt(years[0]);
             }
+            */
 
+            /* TEST TEST TEST
+            String[] genres = parts[2].split(", ");
 
-
-
-            String[] genres = parts[i+2].split(", ");
-
-            String ratingString = parts[i+3].replace(",", ".").replace(";","");
-            // CRASH; samme problem som i parseMovies()
+            String ratingString = parts[3].replace(",", ".").replace(";","");
             double rating = Double.parseDouble(ratingString);
 
-            String[] seasons = parts[i+4].split(", ");
+            String[] seasons = parts[4].split(", ");
 
-            int numberOfSeasons = 0; //loop der tæller antal seasons
-            for(String s : seasons){
+            int numberOfSeasons = 0; 
+            for(String s : seasons){ //loop der tæller antal seasons
                 numberOfSeasons++;
             }
-            Series serie = new Series(title, startYear, endYear, rating, numberOfSeasons);
+            */
+
+            Series series = new Series(title, startYear, endYear, 0, 0);
+
+            /* TEST TEST TEST
             for (String s : genres){
                 serie.addCategory(s);
             }
-            series.add(serie);
-            i++;
+            */
 
+            seriesList.add(series);
+
+            // OBS under construction
             // loop der tilføjer antal afsnit for hver sæson til en ArrayList
             // f.eks. vil episodes[0] returnere antal afsnit i første sæson, episodes[1] i anden osv.
-            /*ArrayList<Integer> episodes = new ArrayList<>();
+            /*
+            ArrayList<Integer> episodes = new ArrayList<>();
             for(String s : seasons){
                 String[] ep = s.split("-");
                 Integer episodeCount = Integer.parseInt(ep[1]);
@@ -111,17 +121,10 @@ public class TxtParser{
             }
             */
 
-
-
-            for (Series m : series){
-                System.out.print(m.getTitle() +": "+m.getYear()+": ");
-
-                for(i=0; i < m.numberOfCategories(); i++){
-                    System.out.print(m.getCategory(i) + ", ");
-                }
-                System.out.print(": " + m.getRating() +": " + m.getEndYear());
-                System.out.println();
+            for(Series s : seriesList){
+                System.out.println(s.title);
             }
+
         }reader.close();
     }
 }
