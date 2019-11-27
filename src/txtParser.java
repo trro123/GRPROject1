@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 // de to parse metoder læser .txt-filer linje for linje og spytter felter ud (title, year, rating osv.)
-public class TxtParser {
+public class TxtParser{
 
     public static void parseMovies() throws IOException {
         File file = new File("resources\\movies.txt"); //fortæller java hvor .txt-filen er
