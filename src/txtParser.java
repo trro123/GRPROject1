@@ -59,7 +59,6 @@ public class TxtParser {
             for(String s : seasons){
                 String[] ep = s.split("-");
                 Integer episodeCount = Integer.parseInt(ep[1]);
-
                 episodes.add(episodeCount);
             }
         }
