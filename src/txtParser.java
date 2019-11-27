@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.ArrayList;
 
-// Læser .txt-filer linje for linje og spytter felter ud (title, year, rating osv.)
+// de to parse metoder læser .txt-filer linje for linje og spytter felter ud (title, year, rating osv.)
 public class TxtParser {
 
     public static void parseMovies() throws IOException {
