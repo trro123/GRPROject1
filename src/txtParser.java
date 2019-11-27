@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class TxtParser{
 
     public static void parseMovies() throws IOException {
-        File file = new File("resources\\movies.txt"); //fortæller java hvor .txt-filen er
-        BufferedReader reader = new BufferedReader(new FileReader(file));
+        File f = new File("resources\\movies.txt"); //fortæller java hvor .txt-filen er
+        BufferedReader reader = new BufferedReader(new FileReader(f));
         String line = reader.readLine(); //line = én linje i .txt filen
 
         // kører så længe der er flere lines i .txt-filen
