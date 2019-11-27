@@ -24,15 +24,15 @@ public class TxtParser{
             String[] parts = line.split("; "); //splitter linjen ved alle "; " og indsætter tekstbidder i et String[]
             
             String title = parts[i];
-            i= i++;
-           // String yearString = parts[i+1];
-           //  int year = Integer.parseInt(yearString); //omdanner String year til en int; crasher programmet hvis den læser andet end tal
+            String yearString = parts[i+1];
+           int year = Integer.parseInt(yearString); //omdanner String year til en int; crasher programmet hvis den læser andet end tal
            // String[] genres = parts[i+2].split(", "); //splitter strengen med genrer ved ", " og indsætter tekstbidder i et String[]
-            System.out.println(title);
+            System.out.println(title+": " + yearString);
            // String ratingString = parts[i+3].replace(",", ".");
             // CRASH; prøver at finde en double i ratingString, men der er komma i stedet for punktum
            // double rating = Double.parseDouble(ratingString);
            // System.out.println(rating);
+            i= i++;
 
 
         }
