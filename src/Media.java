@@ -25,4 +25,15 @@ public class Media{
     public double getRating(){
         return rating;
     }
+
+    public void addCategory(String genre){ //tilføjer en kategori
+        category.add(genre);
+    }
+    public String getCategory(int index){ //returnere kategorien til et givet index
+        return category.get(index);
+    }
+    public int numberOfCategories(){ //returnerer en int, som tæller hvor mange kategorier der er til et medie.
+        return category.size();
+    }
+
 }
