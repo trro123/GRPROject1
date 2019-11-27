@@ -7,7 +7,7 @@ public class TxtParser{
 
     public static void main(String[] args) {
         try {
-            parseMovies();
+            parseSeries();
 
         }catch(Exception i){
             i.printStackTrace(); //læs op på hvad det her gør, fundet fra nettet.
@@ -32,12 +32,11 @@ public class TxtParser{
             String[] genres = parts[i+2].split(", "); //splitter strengen med genrer ved ", " og indsætter tekstbidder i et String[]
 
 
-           // String ratingString = parts[i+3].replace(",", ".");
+           String ratingString = parts[i+3].replace(",", ".").replace(";","");
             // CRASH; prøver at finde en double i ratingString, men der er komma i stedet for punktum
-           // double rating = Double.parseDouble(ratingString);
+           double rating = Double.parseDouble(ratingString);
 
-
-            Movie movie = new Movie(title, year, 0);
+            Movie movie = new Movie(title, year, rating);
             for (String s : genres){
                 movie.addCategory(s);
             }
@@ -50,50 +49,83 @@ public class TxtParser{
         reader.close();
 
         for (Movie m : movies){
-            System.out.print(m.getTitle() +": "+m.getYear()+": " );
+            System.out.print(m.getTitle() +": "+m.getYear()+": ");
 
             for(i=0; i < m.numberOfCategories(); i++){
                 System.out.print(m.getCategory(i) + ", ");
             }
+            System.out.print(": " + m.getRating());
             System.out.println();
         }
     }
 
-    public static void parseSeries() throws IOException {
+
+
+    public static void parseSeries() throws Exception {
         File f = new File("resources\\series.txt");
         BufferedReader reader = new BufferedReader(new FileReader(f));
         String line = reader.readLine();
-
-        while (line != null) {
+        ArrayList<Series> series = new ArrayList<>();
+        int i = 0;
+        while ((line = reader.readLine()) != null) {
             String[] parts = line.split("; ");
+            String title = parts[i];
 
-            String title = parts[0];
+            //der går noget galt her - den er fuldstændig på afveje. Kør main metode og se fejlbesked.
+            int startYear = 0;
+            int endYear = 0;
+            if(parts[i+1].contains("-1") || parts[i+1].contains("-2")){
+                String[] years = parts[i+1].split("-");
+                startYear = Integer.parseInt(years[0]);
+                endYear = Integer.parseInt(years[1]);
+            } else {
+                String[] years = parts[i+1].split("-");
+                startYear = Integer.parseInt(years[0]);
+            }
 
-            String[] years = parts[1].split("-"); //opretter et array med start og slut år i String form
-            int startYear = Integer.parseInt(years[0]); //omdanner String startYear til en int
-            int endYear = Integer.parseInt(years[1]); //CRASH; hvis der ikke er noget slutår -> prøver at parse ingenting til en int
 
-            String[] genres = parts[2].split(", ");
 
-            String ratingString = parts[3];
+
+            String[] genres = parts[i+2].split(", ");
+
+            String ratingString = parts[i+3].replace(",", ".").replace(";","");
             // CRASH; samme problem som i parseMovies()
             double rating = Double.parseDouble(ratingString);
 
-            String[] seasons = parts[4].split(", ");
+            String[] seasons = parts[i+4].split(", ");
 
             int numberOfSeasons = 0; //loop der tæller antal seasons
             for(String s : seasons){
                 numberOfSeasons++;
             }
+            Series serie = new Series(title, startYear, endYear, rating, numberOfSeasons);
+            for (String s : genres){
+                serie.addCategory(s);
+            }
+            series.add(serie);
+            i++;
 
             // loop der tilføjer antal afsnit for hver sæson til en ArrayList
             // f.eks. vil episodes[0] returnere antal afsnit i første sæson, episodes[1] i anden osv.
-            ArrayList<Integer> episodes = new ArrayList<>();
+            /*ArrayList<Integer> episodes = new ArrayList<>();
             for(String s : seasons){
                 String[] ep = s.split("-");
                 Integer episodeCount = Integer.parseInt(ep[1]);
                 episodes.add(episodeCount);
             }
-        }
+            */
+
+
+
+            for (Series m : series){
+                System.out.print(m.getTitle() +": "+m.getYear()+": ");
+
+                for(i=0; i < m.numberOfCategories(); i++){
+                    System.out.print(m.getCategory(i) + ", ");
+                }
+                System.out.print(": " + m.getRating() +": " + m.getEndYear());
+                System.out.println();
+            }
+        }reader.close();
     }
 }
