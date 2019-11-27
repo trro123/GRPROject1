@@ -20,7 +20,7 @@ West Side Story; 1961; Crime, Drama; 7,6;
 Star Wars; 1977; Action, Adventure, Family; 8,6;
 2001 A Space Odyssey; 1968; Adventure, Sci-fi; 8,3;
 ET; 1982; Family, Sci-fi; 7,9;
-The Silence Of The Lambs; 1991;Crime, Drama, Thriller; 8,6;
+The Silence Of The Lambs; 1991; Crime, Drama, Thriller; 8,6;
 Chinatown; 1974; Drama, Mystery, Thriller; 8,2;
 The Bridge Over The River Kwai; 1957; Adventure, Drama, War; 8,2;
 Singin' In The Rain; 1952; Comedy, Musical, Romance; 8,3;

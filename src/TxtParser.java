@@ -9,7 +9,7 @@ public class TxtParser{
         try {
             parseMovies();
         }catch(Exception i){
-            System.out.println("trond");
+            i.printStackTrace();;
         }
         }
 
@@ -36,6 +36,7 @@ public class TxtParser{
 
 
         }
+        reader.close();
     }
 
     public static void parseSeries() throws IOException {

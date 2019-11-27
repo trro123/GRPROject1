@@ -12,5 +12,5 @@ public class Watchable extends Media{
 
     public boolean onWatchlist(){
         return onWatchlist;
-    }  
+    }
 }
