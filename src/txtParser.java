@@ -20,9 +20,10 @@ public class TxtParser{
 
             String[] genres = parts[2].split(", "); //splitter strengen med genrer ved ", " og indsætter tekstbidder i et String[]
 
-            String ratingString = parts[3];
+            String ratingString = parts[3].replaceFirst(",", ".");
             // CRASH; prøver at finde en double i ratingString, men der er komma i stedet for punktum
             double rating = Double.parseDouble(ratingString);
+            System.out.println(rating);
         }
     }
 
