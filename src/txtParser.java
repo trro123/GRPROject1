@@ -1,7 +1,8 @@
 import java.io.*;
+import java.util.ArrayList;
 
 // Læser .txt-filer linje for linje og spytter felter ud (title, year, rating osv.)
-public class txtParser {
+public class TxtParser {
 
     public static void parseMovies() throws IOException {
         File file = new File("resources\\movies.txt"); //fortæller java hvor .txt-filen er
@@ -52,7 +53,15 @@ public class txtParser {
                 numberOfSeasons++;
             }
 
-            // implementer: få antal afsnit i hver sæson
+            // loop der tilføjer antal afsnit for hver sæson til en ArrayList
+            // f.eks. vil episodes[0] returnere antal afsnit i første sæson, episodes[1] i anden osv.
+            ArrayList<Integer> episodes = new ArrayList<>();
+            for(String s : seasons){
+                String[] ep = s.split("-");
+                Integer episodeCount = Integer.parseInt(ep[1]);
+
+                episodes.add(episodeCount);
+            }
         }
     }
 }
