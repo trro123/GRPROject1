@@ -1,4 +1,6 @@
 # GRPROject1
-develop branch readme
-commit til denne branch
-[dog.png]
+
+Master branch readme
+
+SE BORT FRA DENNE BRANCH; BRUG DEVELOP I STEDET
+
