@@ -29,10 +29,10 @@ public class Media{
     public void addCategory(String genre){ //tilføjer en kategori
         category.add(genre);
     }
-    public String getCategory(int index){ //returnere kategorien til et givet index
+    public String getCategory(int index){ //returnerer kategorien til et givet index
         return category.get(index);
     }
-    public int numberOfCategories(){ //returnerer en int, som tæller hvor mange kategorier der er til et medie.
+    public int numberOfCategories(){ //returnerer mediets antal af kategorier
         return category.size();
     }
 

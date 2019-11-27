@@ -55,7 +55,7 @@ public class TxtParser{
     }
 
 
-
+    // tilføjer pt flere dupletter af samme serie - aner ikke hvorfor. Meget af koden er udkommenteret pga overskuelighed i forbindelse med test
     public static void parseSeries() throws Exception {
         File f = new File("resources/series.txt");
         BufferedReader reader = new BufferedReader(new FileReader(f));
@@ -73,7 +73,7 @@ public class TxtParser{
             int startYear = 0;
             int endYear = 0;
             
-            /* fix dis
+            /* doesn't work pls fix
 
             if(parts[1].contains("-1") || parts[1].contains("-2")){
                 String[] years = parts[1].split("-");
@@ -122,7 +122,7 @@ public class TxtParser{
             */
 
             for(Series s : seriesList){
-                System.out.println(s.title);
+                System.out.println(s.getTitle());
             }
 
         }reader.close();
