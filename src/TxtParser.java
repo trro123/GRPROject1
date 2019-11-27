@@ -3,27 +3,38 @@ import java.util.ArrayList;
 
 // de to parse metoder læser .txt-filer linje for linje og spytter felter ud (title, year, rating osv.)
 public class TxtParser{
+    ArrayList titles = new ArrayList<String>();
 
-    public static void parseMovies() throws IOException {
+    public static void main(String[] args) {
+        try {
+            parseMovies();
+        }catch(Exception i){
+            System.out.println("trond");
+        }
+        }
+
+    public static void parseMovies() throws Exception {
         File f = new File("resources\\movies.txt"); //fortæller java hvor .txt-filen er
         BufferedReader reader = new BufferedReader(new FileReader(f));
         String line = reader.readLine(); //line = én linje i .txt filen
-
+        int i = 0;
         // kører så længe der er flere lines i .txt-filen
-        while (line != null) {
+        while ((line = reader.readLine()) != null) {
+
             String[] parts = line.split("; "); //splitter linjen ved alle "; " og indsætter tekstbidder i et String[]
             
-            String title = parts[0];
-
-            String yearString = parts[1];
-            int year = Integer.parseInt(yearString); //omdanner String year til en int; crasher programmet hvis den læser andet end tal
-
-            String[] genres = parts[2].split(", "); //splitter strengen med genrer ved ", " og indsætter tekstbidder i et String[]
-
-            String ratingString = parts[3].replaceFirst(",", ".");
+            String title = parts[i];
+            i= i++;
+           // String yearString = parts[i+1];
+           //  int year = Integer.parseInt(yearString); //omdanner String year til en int; crasher programmet hvis den læser andet end tal
+           // String[] genres = parts[i+2].split(", "); //splitter strengen med genrer ved ", " og indsætter tekstbidder i et String[]
+            System.out.println(title);
+           // String ratingString = parts[i+3].replace(",", ".");
             // CRASH; prøver at finde en double i ratingString, men der er komma i stedet for punktum
-            double rating = Double.parseDouble(ratingString);
-            System.out.println(rating);
+           // double rating = Double.parseDouble(ratingString);
+           // System.out.println(rating);
+
+
         }
     }
 
