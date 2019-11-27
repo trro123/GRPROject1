@@ -27,8 +27,8 @@ public class TxtParser{
     }
 
     public static void parseSeries() throws IOException {
-        File file = new File("resources\\series.txt");
-        BufferedReader reader = new BufferedReader(new FileReader(file));
+        File f = new File("resources\\series.txt");
+        BufferedReader reader = new BufferedReader(new FileReader(f));
         String line = reader.readLine();
 
         while (line != null) {
