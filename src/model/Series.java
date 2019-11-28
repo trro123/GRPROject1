@@ -14,8 +14,7 @@ public class Series extends Watchable{
         numberOfEpisodes = new ArrayList<>();
     }
 
-    // tilføjer antal episoder til en ArrayList
-    // index 0 vil indeholde en int svarende til antal episoder i første sæson, index 1 for anden sæson osv.
+    // tilføjer antal episoder til en ArrayList. Hver plads i ArrayListen svarer til en sæson og referencen peger så på antal afsnit i den givne sæson
     public void addEpisodes(int episodeCount){
         numberOfEpisodes.add(episodeCount);
     }
