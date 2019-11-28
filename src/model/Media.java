@@ -1,3 +1,5 @@
+package model;
+
 import java.util.*;
 
 public abstract class Media{ //abstract class fordi det skal være forbudt at lave media. Man skal oprette noget der nedarver fra den i stedet

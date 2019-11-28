@@ -1,3 +1,5 @@
+package model;
+
 public abstract class Watchable extends Media{
     protected boolean onWatchlist;
 

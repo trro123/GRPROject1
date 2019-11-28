@@ -1,17 +1,10 @@
+package model;
+
 import java.io.*;
 import java.util.ArrayList;
 
 // de to parse metoder læser .txt-filer linje for linje og spytter felter ud (title, year, rating osv.)
 public class TxtParser{
-
-    public static void main(String[] args) {
-        try {
-            parseSeries();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-
 
     public static void parseMovies() throws Exception {
         File f = new File("resources/movies.txt"); //fortæller java hvor .txt-filen er <-- for at køre på windows: skift fra "resources/movies.txt" til "resources\\movies.txt". Spørg ikke hvorfor...
