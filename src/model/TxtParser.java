@@ -11,9 +11,6 @@ public class TxtParser{
         BufferedReader reader = new BufferedReader(new FileReader(f));
         String line = reader.readLine(); //line = én linje i .txt filen
 
-        //ArrayList<Movie> burde nok flyttes til en anden klasse med en metode addMovie(), der kaldes i while-løkken
-        ArrayList<Movie> movieList = new ArrayList<>();
-
         while ((line = reader.readLine()) != null) { // line er den næste linje. Indtil vi løber tør for linjer
             // kører så længe der er flere lines i .txt-filen
 
@@ -30,19 +27,9 @@ public class TxtParser{
             double rating = Double.parseDouble(ratingString);
 
             Movie movie = new Movie(title, year, rating, genres);
-            movieList.add(movie);
+            MediaContainer.addMovie(movie);
+
         } reader.close();
-
-        // System.out.println() for test purposes
-        for (Movie m : movieList){
-            System.out.print(m.getTitle() +": "+m.getYear()+": ");
-
-            for(int i=0; i < m.numberOfGenres(); i++){
-                System.out.print(m.getGenre(i) + ", ");
-            }
-            System.out.print(": " + m.getRating());
-            System.out.println();
-        }
     }
 
 
@@ -50,9 +37,6 @@ public class TxtParser{
         File f = new File("resources/series.txt");
         BufferedReader reader = new BufferedReader(new FileReader(f));
         String line = reader.readLine();
-
-        // igen, listen af serier burde nok flyttes til en anden klasse
-        ArrayList<Series> seriesList = new ArrayList<>();
         
         while ((line = reader.readLine()) != null) {
             
@@ -83,7 +67,7 @@ public class TxtParser{
 
             Series series = new Series(title, startYear, endYear, rating, numberOfSeasons, genres);
 
-            seriesList.add(series);
+            MediaContainer.addSeries(series);
 
             // OBS under construction
             // loop der tilføjer antal afsnit for hver sæson til en ArrayList
@@ -98,14 +82,5 @@ public class TxtParser{
             */
 
         }reader.close();
-
-        // System.out.println() for test purposes
-        for(Series s : seriesList){
-            System.out.print(s.getTitle() + s.getYear() + s.getEndYear() + s.getRating() + s.getSeasons());
-            for(int i=0; i < s.numberOfGenres(); i++){
-                System.out.print(s.getGenre(i));
-            }
-            System.out.println();
-        }
     }
 }
