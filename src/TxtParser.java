@@ -55,7 +55,10 @@ public class TxtParser{
     }
 
 
-    // tilføjer pt flere dupletter af samme serie - aner ikke hvorfor. Meget af koden er udkommenteret pga overskuelighed i forbindelse med test
+    
+    // tilføjer pt flere dupletter af samme serie - aner ikke hvorfor... Meget af koden er udkommenteret pga overskuelighed i forbindelse med test
+    // 
+    //
     public static void parseSeries() throws Exception {
         File f = new File("resources/series.txt");
         BufferedReader reader = new BufferedReader(new FileReader(f));
