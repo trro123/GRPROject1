@@ -12,6 +12,7 @@ public class TxtParser{
         }
     }
 
+
     public static void parseMovies() throws Exception {
         File f = new File("resources/movies.txt"); //fortæller java hvor .txt-filen er <-- for at køre på windows: skift fra "resources/movies.txt" til "resources\\movies.txt". Spørg ikke hvorfor...
         BufferedReader reader = new BufferedReader(new FileReader(f));
@@ -55,10 +56,6 @@ public class TxtParser{
     }
 
 
-    
-    // tilføjer pt flere dupletter af samme serie - aner ikke hvorfor... Meget af koden er udkommenteret pga overskuelighed i forbindelse med test
-    // 
-    //
     public static void parseSeries() throws Exception {
         File f = new File("resources/series.txt");
         BufferedReader reader = new BufferedReader(new FileReader(f));
@@ -73,22 +70,15 @@ public class TxtParser{
 
             String title = parts[0];
 
-            int startYear = 0;
-            int endYear = 0;
-            
-            /* doesn't work pls fix
-
-            if(parts[1].contains("-1") || parts[1].contains("-2")){
-                String[] years = parts[1].split("-");
-                startYear = Integer.parseInt(years[0]);
+            String[] years = parts[1].split("-");
+            int startYear = Integer.parseInt(years[0]);
+            int endYear;
+            if(parts[1].contains("-1") || parts[1].contains("-2")) {
                 endYear = Integer.parseInt(years[1]);
             } else {
-                String[] years = parts[1].split("-");
-                startYear = Integer.parseInt(years[0]);
+                endYear = 0;
             }
-            */
 
-            /* TEST TEST TEST
             String[] genres = parts[2].split(", ");
 
             String ratingString = parts[3].replace(",", ".").replace(";","");
@@ -100,15 +90,12 @@ public class TxtParser{
             for(String s : seasons){ //loop der tæller antal seasons
                 numberOfSeasons++;
             }
-            */
 
-            Series series = new Series(title, startYear, endYear, 0, 0);
+            Series series = new Series(title, startYear, endYear, rating, numberOfSeasons);
 
-            /* TEST TEST TEST
             for (String s : genres){
-                serie.addCategory(s);
+                series.addCategory(s);
             }
-            */
 
             seriesList.add(series);
 
@@ -124,10 +111,15 @@ public class TxtParser{
             }
             */
 
-            for(Series s : seriesList){
-                System.out.println(s.getTitle());
-            }
-
         }reader.close();
+
+        // System.out.println() for test purposes
+        for(Series s : seriesList){
+            System.out.print(s.getTitle() + s.getYear() + s.getEndYear() + s.getRating() + s.getSeasons());
+            for(int i=0; i < s.numberOfCategories(); i++){
+                System.out.print(s.getCategory(i));
+            }
+            System.out.println();
+        }
     }
 }
