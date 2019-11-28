@@ -59,10 +59,7 @@ public class TxtParser{
 
             String[] seasons = parts[4].split(", ");
 
-            int numberOfSeasons = 0; 
-            for(String s : seasons){ //loop der tæller antal seasons
-                numberOfSeasons++;
-            }
+            int numberOfSeasons = seasons.length;
 
             Series series = new Series(title, startYear, endYear, rating, numberOfSeasons, genres);
 
