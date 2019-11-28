@@ -8,7 +8,7 @@ public class TxtParser{
         try {
             parseSeries();
         }catch(Exception e){
-            e.printStackTrace(); //læs op på hvad det her gør, fundet fra nettet.
+            e.printStackTrace();
         }
     }
 
