@@ -1,5 +1,5 @@
 Hvilke(n) class arbejder man på?
 
 Mikkel:
-Trond: Prøver at implementere mediacontainer i txtparser
+Trond:
 Veronika: arbejder i filter
