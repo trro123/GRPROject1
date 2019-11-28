@@ -65,17 +65,11 @@ public class TxtParser{
 
             MediaContainer.addSeries(series);
 
-            // OBS under construction
-            // loop der tilføjer antal afsnit for hver sæson til en ArrayList
-            // f.eks. vil episodes[0] returnere antal afsnit i første sæson, episodes[1] i anden osv.
-            /*
-            ArrayList<Integer> episodes = new ArrayList<>();
             for(String s : seasons){
                 String[] ep = s.split("-");
                 Integer episodeCount = Integer.parseInt(ep[1]);
-                episodes.add(episodeCount);
+                series.addEpisodes(episodeCount);
             }
-            */
 
         }reader.close();
     }
