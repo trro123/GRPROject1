@@ -1,16 +1,16 @@
 import java.util.*;
 
-public class Media{
+public abstract class Media{ //abstract class fordi det skal være forbudt at lave media. Man skal oprette noget der nedarver fra den i stedet
     protected String title;
     protected int year;
     protected double rating;
-    protected List<String> category;
+    protected List<String> genres;
 
-    public Media(String title, int year, double rating){
+    public Media(String title, int year, double rating, String[] genres){
         this.title = title;
         this.year = year;
         this.rating = rating;
-        category = new ArrayList<>();
+        this.genres = Arrays.asList(genres);
     }
 
     //get methods
@@ -26,14 +26,14 @@ public class Media{
         return rating;
     }
 
-    public void addCategory(String genre){ //tilføjer en kategori
-        category.add(genre);
+    public void addGenre(String genre){ //tilføjer en genre
+        genres.add(genre);
     }
-    public String getCategory(int index){ //returnerer kategorien til et givet index
-        return category.get(index);
+    public String getGenre(int index){ //returnerer genrer til et givet index
+        return genres.get(index);
     }
-    public int numberOfCategories(){ //returnerer mediets antal af kategorier
-        return category.size();
+    public int numberOfGenres(){ //returnerer mediets antal af genrer
+        return genres.size();
     }
 
 }

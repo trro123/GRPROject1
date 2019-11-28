@@ -36,10 +36,7 @@ public class TxtParser{
             String ratingString = parts[3].replace(",", ".").replace(";", ""); //ændrer komma til punktum, således at strengen kan parses til en double; fjerner semikolon fra strengen
             double rating = Double.parseDouble(ratingString);
 
-            Movie movie = new Movie(title, year, rating);
-            for (String s : genres){
-                movie.addCategory(s);
-            }
+            Movie movie = new Movie(title, year, rating, genres);
             movieList.add(movie);
         } reader.close();
 
@@ -47,8 +44,8 @@ public class TxtParser{
         for (Movie m : movieList){
             System.out.print(m.getTitle() +": "+m.getYear()+": ");
 
-            for(int i=0; i < m.numberOfCategories(); i++){
-                System.out.print(m.getCategory(i) + ", ");
+            for(int i=0; i < m.numberOfGenres(); i++){
+                System.out.print(m.getGenre(i) + ", ");
             }
             System.out.print(": " + m.getRating());
             System.out.println();
@@ -91,11 +88,7 @@ public class TxtParser{
                 numberOfSeasons++;
             }
 
-            Series series = new Series(title, startYear, endYear, rating, numberOfSeasons);
-
-            for (String s : genres){
-                series.addCategory(s);
-            }
+            Series series = new Series(title, startYear, endYear, rating, numberOfSeasons, genres);
 
             seriesList.add(series);
 
@@ -116,8 +109,8 @@ public class TxtParser{
         // System.out.println() for test purposes
         for(Series s : seriesList){
             System.out.print(s.getTitle() + s.getYear() + s.getEndYear() + s.getRating() + s.getSeasons());
-            for(int i=0; i < s.numberOfCategories(); i++){
-                System.out.print(s.getCategory(i));
+            for(int i=0; i < s.numberOfGenres(); i++){
+                System.out.print(s.getGenre(i));
             }
             System.out.println();
         }
