@@ -1,7 +1,6 @@
 package model;
 
 import java.io.*;
-import java.util.ArrayList;
 
 // de to parse metoder læser .txt-filer linje for linje og spytter felter ud (title, year, rating osv.)
 public class TxtParser{
