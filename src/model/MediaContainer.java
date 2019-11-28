@@ -28,6 +28,7 @@ public class MediaContainer {
     // for test purposes
 
     public static void seriesParserTest(){
+
         for(Series s : series){
             System.out.print(s.getTitle() + s.getYear() + s.getEndYear() + s.getRating() + s.getSeasons());
             for(int i=0; i < s.numberOfGenres(); i++){
@@ -37,10 +38,11 @@ public class MediaContainer {
         }
     }
 
+
     public static void movieParserTest(){
+        
         for (Movie m : movies){
             System.out.print(m.getTitle() +": "+m.getYear()+": ");
-
             for(int i=0; i < m.numberOfGenres(); i++){
                 System.out.print(m.getGenre(i) + ", ");
             }

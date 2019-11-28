@@ -8,8 +8,8 @@ public class TxtParserTest {
         try{
             new MediaContainer();
             
-            TxtParser.parseSeries();
-            MediaContainer.seriesParserTest();
+            TxtParser.parseMovies();
+            MediaContainer.movieParserTest();
         } catch (Exception e){
             e.printStackTrace();
         }
