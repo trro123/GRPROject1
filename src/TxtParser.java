@@ -21,7 +21,7 @@ public class TxtParser{
         //ArrayList<Movie> burde nok flyttes til en anden klasse med en metode addMovie(), der kaldes i while-løkken
         ArrayList<Movie> movieList = new ArrayList<>();
 
-        while ((line = reader.readLine()) != null) {
+        while ((line = reader.readLine()) != null) { // line er den næste linje. Indtil vi løber tør for linjer
             // kører så længe der er flere lines i .txt-filen
 
             String[] parts = line.split("; "); //splitter linje ved alle "; " og indsætter tekstbidder i et String[]
