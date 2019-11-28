@@ -26,7 +26,7 @@ public class TxtParser{
 
             String[] parts = line.split("; "); //splitter linje ved alle "; " og indsætter tekstbidder i et String[]
             
-            String title = parts[0]; //index i, da det er første stykke String på linjen
+            String title = parts[0];
 
             String yearString = parts[1]; //+1 da det kommer efter title
             int year = Integer.parseInt(yearString); //omdanner String year til en int
