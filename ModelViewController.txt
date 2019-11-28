@@ -1,0 +1,12 @@
+MCV-princippet
+
+	model: 
+Alle klasser der ændrer opretter objekter, ændrer tilstande, holder data, osv.
+Klasser der har at gøre med hovedfunktionaliteten i programmet ligges i model-mappen.
+
+	view:
+Håndterer GUI (visning af data)
+
+	controller:
+Styrer den data der passes til view delen af programmet. F.eks. hvis brugeren trykker på sin watchlist skal controlleren kalde de metoder der får watchlisten vist i GUI.
+Desuden, hvis bruger fjerner en film fra listen skal controlleren kalde en watchlistRemove(movie) metode og derefter opdatere visningen af watchlisten.
