@@ -5,7 +5,7 @@ import java.io.*;
 // de to parse metoder læser .txt-filer linje for linje og spytter felter ud (title, year, rating osv.)
 public class TxtParser{
 
-    public static void parseMovies() throws Exception {
+    public static void parseMovies() throws IOException {
         File f = new File("resources/movies.txt"); //fortæller java hvor .txt-filen er <-- for at køre på windows: skift fra "resources/movies.txt" til "resources\\movies.txt". Spørg ikke hvorfor...
         BufferedReader reader = new BufferedReader(new FileReader(f));
         String line = reader.readLine(); //line = én linje i .txt filen
@@ -32,7 +32,7 @@ public class TxtParser{
     }
 
 
-    public static void parseSeries() throws Exception {
+    public static void parseSeries() throws IOException {
         File f = new File("resources/series.txt");
         BufferedReader reader = new BufferedReader(new FileReader(f));
         String line = reader.readLine();
