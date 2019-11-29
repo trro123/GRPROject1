@@ -1,7 +1,6 @@
 package test;
 
 import java.awt.*;
-import java.util.*;
 import model.*;
 
 import javax.swing.*;
@@ -21,8 +20,9 @@ public class imgTest{
         }
         System.out.println(medias.getMovies().get(0).getTitle());
 
-        ImageIcon icon = new ImageIcon("resources/movie_pictures/" + medias.getMovies().get(0).getTitle() + ".jpg");
-        JLabel label = new JLabel(icon);
+        medias.getMovies().get(0).setImg("resources/movie_pictures/" + medias.getMovies().get(0).getTitle() + ".jpg");
+
+        JLabel label = new JLabel(medias.getMovies().get(0).getImg());
         contentPane.add(label);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

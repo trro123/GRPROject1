@@ -34,7 +34,7 @@ public abstract class Media{ //abstract class fordi det skal være forbudt at la
         return rating;
     }
 
-    public void addGenre(String genre){ //tilføjer en genre
+    public void addGenre(String genre){ //tilføjer en genre til listen
         genres.add(genre);
     }
     public String getGenre(int index){ //returnerer genrer til et givet index
@@ -45,8 +45,10 @@ public abstract class Media{ //abstract class fordi det skal være forbudt at la
     }
 
 
-    // set image for test purposes
+    // set/get image for test purposes
     public void setImg(String path){
+        //ImageIcon er en swing component - på sigt bruger vi javafx, men jeg aner ikke hvordan man opretter de forskellige javafx komponenter, og skulle teste om syntaksen i imgTest.java ellers virkede
+        //ps det gør den
         this.img = new ImageIcon(path);
     }
 
