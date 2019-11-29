@@ -10,6 +10,7 @@ public class MediaContainer {
     public MediaContainer() {
         series = new ArrayList<>();
         movies = new ArrayList<>();
+        searchResults = new ArrayList<>();
     }
 
     public static void addSeries(Series s) {
@@ -23,7 +24,7 @@ public class MediaContainer {
     // filter/søge metoder
 
     public static void beforeYear(int year) { //søger efter alle film OG serier før år x og tilføjer til en ArrayList<Watchable> searchResults
-        searchResults = new ArrayList<>();
+        searchResults.clear(); // .clear() arraylisten som det første, da den ellers ville blive latterligt langt efter flere søgninger
 
         for(Movie m : movies){
             if(m.getYear() < year){
@@ -39,7 +40,7 @@ public class MediaContainer {
     }
 
     public static void afterYear(int year){ //søger efter alle film OG serier efter år x
-        searchResults = new ArrayList<>();
+        searchResults.clear();
 
         for(Movie m : movies){
             if(m.getYear() > year){
@@ -56,7 +57,7 @@ public class MediaContainer {
 
     public static void searchTitle(String userInput){ //søger efter en brugerdefineret teksttreng - til en eventuel searchbar?
         //kan ikke finde ud af de store og små bogstaver, f.eks. vil en søgning på "the godfather" ikke give noget resultat, da filmen hedder "The Godfather"
-        searchResults = new ArrayList<>();
+        searchResults.clear();
 
         for(Movie m : movies){
             if(m.getTitle().contains(userInput)){
