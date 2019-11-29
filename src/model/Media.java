@@ -34,12 +34,14 @@ public abstract class Media{ //abstract class fordi det skal være forbudt at la
         return rating;
     }
 
-    public void addGenre(String genre){ //tilføjer en genre til listen
-        genres.add(genre);
-    }
     public String getGenre(int index){ //returnerer genrer til et givet index
         return genres.get(index);
     }
+
+    public void addGenre(String genre){ //tilføjer en genre til listen
+        genres.add(genre);
+    }
+    
     public int numberOfGenres(){ //returnerer mediets antal af genrer
         return genres.size();
     }
