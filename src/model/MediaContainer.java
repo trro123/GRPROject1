@@ -1,25 +1,58 @@
 package model;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class MediaContainer {
-    protected static ArrayList<Series> series;
-    protected static ArrayList<Movie> movies;
+    private static ArrayList<Series> series;
+    private static ArrayList<Movie> movies;
+    private static ArrayList<Watchable> searchResults;
 
-    public MediaContainer(){
+    public MediaContainer() {
         series = new ArrayList<>();
         movies = new ArrayList<>();
     }
 
-    public static void addSeries(Series s){
+    public static void addSeries(Series s) {
         series.add(s);
     }
-    
-    public static void addMovie(Movie m){
+
+    public static void addMovie(Movie m) {
         movies.add(m);
     }
 
+    // filter metoder
 
+    public static void beforeYear(int year) { //søger efter alle film OG serier før år x og tilføjer til en ArrayList<Watchable> searchResults
+        searchResults = new ArrayList<>();
+
+        for(Movie m : movies){
+            if(m.getYear() < year){
+                searchResults.add(m);
+            }
+        }
+
+        for(Series s : series){
+            if(s.getYear() < year){
+                searchResults.add(s);
+            }
+        }
+    }
+
+    public static void afterYear(int year){ //søger efter alle film OG serier efter år x
+        searchResults = new ArrayList<>();
+
+        for(Movie m : movies){
+            if(m.getYear() > year){
+                searchResults.add(m);
+            }
+        }
+
+        for(Series s : series){
+            if(s.getYear() > year){
+                searchResults.add(s);
+            }
+        }
+    }
 
 
 
