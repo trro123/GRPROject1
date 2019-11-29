@@ -11,6 +11,7 @@ public class imgTest{
         //swing components for test purposes
         JFrame frame = new JFrame();
         Container contentPane = frame.getContentPane();
+        contentPane.setLayout(new GridLayout());
 
         MediaContainer medias = new MediaContainer();
         try{
@@ -18,12 +19,19 @@ public class imgTest{
         } catch (Exception e){
             e.printStackTrace();
         }
-        System.out.println(medias.getMovies().get(0).getTitle());
 
-        medias.getMovies().get(0).setImg("resources/movie_pictures/" + medias.getMovies().get(0).getTitle() + ".jpg");
+        for(Movie m : medias.getMovies()){
+            m.setImg("resources/movie_pictures/" + m.getTitle() + ".jpg");
+        }
 
         JLabel label = new JLabel(medias.getMovies().get(0).getImg());
         contentPane.add(label);
+        JLabel label2 = new JLabel(medias.getMovies().get(1).getImg());
+        contentPane.add(label2);
+        JLabel label3 = new JLabel(medias.getMovies().get(2).getImg());
+        contentPane.add(label3);
+        JLabel label4 = new JLabel(medias.getMovies().get(99).getImg());
+        contentPane.add(label4);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
