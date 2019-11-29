@@ -21,6 +21,14 @@ public class MediaContainer {
         movies.add(m);
     }
 
+    public ArrayList<Movie> getMovies(){
+        return movies;
+    }
+
+    public ArrayList<Series> getSeries(){
+        return series;
+    }
+
     // filter/søge metoder
 
     public static void beforeYear(int year) { //søger efter alle film OG serier før år x og tilføjer til en ArrayList<Watchable> searchResults
