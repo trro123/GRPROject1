@@ -13,7 +13,7 @@ public class imgTest{
         Container contentPane = frame.getContentPane();
         contentPane.setLayout(new GridLayout());
 
-        // kører parser metoden for at initialisere movie objekterne
+        // kører load metoden for at initialisere movie objekterne
         MediaContainer medias = new MediaContainer();
         try{
             medias.loadMovies();
@@ -21,7 +21,7 @@ public class imgTest{
             e.printStackTrace();
         }
 
-        // opretter labels der tilføjes til vinduet
+        // opretter labels der indeholder en films billede. Tilføjes til vinduet
         JLabel label = new JLabel(medias.getMovies().get(0).getImg());
         contentPane.add(label);
         JLabel label2 = new JLabel(medias.getMovies().get(1).getImg());
