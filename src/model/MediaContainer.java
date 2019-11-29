@@ -20,7 +20,7 @@ public class MediaContainer {
         movies.add(m);
     }
 
-    // filter metoder
+    // filter/søge metoder
 
     public static void beforeYear(int year) { //søger efter alle film OG serier før år x og tilføjer til en ArrayList<Watchable> searchResults
         searchResults = new ArrayList<>();
@@ -49,6 +49,22 @@ public class MediaContainer {
 
         for(Series s : series){
             if(s.getYear() > year){
+                searchResults.add(s);
+            }
+        }
+    }
+
+    public static void searchTitle(String userInput){ //søger efter en brugerdefineret teksttreng - til en eventuel searchbar?
+        searchResults = new ArrayList<>();
+
+        for(Movie m : movies){
+            if(m.getTitle().contains(userInput)){
+                searchResults.add(m);
+            }
+        }
+
+        for(Series s : series){
+            if(s.getTitle().contains(userInput)){
                 searchResults.add(s);
             }
         }
