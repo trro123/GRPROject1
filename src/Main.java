@@ -16,6 +16,8 @@ public class Main{
         MediaContainer mediaList = new MediaContainer();
         TxtParser.parseMovies();
         TxtParser.parseSeries();
+        mediaList.loadMovieImages();
+        mediaList.loadSeriesImages();
 
 
         */

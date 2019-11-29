@@ -29,6 +29,19 @@ public class MediaContainer {
         return series;
     }
 
+    public void loadMovieImages(){
+        // sætter et billede til alle movies i mediaContaineren baseret på filmens titel
+        for(Movie m : movies){
+            m.setImg("resources/movie_pictures/" + m.getTitle() + ".jpg");
+        }
+    }
+
+    public void loadSeriesImages(){
+        for(Series s : series){
+            s.setImg("resources/series_pictures/" + s.getTitle() + ".jpg");
+        }
+    }
+
     // filter/søge metoder - måske burde de returnere searchResults listen, det vil tiden vise
 
     public static void beforeYear(int year) { //søger efter alle film og serier før år x og tilføjer til en ArrayList<Watchable> searchResults
