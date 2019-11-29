@@ -16,12 +16,10 @@ public class imgTest{
         // kører parser metoden for at initialisere movie objekterne
         MediaContainer medias = new MediaContainer();
         try{
-            TxtParser.parseMovies();
+            medias.loadMovies();
         } catch (Exception e){
             e.printStackTrace();
         }
-
-        medias.loadMovieImages();
 
         // opretter labels der tilføjes til vinduet
         JLabel label = new JLabel(medias.getMovies().get(0).getImg());
