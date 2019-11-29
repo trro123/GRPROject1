@@ -12,7 +12,7 @@ public class MediaContainerTest{
         } catch (Exception e){
             e.printStackTrace();
         }
-        MediaContainer.beforeYear(1960);
+        MediaContainer.searchTitle("");
     }
 
 }
