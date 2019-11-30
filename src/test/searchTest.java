@@ -24,7 +24,13 @@ public class searchTest {
             JLabel label = new JLabel(m.getImg());
             contentPane.add(label);
         }
-
+/*
+        for(Watchable m : medias.afterYear(2010)){
+            System.out.println(m.getTitle() + " " + m.getYear());
+            JLabel label = new JLabel(m.getImg());
+            contentPane.add(label);
+        }
+*/
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
