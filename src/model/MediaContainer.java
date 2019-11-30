@@ -92,7 +92,7 @@ public class MediaContainer {
         return searchResults;
     }
 
-    public static void searchTitle(String userInput){ //søger efter en brugerdefineret teksttreng (til en eventuel searchbar?)
+    public static ArrayList<Watchable> searchTitle(String userInput){ //søger efter en brugerdefineret teksttreng (til en eventuel searchbar?)
         searchResults.clear();
 
         for(Movie m : movies){
@@ -106,6 +106,8 @@ public class MediaContainer {
                 searchResults.add(s);
             }
         }
+
+        return searchResults;
     }
 
 
