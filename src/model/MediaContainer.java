@@ -93,17 +93,16 @@ public class MediaContainer {
     }
 
     public static void searchTitle(String userInput){ //søger efter en brugerdefineret teksttreng (til en eventuel searchbar?)
-        //kan ikke finde ud af de store og små bogstaver, f.eks. vil en søgning på "the godfather" ikke give noget resultat, da filmen hedder "The Godfather"
         searchResults.clear();
 
         for(Movie m : movies){
-            if(m.getTitle().contains(userInput)){
+            if(m.getTitle().toLowerCase().contains(userInput.toLowerCase())){
                 searchResults.add(m);
             }
         }
 
         for(Series s : series){
-            if(s.getTitle().contains(userInput)){
+            if(s.getTitle().toLowerCase().contains(userInput.toLowerCase())){
                 searchResults.add(s);
             }
         }
