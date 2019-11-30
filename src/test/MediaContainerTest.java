@@ -12,6 +12,5 @@ public class MediaContainerTest{
         } catch (Exception e){
             e.printStackTrace();
         }
-        MediaContainer.searchTitle("");
     }
 }
