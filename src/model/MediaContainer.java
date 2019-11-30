@@ -56,7 +56,7 @@ public class MediaContainer {
 
     // filter/søge metoder - måske burde de returnere searchResults listen, det vil tiden vise
 
-    public static void beforeYear(int year) { //søger efter alle film og serier før år x og tilføjer til en ArrayList<Watchable> searchResults
+    public ArrayList<Watchable> beforeYear(int year) { //søger efter alle film og serier før år x og tilføjer til en ArrayList<Watchable> searchResults
         searchResults.clear(); // .clear() arraylisten som det første, da den ellers ville blive latterligt langt efter flere søgninger
 
         for(Movie m : movies){
@@ -70,9 +70,11 @@ public class MediaContainer {
                 searchResults.add(s);
             }
         }
+
+        return searchResults;
     }
 
-    public static void afterYear(int year){ //søger efter alle film og serier efter år x
+    public ArrayList<Watchable> afterYear(int year){ //søger efter alle film og serier efter år x
         searchResults.clear();
 
         for(Movie m : movies){
@@ -86,6 +88,8 @@ public class MediaContainer {
                 searchResults.add(s);
             }
         }
+
+        return searchResults;
     }
 
     public static void searchTitle(String userInput){ //søger efter en brugerdefineret teksttreng (til en eventuel searchbar?)
