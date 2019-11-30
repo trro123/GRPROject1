@@ -19,13 +19,13 @@ public class searchTest {
             e.printStackTrace();
         }
 
-        for(Watchable m : medias.beforeYear(1950)){
+        for(Watchable m : medias.searchBeforeYear(1950)){
             System.out.println(m.getTitle() + ": " + m.getYear());
             JLabel label = new JLabel(m.getImg());
             contentPane.add(label);
         }
 /*
-        for(Watchable m : medias.afterYear(2010)){
+        for(Watchable m : medias.searchAfterYear(2010)){
             System.out.println(m.getTitle() + " " + m.getYear());
             JLabel label = new JLabel(m.getImg());
             contentPane.add(label);
