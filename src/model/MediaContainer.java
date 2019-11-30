@@ -106,11 +106,6 @@ public class MediaContainer {
                 searchResults.add(s);
             }
         }
-
-        // test
-        for(Watchable m : searchResults){
-            System.out.println(m.getTitle());
-        }
     }
 
 
