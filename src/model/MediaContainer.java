@@ -31,7 +31,7 @@ public class MediaContainer {
     }
 
     public void loadMovies() throws IOException {
-        // metode der initialiserer movie objekterne
+        // metode der initialiserer movie objekterne med værdier fra .txt fil
         TxtParser.parseMovies();
         
         // loop der sætter billeder til movie objekterne
@@ -41,7 +41,7 @@ public class MediaContainer {
     }
 
     public void loadSeries() throws IOException{
-        // metode der initialiserer series objekterne
+        // metode der initialiserer series objekterne med værdier fra .txt fil
         TxtParser.parseSeries();
         
         // loop der sætter billeder til series objekterne
