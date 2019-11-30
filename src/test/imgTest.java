@@ -17,6 +17,7 @@ public class imgTest{
         MediaContainer medias = new MediaContainer();
         try{
             medias.loadMovies();
+            medias.loadSeries();
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -30,6 +31,15 @@ public class imgTest{
         contentPane.add(label3);
         JLabel label4 = new JLabel(medias.getMovies().get(99).getImg());
         contentPane.add(label4);
+
+        JLabel label5 = new JLabel(medias.getSeries().get(0).getImg());
+        contentPane.add(label5);
+        JLabel label6 = new JLabel(medias.getSeries().get(1).getImg());
+        contentPane.add(label6);
+        JLabel label7 = new JLabel(medias.getSeries().get(2).getImg());
+        contentPane.add(label7);
+        JLabel label8 = new JLabel(medias.getSeries().get(99).getImg());
+        contentPane.add(label8);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();

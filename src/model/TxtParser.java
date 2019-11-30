@@ -68,7 +68,7 @@ public class TxtParser{
             // loop der tilføjer antal episoder i de forskellige sæsoner til Series objektet. Antal afsnit i en sæson tilgås med episodeCount(index) i Series klassen
             for(String s : seasons){
                 String[] ep = s.split("-");
-                Integer episodeCount = Integer.parseInt(ep[1]);
+                Integer episodeCount = Integer.parseInt(ep[1].replace(";", ""));
                 series.addEpisodes(episodeCount);
             }
 
