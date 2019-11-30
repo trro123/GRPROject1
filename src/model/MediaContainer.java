@@ -54,7 +54,7 @@ public class MediaContainer {
 
 
 
-    // filter/søge metoder - måske burde de returnere searchResults listen, det vil tiden vise
+    // filter/søge metoder
 
     public ArrayList<Watchable> searchBeforeYear(int year) { //søger efter alle film og serier før år x og tilføjer til en ArrayList<Watchable> searchResults
         searchResults.clear(); // .clear() arraylisten som det første, da den ellers ville blive latterligt lang efter flere søgninger
