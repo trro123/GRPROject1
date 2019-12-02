@@ -20,7 +20,8 @@ public abstract class Media{ //abstract class fordi det skal være forbudt at la
         this.genres = Arrays.asList(genres);
     }
 
-    // get methods
+// get methods
+
     public String getTitle(){
         return title;
     }
@@ -43,7 +44,8 @@ public abstract class Media{ //abstract class fordi det skal være forbudt at la
         return genres;
     }
 
-    // mutator methods
+// mutator methods
+    
     public void addGenre(String genre){ //tilføjer en genre til listen
         genres.add(genre);
     }

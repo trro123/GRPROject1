@@ -6,21 +6,13 @@ import java.util.*;
 public class MediaContainer {
     private static ArrayList<Series> series;
     private static ArrayList<Movie> movies;
-    private static ArrayList<Watchable> searchResults;
 
     public MediaContainer() {
         series = new ArrayList<>();
         movies = new ArrayList<>();
-        searchResults = new ArrayList<>();
     }
 
-    public static void addSeries(Series s) {
-        series.add(s);
-    }
-
-    public static void addMovie(Movie m) {
-        movies.add(m);
-    }
+// get methods
 
     public ArrayList<Movie> getMovies(){
         return movies;
@@ -30,11 +22,21 @@ public class MediaContainer {
         return series;
     }
 
+// mutator methods
+
+    public static void addSeries(Series s) {
+        series.add(s);
+    }
+
+    public static void addMovie(Movie m) {
+        movies.add(m);
+    }
+
     public void loadMovies() throws IOException {
         // metode der initialiserer movie objekterne med værdier fra .txt fil
         TxtParser.parseMovies();
         
-        // loop der sætter billeder til movie objekterne
+        // loop der sætter billeder til movie objekterne. Billedet skal have samme navn som titlen på filmen.
         for(Movie m : movies){
             m.setImg("resources/movie_pictures/" + m.getTitle() + ".jpg");
         }
@@ -44,20 +46,16 @@ public class MediaContainer {
         // metode der initialiserer series objekterne med værdier fra .txt fil
         TxtParser.parseSeries();
         
-        // loop der sætter billeder til series objekterne
+        // loop der sætter billeder til series objekterne. Billedet skal have samme navn som titlen på serien.
         for(Series s : series){
             s.setImg("resources/series_pictures/" + s.getTitle() + ".jpg");
         }
     }
 
-
-
-
-
-    // filter/søge metoder
+// filter/search methods
 
     public ArrayList<Watchable> searchBeforeYear(int year) { //søger efter alle film og serier før år x og tilføjer til en ArrayList<Watchable> searchResults
-        searchResults.clear(); // .clear() arraylisten som det første, da den ellers ville blive latterligt lang efter flere søgninger
+        ArrayList<Watchable> searchResults = new ArrayList<>();
 
         for(Movie m : movies){
             if(m.getYear() < year){
@@ -75,7 +73,7 @@ public class MediaContainer {
     }
 
     public ArrayList<Watchable> searchAfterYear(int year){ //søger efter alle film og serier efter år x
-        searchResults.clear();
+        ArrayList<Watchable> searchResults = new ArrayList<>();
 
         for(Movie m : movies){
             if(m.getYear() > year){
@@ -93,7 +91,7 @@ public class MediaContainer {
     }
 
     public static ArrayList<Watchable> searchTitle(String userInput){ //søger efter en brugerdefineret teksttreng (til en eventuel searchbar?)
-        searchResults.clear();
+        ArrayList<Watchable> searchResults = new ArrayList<>();
 
         for(Movie m : movies){
             if(m.getTitle().toLowerCase().contains(userInput.toLowerCase())){
@@ -110,18 +108,26 @@ public class MediaContainer {
         return searchResults;
     }
 
+    public static ArrayList<Watchable> searchGenre(){
+        ArrayList<Watchable> searchResults = new ArrayList<>();
+        
+        // :-)
+
+        return searchResults;
+    }
+
 
 
     
-    // metoder der printer indholdet af listerne
-    // for test purposes
+// metoder der printer indholdet af listerne
+// for test purposes
 
     public static void seriesParserTest(){
 
         for(Series s : series){
             System.out.print(s.getTitle() + s.getYear() + s.getEndYear() + s.getRating() + s.getSeasons());
-            for(int i=0; i < s.numberOfGenres(); i++){
-                System.out.print(s.getGenre(i));
+            for(String g : s.getGenres()){
+                System.out.println(g);
             }
             System.out.println();
         }
@@ -132,8 +138,8 @@ public class MediaContainer {
         
         for (Movie m : movies){
             System.out.print(m.getTitle() +": "+m.getYear()+": ");
-            for(int i=0; i < m.numberOfGenres(); i++){
-                System.out.print(m.getGenre(i) + ", ");
+            for(String g : m.getGenres()){
+                System.out.println(g);
             }
             System.out.print(": " + m.getRating());
             System.out.println();
