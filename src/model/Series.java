@@ -14,12 +14,7 @@ public class Series extends Watchable{
         numberOfEpisodes = new ArrayList<>();
     }
 
-    // tilføjer antal episoder til en ArrayList. Hver plads i ArrayListen svarer til en sæson og referencen peger så på antal afsnit i den givne sæson
-    public void addEpisodes(int episodeCount){
-        numberOfEpisodes.add(episodeCount);
-    }
-
-    // get methods
+// get methods
     public int getEndYear(){
         return endYear;
     }
@@ -28,8 +23,12 @@ public class Series extends Watchable{
         return seasons;
     }
 
-    // returnerer antal afsnit i en given sæson; index 0 = første sæson, index 1 = anden osv.
-    public int episodeCount(int index){
+    public int getEpisodeCount(int index){ // returnerer antal afsnit i en given sæson; index 0 = første sæson, index 1 = anden osv.
         return numberOfEpisodes.get(index);
+    }
+
+// mutator methods
+    public void addEpisodeCount(int episodeCount){ // tilføjer antal episoder til en ArrayList. Hver plads i ArrayListen svarer til en sæson og referencen peger så på antal afsnit i den givne sæson
+        numberOfEpisodes.add(episodeCount);
     }
 }

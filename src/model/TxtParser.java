@@ -10,8 +10,7 @@ public class TxtParser{
         BufferedReader reader = new BufferedReader(new FileReader(f));
         String line = reader.readLine(); //line = én linje i .txt filen
 
-        while ((line = reader.readLine()) != null) { // line er den næste linje. Indtil vi løber tør for linjer
-            // kører så længe der er flere lines i .txt-filen
+        while ((line = reader.readLine()) != null) { // kører så længe der er flere linjer i .txt-filen
 
             String[] parts = line.split("; "); //splitter linje ved alle "; " og indsætter tekstbidder i et String[]
             
@@ -69,7 +68,7 @@ public class TxtParser{
             for(String s : seasons){
                 String[] ep = s.split("-");
                 Integer episodeCount = Integer.parseInt(ep[1].replace(";", ""));
-                series.addEpisodes(episodeCount);
+                series.addEpisodeCount(episodeCount);
             }
 
         }reader.close();
