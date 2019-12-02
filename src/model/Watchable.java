@@ -9,11 +9,13 @@ public abstract class Watchable extends Media{
     }
 
 // get methods
+
     public boolean onWatchlist(){
         return onWatchlist;
     }
 
 // mutator methods
+
     public void addToWatchlist(){
         onWatchlist = true;
     }
