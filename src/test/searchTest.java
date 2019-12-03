@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class searchTest {
-
+    /*
     public static void main(String[] args) {
         JFrame frame = new JFrame();
         Container contentPane = frame.getContentPane();
@@ -30,10 +30,11 @@ public class searchTest {
             JLabel label = new JLabel(m.getImg());
             contentPane.add(label);
         }
-    */
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
 
+     */
 }

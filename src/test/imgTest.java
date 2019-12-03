@@ -6,7 +6,7 @@ import model.*;
 import javax.swing.*;
 
 public class imgTest{
-
+/*
     public static void main(String[] args) {
         // swing components for test purposes
         JFrame frame = new JFrame();
@@ -46,4 +46,7 @@ public class imgTest{
         frame.setVisible(true);
     }
 
+
+ */
 }
+
