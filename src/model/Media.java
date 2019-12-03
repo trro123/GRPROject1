@@ -1,5 +1,7 @@
 package model;
 
+import javafx.scene.image.Image;
+
 import java.util.*;
 import java.util.List;
 import javax.swing.*;
@@ -11,7 +13,7 @@ public abstract class Media{ //abstract class fordi det skal være forbudt at la
     protected List<String> genres;
     
     // java swing image for test purposes
-    protected ImageIcon img;
+    protected Image img;
 
     public Media(String title, int year, double rating, String[] genres){
         this.title = title;
@@ -34,7 +36,7 @@ public abstract class Media{ //abstract class fordi det skal være forbudt at la
         return rating;
     }
 
-    public ImageIcon getImg(){
+    public Image getImg(){
         //ImageIcon er en swing component - på sigt bruger vi javafx, men jeg aner ikke hvordan man opretter de forskellige javafx komponenter, og skulle teste om syntaksen i imgTest.java ellers virkede
         //ps det gør den
         return img;
@@ -51,6 +53,6 @@ public abstract class Media{ //abstract class fordi det skal være forbudt at la
     }
 
     public void setImg(String path){
-        this.img = new ImageIcon(path);
+        this.img = new Image(path);
     }
 }
