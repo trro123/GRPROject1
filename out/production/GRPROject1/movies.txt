@@ -99,3 +99,4 @@ The Third Man; 1949; Film-Noir, Mystery, Thriller; 8,2;
 Rebel Without A Cause; 1955; Drama; 7,8;
 North By Northwest; 1959; Adventure, Mystery, Thriller; 8,3;
 Yankee Doodle Dandy; 1942; Biography, Drama, Musical; 7,7;
+it'sa me, mario; 1997; Biography; 2,2;
