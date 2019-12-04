@@ -1,4 +1,4 @@
 package view;
-//her
+//her TROR JEG, der skal defineres sideskift? - Trond
 public class Window {
 }

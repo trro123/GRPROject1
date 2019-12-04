@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
@@ -13,7 +14,11 @@ import jdk.dynalink.beans.StaticClass;
 import view.*;
 import model.*;
 
+import javax.swing.*;
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SceneGUIController {
 
@@ -26,8 +31,29 @@ public class SceneGUIController {
     public Font x3;
     @FXML
     public Color x4;
+    @FXML
+    HBox hbox;
+    @FXML
+    ImageView imgv;
+    @FXML
+    Button b1;
 
-    public  SceneGUIController(){
+    Image img;
+
+    public  SceneGUIController(){ //vi skal
+        this.img = new Image(getClass().getResourceAsStream("series_pictures"));
         
+        for (Image i : images)
+        imgv.setImage(i);
+
+    }
+    public void buttonPressed1(ActionEvent actionEvent){ //idéen er her at når man trykker på knappen, tilføjer den img til imageview=imgv.
+        imgv.setImage(img);
+    }
+
+    public void imageArray(){
+
+    }
+    public void initialize(){
     }
 }
