@@ -2,62 +2,117 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import jdk.dynalink.beans.StaticClass;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.Stage;
+
 import view.*;
 import model.*;
 
-import javax.swing.*;
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class SceneGUIController {
 
-    static final File seriesDir = new File("series_pictures");
-    static final String[] EXTENSTIONS = new String[]{
-            "jpg"
-    };
+public class SceneGUIController implements Initializable  {
 
     @FXML
-    public Font x1;
+    Label label;
     @FXML
-    public Color x2;
+    TilePane tilePane;
     @FXML
-    public Font x3;
-    @FXML
-    public Color x4;
-    @FXML
-    HBox hbox;
-    @FXML
-    ImageView imgv;
-    @FXML
-    Button b1;
+    AnchorPane myAnchor;
 
-    Image img;
+    int count = 0;
 
-    public  SceneGUIController(){ //vi skal
-        this.img = new Image(getClass().getResourceAsStream("series_pictures"));
+    private int nRows = 10; //number of rows on tilepane
+    private int nCols = 10; //number of column for tile pane (dette skal skaleres op senere hen)
 
-        for (Image i : images)
-        imgv.setImage(i);
+    private static final double ELEMENT_SIZE = 100; //hvor stort vores billede skal være
+    private static final double GAP = ELEMENT_SIZE / 10; // mellemrummet mellem 2 bokse (altså 2 billeder)
 
+
+    File filesJpg[]; //her laver vi et array af vores billeder.
+
+    public SceneGUIController() {
     }
-    public void buttonPressed1(ActionEvent actionEvent){ //idéen er her at når man trykker på knappen, tilføjer den img til imageview=imgv.
-        imgv.setImage(img);
-    }
+    @FXML
+    private void handleButtonAction(ActionEvent event) { //idéen er her at når man trykker på knappen, tilføjer den img til imageview=imgv.
+        Stage parent = (Stage)myAnchor.getScene().getWindow();
 
-    public void imageArray(){
 
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        File selectedDirectory = directoryChooser.showDialog(parent);
+
+        if(selectedDirectory != null){
+            FilenameFilter filterJpg = new FilenameFilter() {
+                @Override
+                public boolean accept(File dir, String name) {
+                    return name.toLowerCase().endsWith(".jpg");
+                }
+            };
+            filesJpg = selectedDirectory.listFiles(filterJpg);
+        }
+
+        createElements();
     }
-    public void initialize(){
+    private void createElements(){
+        tilePane.getChildren().clear();
+
+        for (int i = 0; i< nCols; i++){
+            for (int j = 0; j < nRows; j++){ //herinde tænker jeg vi kan blive ved med at lave nye rows, så længe j er mindre end files.length()?/files.size
+                tilePane.getChildren().add(createPage(count));
+                count++;
+            }
+        }
+    }
+    public VBox createPage(int index){
+
+        ImageView imageView = new ImageView();
+
+        File file = filesJpg[index];
+        try{
+            BufferedImage bufferedImage = ImageIO.read(file);
+            Image image = new Image(file.toURL().toString());
+            imageView.setImage(image);
+            imageView.setFitWidth(ELEMENT_SIZE);
+            imageView.setFitHeight(ELEMENT_SIZE);
+            // imageView.setPreserveRatio(true); //var udkommenteret i video.
+
+            imageView.setSmooth(true);
+            imageView.setCache(true);
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+        VBox pageBox = new VBox();
+        pageBox.getChildren().add(imageView);
+        pageBox.setStyle("-fx-border-color: orange;");
+        return pageBox;
+    }
+    public void initialize(URL url, ResourceBundle rb) {
+
+        tilePane.setPrefColumns(nCols);
+        tilePane.setPrefRows(nRows);
+        myAnchor.setStyle("-fx-background-image: Backgound.png;"); //-fx-background-color: rgba(0, 0, 0);
+        //tilePane.setStyle("-fx-background-color: rgba(0, 0, 0);");
+        tilePane.setHgap(GAP);
+        tilePane.setVgap(GAP);
+
+
     }
 }
+

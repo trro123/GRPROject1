@@ -23,20 +23,14 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-            Parent root = FXMLLoader.load(getClass().getResource("SceneGUI.fxml"));
-            /*MediaContainer medias = new MediaContainer();
-            HBox hBox1 = new HBox();
-        ImageView imgV = new ImageView();
-            for (Movie m : medias.getMovies()){
-                imgV.setImage(m.getImg());
-                Hpane1.getChildren().add(imgV);
-            }
-
-
-             */
+            Parent root = FXMLLoader.load(getClass().getResource("GUI.fxml"));
+            root.setStyle("-fx-background-image: url('./Background.jpg')");
+            Scene scene = new Scene(root);
             primaryStage.setTitle("RickFlix");
-            primaryStage.setScene(new Scene(root, 800, 700));
+            primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
             primaryStage.show();
+
 
     }
     public static void main(String[] args) {
