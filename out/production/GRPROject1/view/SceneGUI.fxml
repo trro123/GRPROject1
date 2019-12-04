@@ -11,11 +11,9 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
@@ -93,28 +91,17 @@
                                        <children>
                                           <TabPane prefHeight="514.0" prefWidth="426.0" tabClosingPolicy="UNAVAILABLE">
                                             <tabs>
-                                              <Tab text="Action">
+                                              <Tab fx:id="actionTab" onSelectionChanged="#setActionTab" text="Action">
                                                 <content>
-                                                      <ScrollPane>
-                                                         <content>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="474.0" prefWidth="411.0">
-                                                               <children>
-                                                                  <GridPane fx:id="ActionGrid" layoutX="35.0" layoutY="32.0" prefHeight="162.0" prefWidth="213.0">
-                                                                    <columnConstraints>
-                                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                                    </columnConstraints>
-                                                                    <rowConstraints>
-                                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                                    </rowConstraints>
-                                                                  </GridPane>
-                                                               </children>
-                                                            </AnchorPane>
-                                                         </content>
-                                                      </ScrollPane>
+                                                      <BorderPane>
+                                                         <center>
+                                                            <ScrollPane prefHeight="292.0" prefWidth="426.0">
+                                                               <content>
+                                                                  <HBox fx:id="Hpane1" prefHeight="204.0" prefWidth="418.0" />
+                                                               </content>
+                                                            </ScrollPane>
+                                                         </center>
+                                                      </BorderPane>
                                                 </content>
                                               </Tab>
                                               <Tab text="Comedy">
