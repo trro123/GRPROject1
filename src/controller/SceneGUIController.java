@@ -22,6 +22,10 @@ import java.util.List;
 
 public class SceneGUIController {
 
+    static final File seriesDir = new File("series_pictures");
+    static final String[] EXTENSTIONS = new String[]{
+            "jpg"
+    };
 
     @FXML
     public Font x1;
@@ -42,7 +46,7 @@ public class SceneGUIController {
 
     public  SceneGUIController(){ //vi skal
         this.img = new Image(getClass().getResourceAsStream("series_pictures"));
-        
+
         for (Image i : images)
         imgv.setImage(i);
 
