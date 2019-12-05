@@ -24,6 +24,7 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
@@ -53,6 +54,9 @@ public class SceneGUIController implements Initializable  {
     private void handleButtonAction(ActionEvent event) { //idéen er her at når man trykker på knappen, tilføjer den img til imageview=imgv.
         Stage parent = (Stage)myAnchor.getScene().getWindow();
 
+        // i stedet for at indlæse en ekstern fil, så evt. kald en metode, der tager en genre-parameter
+        // og lister filmene på baggrund af den
+
 
         DirectoryChooser directoryChooser = new DirectoryChooser();
         File selectedDirectory = directoryChooser.showDialog(parent);
@@ -64,7 +68,7 @@ public class SceneGUIController implements Initializable  {
                     return name.toLowerCase().endsWith(".jpg");
                 }
             };
-            filesJpg = selectedDirectory.listFiles(filterJpg);
+            filesJpg = selectedDirectory.listFiles(filterJpg); // typisk ville man indlæse alle billeder der
         }
 
         createElements();
@@ -82,6 +86,16 @@ public class SceneGUIController implements Initializable  {
     public VBox createPage(int index){
 
         ImageView imageView = new ImageView();
+
+        // i stedet for at gemme billeder i det her array, så gennemløb media-listen fra Model og hiv billederne ud derfra
+
+       // ArrayList<Media> mediaList = MediaContainer.givMigAlleDineMediaObjekterIEnArrayList(); //man bør have begge typer medier på samme liste, og så lave if-statements hvis der skal skelnes mellem de to-
+
+        for (Media media : mediaList) {
+            if (media.getGenres().equals("enBestemtGenre")) {
+                media.getImg();
+            }
+        }
 
         File file = filesJpg[index];
         try{
