@@ -89,7 +89,7 @@ public class SceneGUIController implements Initializable  {
 
         // i stedet for at gemme billeder i det her array, så gennemløb media-listen fra Model og hiv billederne ud derfra
 
-       // ArrayList<Media> mediaList = MediaContainer.givMigAlleDineMediaObjekterIEnArrayList(); //man bør have begge typer medier på samme liste, og så lave if-statements hvis der skal skelnes mellem de to-
+        ArrayList<Media> mediaList = MediaContainer.givMigAlleDineMediaObjekterIEnArrayList(); //man bør have begge typer medier på samme liste, og så lave if-statements hvis der skal skelnes mellem de to-
 
         for (Media media : mediaList) {
             if (media.getGenres().equals("enBestemtGenre")) {
