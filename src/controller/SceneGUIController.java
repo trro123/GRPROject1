@@ -32,9 +32,9 @@ public class SceneGUIController implements Initializable  {
     @FXML
     Label label;
     @FXML
-    TilePane tilePane;
+    TilePane tilePane; //definere det tilepane som ER oprettet i Scenebuilder.
     @FXML
-    AnchorPane myAnchor;
+    AnchorPane myAnchor; //definere det tilepane som ER oprettet i Scenebuilder.
 
     int count = 0;
 
