@@ -35,6 +35,8 @@ public class SceneGUIController implements Initializable  {
     TilePane tilePane; //definere det tilepane som ER oprettet i Scenebuilder.
     @FXML
     AnchorPane myAnchor; //definere det tilepane som ER oprettet i Scenebuilder.
+    //@FXML
+    //ScrollPane scrollPane;
 
     int count = 0;
 
