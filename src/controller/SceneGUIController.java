@@ -49,7 +49,9 @@ public class SceneGUIController implements Initializable  {
     File filesJpg[]; //her laver vi et array af vores billeder.
 
     public SceneGUIController() {
+
     }
+
     @FXML
     private void handleButtonAction(ActionEvent event) { //idéen er her at når man trykker på knappen, tilføjer den img til imageview=imgv.
         Stage parent = (Stage)myAnchor.getScene().getWindow();
@@ -57,8 +59,13 @@ public class SceneGUIController implements Initializable  {
         // i stedet for at indlæse en ekstern fil, så evt. kald en metode, der tager en genre-parameter
         // og lister filmene på baggrund af den
 
-        DirectoryChooser directoryChooser = new DirectoryChooser();
-        File selectedDirectory = directoryChooser.showDialog(parent);
+        //DirectoryChooser directoryChooser = new DirectoryChooser();
+        //File selectedDirectory = directoryChooser.showDialog(parent);
+
+        File selectedDirectory = new File("resources/movie_pictures"); // <-- ændringen er her
+        // Jeg laver bare en File med stien til mappen med billeder i stedet for at få en DirectoryChooser til at finde samme mappe.
+        // Det er selvfølgelig ikke generaliseret kode. Jeg kunne godt tænke mig at rydde op i det på et tidspunkt, men er bange for at smadre noget.
+
 
         if(selectedDirectory != null){
             FilenameFilter filterJpg = new FilenameFilter() {
@@ -67,6 +74,7 @@ public class SceneGUIController implements Initializable  {
                     return name.toLowerCase().endsWith(".jpg");
                 }
             };
+
             filesJpg = selectedDirectory.listFiles(filterJpg); // typisk ville man indlæse alle billeder der
         }
 
