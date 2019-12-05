@@ -1,7 +1,7 @@
 package model;
 
 import javafx.scene.image.Image;
-
+import view.*;
 import java.util.*;
 import java.util.List;
 import javax.swing.*;
@@ -37,8 +37,7 @@ public abstract class Media{ //abstract class fordi det skal være forbudt at la
     }
 
     public Image getImg(){
-        //ImageIcon er en swing component - på sigt bruger vi javafx, men jeg aner ikke hvordan man opretter de forskellige javafx komponenter, og skulle teste om syntaksen i imgTest.java ellers virkede
-        //ps det gør den
+        // returnere et billede. måske der skal være en Movie/serie som parameter?
         return img;
     }
 

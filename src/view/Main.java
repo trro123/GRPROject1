@@ -1,5 +1,8 @@
 package view;
 
+import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import view.*;
 import model.*;
 import controller.*;
@@ -9,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.*;
 
 import java.awt.event.InvocationEvent;
 import java.lang.reflect.InvocationTargetException;
@@ -19,10 +23,15 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-            Parent root = FXMLLoader.load(getClass().getResource("SceneGUI.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("GUI.fxml"));
+            root.setStyle("-fx-background-image: url('./Background.jpg')");
+            Scene scene = new Scene(root);
             primaryStage.setTitle("RickFlix");
-            primaryStage.setScene(new Scene(root, 800, 700));
+            primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
             primaryStage.show();
+
+
     }
     public static void main(String[] args) {
 

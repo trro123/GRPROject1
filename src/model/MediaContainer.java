@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.*;
 
@@ -32,7 +33,7 @@ public class MediaContainer {
         movies.add(m);
     }
 
-    public void loadMovies() throws IOException {
+    public void loadMovies() throws IOException { //tror dette skal gøres modsat! tror for at scenebuilder kan forstå det, skal det være Imageobjekter.
         // metode der initialiserer movie objekterne med værdier fra .txt fil
         TxtParser.parseMovies();
         
