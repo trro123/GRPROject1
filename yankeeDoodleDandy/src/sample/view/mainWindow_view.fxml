@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="767.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Controller">
    <children>
@@ -18,7 +19,19 @@
 
       <HBox layoutX="382.0" layoutY="65.0" prefHeight="78.0" prefWidth="333.0">
          <children>
-            <TextField fx:id="searchField" onKeyPressed="#search" onKeyReleased="#search" onKeyTyped="#search" prefHeight="27.0" prefWidth="339.0" promptText="Search ..." />
+            <VBox prefHeight="78.0" prefWidth="340.0">
+               <children>
+                  <HBox prefHeight="34.0" prefWidth="333.0">
+                     <children>
+                        <Button mnemonicParsing="false" text="Title" />
+                        <Button mnemonicParsing="false" text="Genre" />
+                        <Button mnemonicParsing="false" text="Before year" />
+                        <Button mnemonicParsing="false" text="After year" />
+                     </children>
+                  </HBox>
+                  <TextField fx:id="searchField" onKeyPressed="#search" onKeyReleased="#search" onKeyTyped="#search" prefHeight="27.0" prefWidth="339.0" promptText="Search ..." />
+               </children>
+            </VBox>
          </children></HBox>
 
       <HBox layoutX="41.0" layoutY="65.0" prefHeight="78.0" prefWidth="333.0">

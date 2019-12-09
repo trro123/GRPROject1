@@ -1,13 +1,17 @@
 package sample.controller;
 
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
+import javafx.scene.input.MouseEvent;
 import sample.model.*;
 
 import javafx.fxml.*;
 import javafx.scene.image.*;
 import javafx.scene.layout.*;
+
 import java.io.File;
 
 public class Controller  {
@@ -46,6 +50,15 @@ public class Controller  {
             imgv.setFitWidth(140);
             imgv.setPreserveRatio(true);
 
+            imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    System.out.println(m.getTitle());
+                }
+            });
+
+            Tooltip.install(imgv, new Tooltip(m.getTitle()));
+
             HBox imgbox = new HBox();
             imgbox.getChildren().add(imgv);
 
@@ -83,7 +96,15 @@ public class Controller  {
             imgv.setFitWidth(140);
             imgv.setPreserveRatio(true);
 
+            imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    System.out.println(m.getTitle());
+                }
+            });
+
             HBox imgbox = new HBox();
+
             imgbox.getChildren().add(imgv);
 
             grid.getChildren().add(imgbox);
