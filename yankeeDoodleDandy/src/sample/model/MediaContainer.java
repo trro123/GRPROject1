@@ -27,7 +27,7 @@ public class MediaContainer {
         return series;
     }
 
-    public ArrayList<Watchable> getJoinedList(){
+    public static ArrayList<Watchable> getJoinedList(){
         return joined;
     }
 
