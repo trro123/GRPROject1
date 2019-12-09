@@ -20,13 +20,13 @@
 
       <HBox layoutX="382.0" layoutY="65.0" prefHeight="78.0" prefWidth="333.0">
          <children>
-            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane prefHeight="78.0" prefWidth="335.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Title">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TextField fx:id="searchField" onKeyPressed="#search" onKeyReleased="#search" onKeyTyped="#search" promptText="Search for title ..." />
+                              <TextField fx:id="searchField" onKeyPressed="#search" onKeyReleased="#search" onKeyTyped="#search" prefHeight="25.0" prefWidth="333.0" promptText="Search for title ..." />
                            </children>
                         </AnchorPane>
                   </content>
@@ -35,7 +35,7 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TextField promptText="Search before year ..." />
+                              <TextField prefHeight="25.0" prefWidth="333.0" promptText="Search before year ..." />
                            </children>
                         </AnchorPane>
                   </content>
