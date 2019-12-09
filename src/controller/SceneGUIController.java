@@ -33,11 +33,11 @@ public class SceneGUIController implements Initializable  {
     @FXML
     Label label;
     @FXML
-    TilePane tilePane; //definere det tilepane som ER oprettet i Scenebuilder.
+    TilePane tilePane; //definerer det tilepane som ER oprettet i Scenebuilder.
     @FXML
-    AnchorPane myAnchor; //definere det tilepane som ER oprettet i Scenebuilder.
-
-    int count = 0;
+    AnchorPane myAnchor; //definerer det tilepane som ER oprettet i Scenebuilder.
+    //@FXML
+    //ScrollPane scrollPane;
 
     private int nRows = 10; //number of rows on tilepane
     private int nCols = 10; //number of column for tile pane (dette skal skaleres op senere hen)
@@ -49,7 +49,9 @@ public class SceneGUIController implements Initializable  {
     File filesJpg[]; //her laver vi et array af vores billeder.
 
     public SceneGUIController() {
+
     }
+
     @FXML
     private void handleButtonAction(ActionEvent event) { //idéen er her at når man trykker på knappen, tilføjer den img til imageview=imgv.
         Stage parent = (Stage)myAnchor.getScene().getWindow();
@@ -57,9 +59,13 @@ public class SceneGUIController implements Initializable  {
         // i stedet for at indlæse en ekstern fil, så evt. kald en metode, der tager en genre-parameter
         // og lister filmene på baggrund af den
 
+        //DirectoryChooser directoryChooser = new DirectoryChooser();
+        //File selectedDirectory = directoryChooser.showDialog(parent);
 
-        DirectoryChooser directoryChooser = new DirectoryChooser();
-        File selectedDirectory = directoryChooser.showDialog(parent);
+        File selectedDirectory = new File("resources/movie_pictures"); // <-- ændringen er her
+        // Jeg laver bare en File med stien til mappen med billeder i stedet for at få en DirectoryChooser til at finde samme mappe.
+        // Det er selvfølgelig ikke generaliseret kode. Jeg kunne godt tænke mig at rydde op i det på et tidspunkt, men er bange for at smadre noget.
+
 
         if(selectedDirectory != null){
             FilenameFilter filterJpg = new FilenameFilter() {
@@ -68,14 +74,17 @@ public class SceneGUIController implements Initializable  {
                     return name.toLowerCase().endsWith(".jpg");
                 }
             };
+
             filesJpg = selectedDirectory.listFiles(filterJpg); // typisk ville man indlæse alle billeder der
         }
 
         createElements();
     }
+
     private void createElements(){
         tilePane.getChildren().clear();
 
+        int count = 0;
         for (int i = 0; i< nCols; i++){
             for (int j = 0; j < nRows; j++){ //herinde tænker jeg vi kan blive ved med at lave nye rows, så længe j er mindre end files.length()?/files.size
                 tilePane.getChildren().add(createPage(count));
@@ -84,11 +93,11 @@ public class SceneGUIController implements Initializable  {
         }
     }
     public VBox createPage(int index){
-
         ImageView imageView = new ImageView();
 
         // i stedet for at gemme billeder i det her array, så gennemløb media-listen fra Model og hiv billederne ud derfra
 
+        /*
         ArrayList<Media> mediaList = MediaContainer.givMigAlleDineMediaObjekterIEnArrayList(); //man bør have begge typer medier på samme liste, og så lave if-statements hvis der skal skelnes mellem de to-
 
         for (Media media : mediaList) {
@@ -96,6 +105,7 @@ public class SceneGUIController implements Initializable  {
                 media.getImg();
             }
         }
+        */
 
         File file = filesJpg[index];
         try{
@@ -108,25 +118,24 @@ public class SceneGUIController implements Initializable  {
 
             imageView.setSmooth(true);
             imageView.setCache(true);
-        }
-        catch (IOException e){
+        } catch (IOException e){
             e.printStackTrace();
         }
+
         VBox pageBox = new VBox();
         pageBox.getChildren().add(imageView);
         pageBox.setStyle("-fx-border-color: orange;");
         return pageBox;
-    }
-    public void initialize(URL url, ResourceBundle rb) {
 
+    }
+
+    public void initialize(URL url, ResourceBundle rb) {
         tilePane.setPrefColumns(nCols);
         tilePane.setPrefRows(nRows);
         myAnchor.setStyle("-fx-background-image: Backgound.png;"); //-fx-background-color: rgba(0, 0, 0);
         //tilePane.setStyle("-fx-background-color: rgba(0, 0, 0);");
         tilePane.setHgap(GAP);
         tilePane.setVgap(GAP);
-
-
     }
 }
 
