@@ -8,9 +8,9 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="model.Login">
+<AnchorPane prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginController">
    <children>
-      <Button fx:id="loginButton" layoutX="122.0" layoutY="233.0" mnemonicParsing="false" text="Log In">
+      <Button fx:id="loginButton" layoutX="122.0" layoutY="233.0" mnemonicParsing="false" onAction="#login" text="Log In">
          <font>
             <Font size="18.0" />
          </font>
