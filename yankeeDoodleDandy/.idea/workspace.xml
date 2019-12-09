@@ -4,7 +4,16 @@
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/controller/sample/controller/Controller$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/controller/sample/controller/Controller$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/controller/sample/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/controller/sample/controller/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/controller/sample/model/MediaContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/controller/sample/model/MediaContainer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/controller/sample/view/mainWindow_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/controller/sample/view/mainWindow_view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/model/MediaContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/model/MediaContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/view/mainWindow_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/view/mainWindow_view.fxml" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -90,6 +99,9 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="recentsLimit" value="5" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
@@ -101,13 +113,19 @@
       <recent name="$PROJECT_DIR$/src/sample/view" />
     </key>
   </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
   <component name="RunManager">
-    <configuration default="true" type="Applet">
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -119,6 +137,12 @@
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
+    </configuration>
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="sample.Main" />
@@ -174,18 +198,6 @@
       </method>
     </configuration>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -210,6 +222,8 @@
       <workItem from="1575859602232" duration="427000" />
       <workItem from="1575883746426" duration="8783000" />
       <workItem from="1575900777499" duration="2695000" />
+      <workItem from="1575904993617" duration="2683000" />
+      <workItem from="1575908030393" duration="2719000" />
     </task>
     <servers />
   </component>
@@ -232,11 +246,5 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="531" y="272" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1575904316123">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state x="531" y="272" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.768@0.0.1366.768" timestamp="1575904316123" />
   </component>
 </project>

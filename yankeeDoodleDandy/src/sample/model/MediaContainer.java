@@ -131,9 +131,17 @@ public class MediaContainer {
         return searchResults;
     }
 
-    public static ArrayList<Watchable> searchGenre(){
+    public static ArrayList<Watchable> searchGenre(String userInput){
         ArrayList<Watchable> searchResults = new ArrayList<>();
+                        int i = 0;
 
+        for (Watchable m : joined) {
+
+            if (m.getGenres().get(i).toLowerCase().contains(userInput.toLowerCase())){
+                searchResults.add(m);
+            }
+
+        }
         // :-)
 
         return searchResults;

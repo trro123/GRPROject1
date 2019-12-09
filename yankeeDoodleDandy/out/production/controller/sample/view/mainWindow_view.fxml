@@ -20,26 +20,35 @@
 
       <HBox layoutX="382.0" layoutY="65.0" prefHeight="78.0" prefWidth="333.0">
          <children>
-            <TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane prefHeight="78.0" prefWidth="335.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Title">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TextField fx:id="searchField" onKeyPressed="#search" onKeyReleased="#search" onKeyTyped="#search" promptText="Search for title ..." />
+                              <TextField fx:id="titleSearch" onKeyPressed="#search" prefHeight="25.0" prefWidth="333.0" promptText="Search by title ..." />
                            </children>
                         </AnchorPane>
                   </content>
                 </Tab>
-                <Tab text="year">
+                <Tab text="Genre">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TextField promptText="Search before year ..." />
+                              <TextField fx:id="genreSearch" onKeyPressed="#searchGenre" prefHeight="25.0" prefWidth="333.0" promptText="Search by genre ..." />
                            </children>
                         </AnchorPane>
                   </content>
                 </Tab>
+                  <Tab text="Rating">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TextField prefHeight="25.0" prefWidth="333.0" promptText="Search by rating..." />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
               </tabs>
             </TabPane>
          </children></HBox>
