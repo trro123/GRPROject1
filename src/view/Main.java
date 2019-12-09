@@ -12,7 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-            Parent root = FXMLLoader.load(getClass().getResource("/view/Login.fxml")); //Skal være "Login.fxml", men det virker ikke
+            Parent root = FXMLLoader.load(getClass().getResource("/view/GUI.fxml")); //Skal være "Login.fxml", men det virker ikke
             root.setStyle("-fx-background-image: url('./Background.jpg')");
             Scene scene = new Scene(root);
             //primaryStage.setTitle("RickFlix");
