@@ -63,6 +63,9 @@ public class Controller  {
                     }
                 });
 
+                Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                        + m.getGenres() + "\n" + m.getYear()));
+
                 HBox imgbox = new HBox();
 
                 imgbox.getChildren().add(imgv);
@@ -87,6 +90,9 @@ public class Controller  {
                             System.out.println(m.getTitle());
                         }
                     });
+
+                    Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                            + m.getGenres() + "\n" + m.getYear()));
 
                     HBox imgbox = new HBox();
 
@@ -114,6 +120,9 @@ public class Controller  {
                             System.out.println(m.getTitle());
                         }
                     });
+
+                    Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                            + m.getGenres() + "\n" + m.getYear()));
 
                     HBox imgbox = new HBox();
 
@@ -166,6 +175,9 @@ public class Controller  {
                     }
                 });
 
+                Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                        + m.getGenres() + "\n" + m.getYear()));
+
                 HBox imgbox = new HBox();
 
                 imgbox.getChildren().add(imgv);
@@ -190,6 +202,9 @@ public class Controller  {
                             System.out.println(m.getGenres());
                         }
                     });
+
+                    Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                            + m.getGenres() + "\n" + m.getYear()));
 
                     HBox imgbox = new HBox();
 
@@ -217,6 +232,9 @@ public class Controller  {
                             System.out.println(m.getGenres());
                         }
                     });
+
+                    Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                            + m.getGenres() + "\n" + m.getYear()));
 
                     HBox imgbox = new HBox();
 
@@ -264,7 +282,8 @@ public class Controller  {
                 }
             });
 
-            Tooltip.install(imgv, new Tooltip(m.getTitle()));
+            Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                    + m.getGenres() + "\n" + m.getYear()));
 
             HBox imgbox = new HBox();
             imgbox.getChildren().add(imgv);
@@ -311,7 +330,8 @@ public class Controller  {
                 }
             });
 
-            Tooltip.install(imgv, new Tooltip(m.getTitle()));
+            Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                    + m.getGenres() + "\n" + m.getYear()));
 
             HBox imgbox = new HBox();
             imgbox.getChildren().add(imgv);
@@ -358,7 +378,8 @@ public class Controller  {
                 }
             });
 
-            Tooltip.install(imgv, new Tooltip(m.getTitle()));
+            Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                    + m.getGenres() + "\n" + m.getYear()));
 
             HBox imgbox = new HBox();
             imgbox.getChildren().add(imgv);
