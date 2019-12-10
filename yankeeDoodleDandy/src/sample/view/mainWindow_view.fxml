@@ -22,7 +22,7 @@
          <children>
             <VBox>
                <children>
-                  <Label text="Helly user.getName()! Welcome to RickFlix.">
+                  <Label text="Hello user.getName()! Welcome to RickFlix.">
                      <font>
                         <Font size="15.0" />
                      </font>
