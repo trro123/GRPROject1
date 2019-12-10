@@ -2,12 +2,15 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="767.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Controller">
    <children>
@@ -16,48 +19,84 @@
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
+         <children>
+            <VBox>
+               <children>
+                  <Label text="Helly user.getName()! Welcome to RickFlix.">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label text="Browse the catalog by pressing the 'Movies', 'Series' or 'All' buttons.">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
       </HBox>
 
       <HBox layoutX="382.0" layoutY="65.0" prefHeight="78.0" prefWidth="333.0">
          <children>
-            <TabPane prefHeight="78.0" prefWidth="335.0" tabClosingPolicy="UNAVAILABLE">
-              <tabs>
-                <Tab text="Title">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <TextField fx:id="titleSearch" onKeyPressed="#search" prefHeight="25.0" prefWidth="333.0" promptText="Search by title ..." />
-                           </children>
-                        </AnchorPane>
-                  </content>
-                </Tab>
-                <Tab text="Genre">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <TextField fx:id="genreSearch" onKeyPressed="#searchGenre" prefHeight="25.0" prefWidth="333.0" promptText="Search by genre ..." />
-                           </children>
-                        </AnchorPane>
-                  </content>
-                </Tab>
-                  <Tab text="Rating">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <TextField prefHeight="25.0" prefWidth="333.0" promptText="Search by rating..." />
-                           </children>
-                        </AnchorPane>
-                    </content>
-                  </Tab>
-              </tabs>
-            </TabPane>
+            <VBox>
+               <children>
+                  <Label text="What do you want to search for?">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TabPane prefHeight="61.0" prefWidth="333.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab text="Title">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField fx:id="titleSearch" onKeyPressed="#search" prefHeight="25.0" prefWidth="333.0" promptText="Search by title ..." />
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab text="Genre">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField fx:id="genreSearch" onKeyPressed="#searchGenre" prefHeight="25.0" prefWidth="333.0" promptText="Search by genre ..." />
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                        <Tab text="Rating">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField prefHeight="25.0" prefWidth="333.0" promptText="Search by rating..." />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+               </children>
+            </VBox>
          </children></HBox>
-
-      <HBox layoutX="41.0" layoutY="65.0" prefHeight="78.0" prefWidth="333.0">
-         <Button fx:id="searchAllButton" mnemonicParsing="false" onAction="#searchAll" text="All" />
-         <Button fx:id="searcMoviesButton" mnemonicParsing="false" onAction="#searchMovies" text="Movies" />
-         <Button fx:id="searchSeriesButton" mnemonicParsing="false" onAction="#searchSeries" text="Series" />
-      </HBox>
+      <VBox layoutX="41.0" layoutY="65.0">
+         <children>
+      
+            <HBox prefHeight="19.0" prefWidth="333.0">
+               <children>
+                  <Button fx:id="homeScreenButton" mnemonicParsing="false" onAction="#homescreen" prefHeight="31.0" prefWidth="96.0" text="Homescreen" />
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Button fx:id="searchAllButton" mnemonicParsing="false" onAction="#searchAll" text="All" />
+                  <Button fx:id="searcMoviesButton" mnemonicParsing="false" onAction="#searchMovies" text="Movies" />
+                  <Button fx:id="searchSeriesButton" mnemonicParsing="false" onAction="#searchSeries" text="Series" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
 
       <ScrollPane fx:id="mediasPane" hbarPolicy="NEVER" layoutX="41.0" layoutY="156.0" prefHeight="600.0" prefWidth="700.0" vbarPolicy="NEVER" />
 

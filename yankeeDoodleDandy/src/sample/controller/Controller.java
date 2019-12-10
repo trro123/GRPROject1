@@ -372,4 +372,9 @@ public class Controller  {
 
         searchSeries = true;
     }
+
+    public void homescreen(){
+        System.out.println("VIS MIG EN HOMESCREEN!!!!!!!!!!! !! ! /!!!!(/&");
+        System.out.println("... og kald på den når man trykker login");
+    }
 }
