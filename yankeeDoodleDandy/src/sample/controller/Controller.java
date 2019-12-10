@@ -162,131 +162,6 @@ public class Controller  {
 
     }
 
-    @FXML
-    private TextField genreSearch;
-
-    public void searchGenre() {
-
-        MediaContainer medias = new MediaContainer();
-        try {
-            medias.loadMovies();
-            medias.loadSeries();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        TilePane grid = new TilePane();
-        grid.setPrefColumns(5);
-        grid.setVgap(5);
-        // grid.setHgap(5);
-
-        mediasPane.setContent(grid);
-
-        medias.joinLists();
-
-        if(searchAll == true && searchMovies == false && searchSeries == false){
-
-            for (Watchable m : medias.searchGenre(genreSearch.getText())) {
-                File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg");
-                Image image = new Image(file.toURI().toString());
-
-                ImageView imgv = new ImageView();
-                imgv.setImage(image);
-                imgv.setFitWidth(140);
-                imgv.setPreserveRatio(true);
-
-                Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                        + m.getGenres() + "\n" + m.getYear());
-                imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent mouseEvent) {
-                        imageBox.setImage(image);
-
-                        infoText.getChildren().clear();
-                        infoText.getChildren().add(text);
-                    }
-                });
-
-                Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                        + m.getGenres() + "\n" + m.getYear()));
-
-                HBox imgbox = new HBox();
-
-                imgbox.getChildren().add(imgv);
-
-                grid.getChildren().add(imgbox);
-            }
-        } else if (searchMovies == true){
-
-            for (Watchable m : medias.searchGenre(genreSearch.getText())) {
-                if(m instanceof Movie){
-                    File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg");
-                    Image image = new Image(file.toURI().toString());
-
-                    ImageView imgv = new ImageView();
-                    imgv.setImage(image);
-                    imgv.setFitWidth(140);
-                    imgv.setPreserveRatio(true);
-                    Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                            + m.getGenres() + "\n" + m.getYear());
-                    imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent mouseEvent) {
-                            imageBox.setImage(image);
-
-                            infoText.getChildren().clear();
-                            infoText.getChildren().add(text);
-                        }
-                    });
-
-                    Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                            + m.getGenres() + "\n" + m.getYear()));
-
-                    HBox imgbox = new HBox();
-
-                    imgbox.getChildren().add(imgv);
-
-                    grid.getChildren().add(imgbox);
-                }
-            }
-
-        } else if (searchSeries == true){
-
-            for (Watchable m : medias.searchGenre(genreSearch.getText())) {
-                if(m instanceof Series){
-                    File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg");
-                    Image image = new Image(file.toURI().toString());
-
-                    ImageView imgv = new ImageView();
-                    imgv.setImage(image);
-                    imgv.setFitWidth(140);
-                    imgv.setPreserveRatio(true);
-
-                    Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                            + m.getGenres() + "\n" + m.getYear());
-                    imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent mouseEvent) {
-                            imageBox.setImage(image);
-
-                            infoText.getChildren().clear();
-                            infoText.getChildren().add(text);
-                        }
-                    });
-
-                    Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                            + m.getGenres() + "\n" + m.getYear()));
-
-                    HBox imgbox = new HBox();
-
-                    imgbox.getChildren().add(imgv);
-
-                    grid.getChildren().add(imgbox);
-                }
-            }
-        }
-
-    }
 
     private boolean searchAll;
     private boolean searchMovies;
@@ -457,4 +332,133 @@ public class Controller  {
         System.out.println("VIS MIG EN HOMESCREEN!!!!!!!!!!! !! ! /!!!!(/&");
         System.out.println("... og kald på den når man trykker login");
     }
+
+     /*
+    @FXML
+    private TextField genreSearch;
+
+    public void searchGenre() {
+
+        MediaContainer medias = new MediaContainer();
+        try {
+            medias.loadMovies();
+            medias.loadSeries();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        TilePane grid = new TilePane();
+        grid.setPrefColumns(5);
+        grid.setVgap(5);
+        // grid.setHgap(5);
+
+        mediasPane.setContent(grid);
+
+        medias.joinLists();
+
+        if(searchAll == true && searchMovies == false && searchSeries == false){
+
+            for (Watchable m : medias.searchGenre(genreSearch.getText())) {
+                File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg");
+                Image image = new Image(file.toURI().toString());
+
+                ImageView imgv = new ImageView();
+                imgv.setImage(image);
+                imgv.setFitWidth(140);
+                imgv.setPreserveRatio(true);
+
+                Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                        + m.getGenres() + "\n" + m.getYear());
+                imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent mouseEvent) {
+                        imageBox.setImage(image);
+
+                        infoText.getChildren().clear();
+                        infoText.getChildren().add(text);
+                    }
+                });
+
+                Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                        + m.getGenres() + "\n" + m.getYear()));
+
+                HBox imgbox = new HBox();
+
+                imgbox.getChildren().add(imgv);
+
+                grid.getChildren().add(imgbox);
+            }
+        } else if (searchMovies == true){
+
+            for (Watchable m : medias.searchGenre(genreSearch.getText())) {
+                if(m instanceof Movie){
+                    File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg");
+                    Image image = new Image(file.toURI().toString());
+
+                    ImageView imgv = new ImageView();
+                    imgv.setImage(image);
+                    imgv.setFitWidth(140);
+                    imgv.setPreserveRatio(true);
+                    Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                            + m.getGenres() + "\n" + m.getYear());
+                    imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent mouseEvent) {
+                            imageBox.setImage(image);
+
+                            infoText.getChildren().clear();
+                            infoText.getChildren().add(text);
+                        }
+                    });
+
+                    Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                            + m.getGenres() + "\n" + m.getYear()));
+
+                    HBox imgbox = new HBox();
+
+                    imgbox.getChildren().add(imgv);
+
+                    grid.getChildren().add(imgbox);
+                }
+            }
+
+        } else if (searchSeries == true){
+
+            for (Watchable m : medias.searchGenre(genreSearch.getText())) {
+                if(m instanceof Series){
+                    File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg");
+                    Image image = new Image(file.toURI().toString());
+
+                    ImageView imgv = new ImageView();
+                    imgv.setImage(image);
+                    imgv.setFitWidth(140);
+                    imgv.setPreserveRatio(true);
+
+                    Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                            + m.getGenres() + "\n" + m.getYear());
+                    imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent mouseEvent) {
+                            imageBox.setImage(image);
+
+                            infoText.getChildren().clear();
+                            infoText.getChildren().add(text);
+                        }
+                    });
+
+                    Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                            + m.getGenres() + "\n" + m.getYear()));
+
+                    HBox imgbox = new HBox();
+
+                    imgbox.getChildren().add(imgv);
+
+                    grid.getChildren().add(imgbox);
+                }
+            }
+        }
+
+    }
+
+     */
 }

@@ -44,12 +44,13 @@
       <VBox layoutX="41.0" layoutY="65.0">
          <children>
       
-            <HBox prefHeight="19.0" prefWidth="333.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="19.0" prefWidth="333.0">
                <children>
                   <Button fx:id="homeScreenButton" mnemonicParsing="false" onAction="#homescreen" prefHeight="31.0" prefWidth="96.0" text="Homescreen" />
+                  <Button mnemonicParsing="false" text="Watchlist" />
                </children>
             </HBox>
-            <HBox>
+            <HBox alignment="BOTTOM_LEFT">
                <children>
                   <Button fx:id="searcMoviesButton" mnemonicParsing="false" onAction="#searchMovies" text="Movies" />
                   <Button fx:id="searchSeriesButton" mnemonicParsing="false" onAction="#searchSeries" text="Series" />
@@ -58,8 +59,6 @@
             </HBox>
          </children>
       </VBox>
-
-      <ScrollPane fx:id="mediasPane" hbarPolicy="NEVER" layoutX="41.0" layoutY="156.0" prefHeight="600.0" prefWidth="700.0" vbarPolicy="NEVER" />
       <VBox fx:id="infoBox" layoutX="756.0" layoutY="156.0" prefHeight="600.0" prefWidth="231.0">
          <children>
             <HBox alignment="CENTER" prefHeight="303.0" prefWidth="278.0">
@@ -77,6 +76,8 @@
          </children>
       </VBox>
       <TextField fx:id="titleSearch" layoutX="567.0" layoutY="31.0" onKeyTyped="#search" prefHeight="27.0" prefWidth="418.0" promptText="Search by title ..." />
+
+                  <ScrollPane fx:id="mediasPane" hbarPolicy="NEVER" layoutX="41.0" layoutY="138.0" prefHeight="600.0" prefWidth="700.0" vbarPolicy="NEVER" />
 
    </children>
 </AnchorPane>
