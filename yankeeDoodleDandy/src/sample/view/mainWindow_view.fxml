@@ -4,8 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -39,48 +37,9 @@
          </children>
       </HBox>
 
-      <HBox layoutX="382.0" layoutY="65.0" prefHeight="78.0" prefWidth="333.0">
+      <HBox layoutX="529.0" layoutY="92.0" prefHeight="27.0" prefWidth="455.0">
          <children>
-            <VBox>
-               <children>
-                  <Label text="What do you want to search for?">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <TabPane prefHeight="61.0" prefWidth="333.0" tabClosingPolicy="UNAVAILABLE">
-                    <tabs>
-                      <Tab text="Title">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <TextField fx:id="titleSearch" onKeyTyped="#search" prefHeight="25.0" prefWidth="333.0" promptText="Search by title ..." />
-                                 </children>
-                              </AnchorPane>
-                        </content>
-                      </Tab>
-                      <Tab text="Genre">
-                        <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <TextField fx:id="genreSearch" onKeyTyped="#searchGenre" prefHeight="25.0" prefWidth="333.0" promptText="Search by genre ..." />
-                                 </children>
-                              </AnchorPane>
-                        </content>
-                      </Tab>
-                        <Tab text="Rating">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <TextField prefHeight="25.0" prefWidth="333.0" promptText="Search by rating..." />
-                                 </children>
-                              </AnchorPane>
-                          </content>
-                        </Tab>
-                    </tabs>
-                  </TabPane>
-               </children>
-            </VBox>
+            <VBox prefHeight="78.0" prefWidth="614.0" />
          </children></HBox>
       <VBox layoutX="41.0" layoutY="65.0">
          <children>
@@ -117,6 +76,7 @@
             <TextFlow fx:id="infoText" prefHeight="200.0" prefWidth="200.0" />
          </children>
       </VBox>
+      <TextField fx:id="titleSearch" layoutX="567.0" layoutY="31.0" onKeyTyped="#search" prefHeight="27.0" prefWidth="418.0" promptText="Search by title ..." />
 
    </children>
 </AnchorPane>
