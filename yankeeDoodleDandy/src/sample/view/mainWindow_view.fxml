@@ -15,7 +15,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="767.0" prefWidth="1005.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Controller">
    <children>
 
-      <HBox layoutX="41.0" layoutY="20.0" prefHeight="36.0" prefWidth="681.0">
+      <HBox layoutX="41.0" layoutY="20.0" prefHeight="38.0" prefWidth="512.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -36,11 +36,6 @@
             </VBox>
          </children>
       </HBox>
-
-      <HBox layoutX="529.0" layoutY="92.0" prefHeight="27.0" prefWidth="455.0">
-         <children>
-            <VBox prefHeight="78.0" prefWidth="614.0" />
-         </children></HBox>
       <VBox layoutX="41.0" layoutY="65.0">
          <children>
       
@@ -59,7 +54,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="infoBox" layoutX="756.0" layoutY="156.0" prefHeight="600.0" prefWidth="231.0">
+      <VBox fx:id="infoBox" layoutX="756.0" layoutY="156.0" prefHeight="582.0" prefWidth="231.0">
          <children>
             <HBox alignment="CENTER" prefHeight="303.0" prefWidth="278.0">
                <children>
@@ -72,7 +67,7 @@
                   <Button fx:id="playButton" mnemonicParsing="false" text="Play" />
                </children>
             </HBox>
-            <TextFlow fx:id="infoText" prefHeight="200.0" prefWidth="200.0" />
+            <TextFlow fx:id="infoText" prefHeight="179.0" prefWidth="231.0" />
          </children>
       </VBox>
       <TextField fx:id="titleSearch" layoutX="567.0" layoutY="31.0" onKeyTyped="#search" prefHeight="27.0" prefWidth="418.0" promptText="Search by title ..." />
