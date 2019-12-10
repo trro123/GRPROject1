@@ -51,7 +51,6 @@ public class Controller  {
 
         TilePane grid = new TilePane();
         grid.setPrefColumns(5);
-        grid.setVgap(5);
 
         mediasPane.setContent(grid);
 

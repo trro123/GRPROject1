@@ -10,8 +10,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/controller/sample/controller/Controller$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/controller/sample/controller/Controller$5.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/controller/sample/controller/Controller$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/controller/sample/controller/Controller$6.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/controller/sample/controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/controller/sample/controller/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/controller/sample/view/mainWindow_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/controller/sample/view/mainWindow_view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/view/mainWindow_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/view/mainWindow_view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/controller/Controller.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -232,7 +231,7 @@
       <workItem from="1575908030393" duration="10047000" />
       <workItem from="1575938873032" duration="982000" />
       <workItem from="1575973397906" duration="7084000" />
-      <workItem from="1575983430805" duration="4668000" />
+      <workItem from="1575983430805" duration="5975000" />
     </task>
     <servers />
   </component>
