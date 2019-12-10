@@ -90,9 +90,9 @@
             </HBox>
             <HBox>
                <children>
-                  <Button fx:id="searchAllButton" mnemonicParsing="false" onAction="#searchAll" text="All" />
                   <Button fx:id="searcMoviesButton" mnemonicParsing="false" onAction="#searchMovies" text="Movies" />
                   <Button fx:id="searchSeriesButton" mnemonicParsing="false" onAction="#searchSeries" text="Series" />
+                  <Button fx:id="searchAllButton" mnemonicParsing="false" onAction="#searchAll" text="All" />
                </children>
             </HBox>
          </children>
