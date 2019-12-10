@@ -41,15 +41,15 @@
       
             <HBox alignment="CENTER_LEFT" prefHeight="19.0" prefWidth="333.0">
                <children>
-                  <Button fx:id="homeScreenButton" mnemonicParsing="false" onAction="#homescreen" prefHeight="31.0" prefWidth="96.0" text="Homescreen" />
-                  <Button fx:id="watchlistShowButton" mnemonicParsing="false" text="Watchlist" />
+                  <Button fx:id="homeScreenButton" minHeight="30.0" mnemonicParsing="false" onAction="#homescreen" prefHeight="30.0" prefWidth="96.0" text="Homescreen" />
+                  <Button fx:id="watchlistShowButton" minHeight="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="96.0" text="Watchlist" />
                </children>
             </HBox>
             <HBox alignment="BOTTOM_LEFT">
                <children>
-                  <Button fx:id="searcMoviesButton" mnemonicParsing="false" onAction="#searchMovies" text="Movies" />
-                  <Button fx:id="searchSeriesButton" mnemonicParsing="false" onAction="#searchSeries" text="Series" />
-                  <Button fx:id="searchAllButton" mnemonicParsing="false" onAction="#searchAll" text="All" />
+                  <Button fx:id="searcMoviesButton" mnemonicParsing="false" onAction="#searchMovies" prefHeight="30.0" prefWidth="96.0" text="Movies" />
+                  <Button fx:id="searchSeriesButton" mnemonicParsing="false" onAction="#searchSeries" prefHeight="30.0" prefWidth="96.0" text="Series" />
+                  <Button fx:id="searchAllButton" mnemonicParsing="false" onAction="#searchAll" prefHeight="30.0" prefWidth="96.0" text="All" />
                </children>
             </HBox>
          </children>
