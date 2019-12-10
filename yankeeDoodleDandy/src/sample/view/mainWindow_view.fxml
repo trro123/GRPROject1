@@ -7,12 +7,14 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="767.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="767.0" prefWidth="1005.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Controller">
    <children>
 
       <HBox layoutX="41.0" layoutY="20.0" prefHeight="36.0" prefWidth="681.0">
@@ -52,7 +54,7 @@
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <TextField fx:id="titleSearch" onKeyPressed="#search" prefHeight="25.0" prefWidth="333.0" promptText="Search by title ..." />
+                                    <TextField fx:id="titleSearch" onKeyTyped="#search" prefHeight="25.0" prefWidth="333.0" promptText="Search by title ..." />
                                  </children>
                               </AnchorPane>
                         </content>
@@ -61,7 +63,7 @@
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <TextField fx:id="genreSearch" onKeyPressed="#searchGenre" prefHeight="25.0" prefWidth="333.0" promptText="Search by genre ..." />
+                                    <TextField fx:id="genreSearch" onKeyTyped="#searchGenre" prefHeight="25.0" prefWidth="333.0" promptText="Search by genre ..." />
                                  </children>
                               </AnchorPane>
                         </content>
@@ -99,6 +101,22 @@
       </VBox>
 
       <ScrollPane fx:id="mediasPane" hbarPolicy="NEVER" layoutX="41.0" layoutY="156.0" prefHeight="600.0" prefWidth="700.0" vbarPolicy="NEVER" />
+      <VBox fx:id="infoBox" layoutX="756.0" layoutY="156.0" prefHeight="600.0" prefWidth="231.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="303.0" prefWidth="278.0">
+               <children>
+                  <ImageView fx:id="imageBox" fitHeight="303.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="watchListButton" mnemonicParsing="false" text="Add to Watchlist" />
+                  <Button fx:id="playButton" mnemonicParsing="false" text="Play" />
+               </children>
+            </HBox>
+            <TextFlow fx:id="infoText" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </VBox>
 
    </children>
 </AnchorPane>

@@ -6,6 +6,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import sample.model.*;
 
 import javafx.fxml.*;
@@ -26,6 +28,18 @@ public class Controller  {
 
     @FXML
     private TextField titleSearch;
+
+    @FXML
+    private VBox infoBox;
+    @FXML
+    private Button watchListButton;
+    @FXML
+    private Button playButton;
+    @FXML
+    private TextFlow infoText;
+
+    @FXML
+    private ImageView imageBox;
 
     public void search() {
 
@@ -55,11 +69,15 @@ public class Controller  {
                 imgv.setImage(image);
                 imgv.setFitWidth(140);
                 imgv.setPreserveRatio(true);
-
+                Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                        + m.getGenres() + "\n" + m.getYear());
                 imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
-                        System.out.println(m.getTitle());
+                        imageBox.setImage(image);
+
+                        infoText.getChildren().clear();
+                        infoText.getChildren().add(text);
                     }
                 });
 
@@ -83,11 +101,15 @@ public class Controller  {
                     imgv.setImage(image);
                     imgv.setFitWidth(140);
                     imgv.setPreserveRatio(true);
-
+                    Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                            + m.getGenres() + "\n" + m.getYear());
                     imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent mouseEvent) {
-                            System.out.println(m.getTitle());
+                            imageBox.setImage(image);
+
+                            infoText.getChildren().clear();
+                            infoText.getChildren().add(text);
                         }
                     });
 
@@ -114,10 +136,15 @@ public class Controller  {
                     imgv.setFitWidth(140);
                     imgv.setPreserveRatio(true);
 
+                    Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                            + m.getGenres() + "\n" + m.getYear());
                     imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent mouseEvent) {
-                            System.out.println(m.getTitle());
+                            imageBox.setImage(image);
+
+                            infoText.getChildren().clear();
+                            infoText.getChildren().add(text);
                         }
                     });
 
@@ -168,10 +195,15 @@ public class Controller  {
                 imgv.setFitWidth(140);
                 imgv.setPreserveRatio(true);
 
+                Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                        + m.getGenres() + "\n" + m.getYear());
                 imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
-                        System.out.println(m.getGenres());
+                        imageBox.setImage(image);
+
+                        infoText.getChildren().clear();
+                        infoText.getChildren().add(text);
                     }
                 });
 
@@ -195,11 +227,15 @@ public class Controller  {
                     imgv.setImage(image);
                     imgv.setFitWidth(140);
                     imgv.setPreserveRatio(true);
-
+                    Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                            + m.getGenres() + "\n" + m.getYear());
                     imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent mouseEvent) {
-                            System.out.println(m.getGenres());
+                            imageBox.setImage(image);
+
+                            infoText.getChildren().clear();
+                            infoText.getChildren().add(text);
                         }
                     });
 
@@ -226,10 +262,15 @@ public class Controller  {
                     imgv.setFitWidth(140);
                     imgv.setPreserveRatio(true);
 
+                    Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                            + m.getGenres() + "\n" + m.getYear());
                     imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent mouseEvent) {
-                            System.out.println(m.getGenres());
+                            imageBox.setImage(image);
+
+                            infoText.getChildren().clear();
+                            infoText.getChildren().add(text);
                         }
                     });
 
@@ -275,10 +316,18 @@ public class Controller  {
             imgv.setFitWidth(140);
             imgv.setPreserveRatio(true);
 
+            Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                    + m.getGenres() + "\n" + m.getYear());
+
+
             imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
-                    System.out.println(m.getTitle());
+                    imageBox.setImage(image);
+
+                    infoText.getChildren().clear();
+                    infoText.getChildren().add(text);
+
                 }
             });
 
@@ -323,10 +372,15 @@ public class Controller  {
             imgv.setFitWidth(140);
             imgv.setPreserveRatio(true);
 
+            Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                    + m.getGenres() + "\n" + m.getYear());
             imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
-                    System.out.println(m.getTitle());
+                    imageBox.setImage(image);
+
+                    infoText.getChildren().clear();
+                    infoText.getChildren().add(text);
                 }
             });
 
@@ -371,10 +425,15 @@ public class Controller  {
             imgv.setFitWidth(140);
             imgv.setPreserveRatio(true);
 
+            Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                    + m.getGenres() + "\n" + m.getYear() +"\n" + m.getSeasons() + " seasons");
             imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
-                    System.out.println(m.getTitle());
+                    imageBox.setImage(image);
+
+                    infoText.getChildren().clear();
+                    infoText.getChildren().add(text);
                 }
             });
 
