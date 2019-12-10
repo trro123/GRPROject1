@@ -17,24 +17,22 @@ import javafx.scene.layout.*;
 import java.io.File;
 
 public class Controller  {
+    private MediaContainer medias;
+
+    private Watchable selected;
 
     @FXML
     private ScrollPane mediasPane;
 
     @FXML
-    private TilePane grid;
-
-    private MediaContainer medias;
-
-    @FXML
     private TextField titleSearch;
 
     @FXML
-    private VBox infoBox;
-    @FXML
-    private Button watchListButton;
+    private Button watchlistAddButton;
+
     @FXML
     private Button playButton;
+
     @FXML
     private TextFlow infoText;
 
@@ -43,7 +41,7 @@ public class Controller  {
 
     public void search() {
 
-        MediaContainer medias = new MediaContainer();
+        medias = new MediaContainer();
         try {
             medias.loadMovies();
             medias.loadSeries();
@@ -74,10 +72,15 @@ public class Controller  {
                 imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent mouseEvent) {
+                        watchlistAddButton.setVisible(true);
+                        playButton.setVisible(true);
+
                         imageBox.setImage(image);
 
                         infoText.getChildren().clear();
                         infoText.getChildren().add(text);
+
+                        selected = m;
                     }
                 });
 
@@ -106,10 +109,15 @@ public class Controller  {
                     imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent mouseEvent) {
+                            watchlistAddButton.setVisible(true);
+                            playButton.setVisible(true);
+
                             imageBox.setImage(image);
 
                             infoText.getChildren().clear();
                             infoText.getChildren().add(text);
+
+                            selected = m;
                         }
                     });
 
@@ -141,10 +149,15 @@ public class Controller  {
                     imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
                         @Override
                         public void handle(MouseEvent mouseEvent) {
+                            watchlistAddButton.setVisible(true);
+                            playButton.setVisible(true);
+
                             imageBox.setImage(image);
 
                             infoText.getChildren().clear();
                             infoText.getChildren().add(text);
+
+                            selected = m;
                         }
                     });
 
@@ -168,7 +181,7 @@ public class Controller  {
     private boolean searchSeries;
 
     public void searchAll(){
-        MediaContainer medias = new MediaContainer();
+        medias = new MediaContainer();
         try {
             medias.loadMovies();
             medias.loadSeries();
@@ -198,11 +211,15 @@ public class Controller  {
             imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
+                    watchlistAddButton.setVisible(true);
+                    playButton.setVisible(true);
+
                     imageBox.setImage(image);
 
                     infoText.getChildren().clear();
                     infoText.getChildren().add(text);
 
+                    selected = m;
                 }
             });
 
@@ -224,7 +241,7 @@ public class Controller  {
 
     public void searchMovies(){
 
-        MediaContainer medias = new MediaContainer();
+        medias = new MediaContainer();
         try {
             medias.loadMovies();
             medias.loadSeries();
@@ -252,10 +269,15 @@ public class Controller  {
             imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
+                    watchlistAddButton.setVisible(true);
+                    playButton.setVisible(true);
+
                     imageBox.setImage(image);
 
                     infoText.getChildren().clear();
                     infoText.getChildren().add(text);
+
+                    selected = m;
                 }
             });
 
@@ -277,7 +299,7 @@ public class Controller  {
 
     public void searchSeries(){
 
-        MediaContainer medias = new MediaContainer();
+        medias = new MediaContainer();
         try {
             medias.loadMovies();
             medias.loadSeries();
@@ -305,10 +327,15 @@ public class Controller  {
             imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
+                    watchlistAddButton.setVisible(true);
+                    playButton.setVisible(true);
+
                     imageBox.setImage(image);
 
                     infoText.getChildren().clear();
                     infoText.getChildren().add(text);
+
+                    selected = m;
                 }
             });
 
@@ -331,6 +358,62 @@ public class Controller  {
     public void homescreen(){
         System.out.println("VIS MIG EN HOMESCREEN!!!!!!!!!!! !! ! /!!!!(/&");
         System.out.println("... og kald på den når man trykker login");
+    }
+
+    public void watchlistAdd(){
+        System.out.println("Added " + selected.getTitle() + " to watchlist.");
+
+        //user.addToWatchlist(selected);
+    }
+
+    @FXML
+    private Button watchlistShowButton;
+
+    public void getWatchlist(){
+        /*
+        TilePane grid = new TilePane();
+        grid.setPrefColumns(5);
+
+        mediasPane.setContent(grid);
+
+        for (Watchable m : user.getWatchlist()) {
+            File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg");
+            Image image = new Image(file.toURI().toString());
+            ImageView imgv = new ImageView();
+            imgv.setImage(image);
+            imgv.setFitWidth(140);
+            imgv.setPreserveRatio(true);
+
+            Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                    + m.getGenres() + "\n" + m.getYear());
+
+
+            imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    watchlistAddButton.setVisible(true);
+                    playButton.setVisible(true);
+
+                    imageBox.setImage(image);
+
+                    infoText.getChildren().clear();
+                    infoText.getChildren().add(text);
+
+                    selected = m;
+                }
+            });
+
+            Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
+                    + m.getGenres() + "\n" + m.getYear()));
+
+            HBox imgbox = new HBox();
+            imgbox.getChildren().add(imgv);
+
+            grid.getChildren().add(imgbox);
+
+        }
+
+         */
     }
 
      /*
