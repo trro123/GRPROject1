@@ -17,6 +17,8 @@ import java.io.IOException;
 
 public class LoginController {
 
+    private Main main;
+
     @FXML
     private TextField loginUserField;
 
@@ -25,6 +27,11 @@ public class LoginController {
 
     @FXML
     private Label loginStatus;
+
+    @FXML
+    private void newUser() throws IOException{
+        main.showCreateUser();
+    }
 
     public void login(javafx.event.ActionEvent actionEvent) throws IOException {
         if (loginUserField.getText().equals("user") && loginPassField.getText().equals("password")){

@@ -4,9 +4,16 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class Main extends Application {
+    private static Stage primaryStage;
+    private static BorderPane mainLayout; //ved ikke hvorfor
 
     //bruges til at starte programmet når vi engang når så langt :)
     @Override
@@ -22,6 +29,21 @@ public class Main extends Application {
 
 
     }
+
+    public static void showCreateUser() throws IOException {
+        FXMLLoader l = new FXMLLoader();
+        l.setLocation(Main.class.getResource("/view/CreateUser.fxml"));
+        BorderPane newUser = l.load();
+
+        Stage addDialogStage = new Stage();
+        addDialogStage.setTitle("Create New User");
+        //addDialogStage.initModality(Modality.WINDOW_MODAL); //skulle gøre det umuligt at klikke andre steder end vinduet, men det virker ikke.
+        addDialogStage.initOwner(primaryStage); //det nye stage hører til vores primary stage
+        Scene s = new Scene(newUser);
+        addDialogStage.setScene(s);
+        addDialogStage.showAndWait();
+    }
+
     public static void main(String[] args) {
 
         launch(args);
