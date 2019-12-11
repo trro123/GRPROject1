@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
@@ -12,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="767.0" prefWidth="1005.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="767.0" prefWidth="1059.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Controller">
    <children>
 
       <HBox layoutX="41.0" layoutY="20.0" prefHeight="38.0" prefWidth="512.0">
@@ -36,7 +38,7 @@
             </VBox>
          </children>
       </HBox>
-      <VBox layoutX="41.0" layoutY="65.0">
+      <VBox layoutX="83.0" layoutY="71.0">
          <children>
       
             <HBox alignment="CENTER_LEFT" prefHeight="19.0" prefWidth="333.0">
@@ -54,7 +56,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="infoBox" layoutX="756.0" layoutY="156.0" prefHeight="582.0" prefWidth="231.0">
+      <VBox fx:id="infoBox" layoutX="827.0" layoutY="147.0" prefHeight="582.0" prefWidth="231.0">
          <children>
             <HBox alignment="CENTER" prefHeight="303.0" prefWidth="278.0">
                <children>
@@ -72,7 +74,34 @@
       </VBox>
       <TextField fx:id="titleSearch" layoutX="567.0" layoutY="31.0" onKeyTyped="#search" prefHeight="27.0" prefWidth="418.0" promptText="Search by title ..." />
 
-                  <ScrollPane fx:id="mediasPane" hbarPolicy="NEVER" layoutX="41.0" layoutY="138.0" prefHeight="600.0" prefWidth="700.0" vbarPolicy="NEVER" />
+                  <ScrollPane fx:id="mediasPane" hbarPolicy="NEVER" layoutX="110.0" layoutY="147.0" prefHeight="600.0" prefWidth="700.0" vbarPolicy="NEVER" />
+      <MenuButton fx:id="genreChooser" layoutY="156.0" mnemonicParsing="false" text="Choose genre">
+        <items>
+          <MenuItem fx:id="actionChooser" mnemonicParsing="false" text="Action" />
+          <MenuItem fx:id="adventureChooser" mnemonicParsing="false" text="Adventure" />
+            <MenuItem fx:id="animationChooser" mnemonicParsing="false" text="Animation" />
+            <MenuItem fx:id="biographyChooser" mnemonicParsing="false" text="Biography" />
+            <MenuItem fx:id="comedyChooser" mnemonicParsing="false" text="Comedy" />
+            <MenuItem fx:id="crimeChooser" mnemonicParsing="false" text="Crime" />
+            <MenuItem fx:id="documentaryChooser" mnemonicParsing="false" text="Documentary" />
+            <MenuItem fx:id="dramaChooser" mnemonicParsing="false" text="Drama" />
+            <MenuItem fx:id="familyChooser" mnemonicParsing="false" text="Family" />
+            <MenuItem fx:id="fantasyChooser" mnemonicParsing="false" text="Fantasy" />
+            <MenuItem fx:id="noirChooser" mnemonicParsing="false" text="Film-Noir" />
+            <MenuItem fx:id="historyChooser" mnemonicParsing="false" text="History" />
+            <MenuItem fx:id="horrorChooser" mnemonicParsing="false" text="Horror" />
+            <MenuItem fx:id="musicChooser" mnemonicParsing="false" text="Music" />
+            <MenuItem fx:id="musicalChooser" mnemonicParsing="false" text="Musical" />
+            <MenuItem fx:id="mysteryChooser" mnemonicParsing="false" text="Mystery" />
+            <MenuItem fx:id="romanceChooser" mnemonicParsing="false" text="Romance" />
+            <MenuItem fx:id="scifiChooser" mnemonicParsing="false" text="Sci-Fi" />
+            <MenuItem fx:id="sportChooser" mnemonicParsing="false" text="Sport" />
+            <MenuItem fx:id="talkshowChooser" mnemonicParsing="false" text="Talk-Show" />
+            <MenuItem fx:id="thrillerChooser" mnemonicParsing="false" text="Thriller" />
+            <MenuItem fx:id="warChooser" mnemonicParsing="false" text="War" />
+            <MenuItem fx:id="westernChooser" mnemonicParsing="false" text="Western" />
+        </items>
+      </MenuButton>
 
    </children>
 </AnchorPane>
