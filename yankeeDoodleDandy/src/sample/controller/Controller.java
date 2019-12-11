@@ -157,7 +157,7 @@ public class Controller {
 
 
         for (Watchable m : medias.getJoinedList()) {
-            if (m.getGenres().contains()) {
+            if (m.getGenres().contains("benis")) {
                 toRuleThemAll(m);
             }
             /*else if(m.getGenres().contains("Adventure")){
@@ -181,7 +181,7 @@ public class Controller {
         }
 
         currentUser = user;
-        currentUser.addToWatchlist(medias.getMovies().get(0));
+        currentUser.addToWatchlist(medias.getMovies().get(99));
 
         for (Watchable m : currentUser.getWatchlist()) {
             System.out.println(m.getTitle());
