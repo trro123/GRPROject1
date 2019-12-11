@@ -1,10 +1,7 @@
 package sample.controller;
 
 import javafx.event.EventHandler;
-import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -17,11 +14,13 @@ import javafx.scene.layout.*;
 import java.io.File;
 import java.util.ArrayList;
 
-public class Controller  {
+public class Controller {
     private MediaContainer medias;
     private Watchable selected;
     private ArrayList<User> users;
     private User currentUser;
+    @FXML
+    private TilePane grid;
 
     @FXML
     private ScrollPane mediasPane;
@@ -41,146 +40,48 @@ public class Controller  {
     @FXML
     private ImageView imageBox;
 
-    public Controller(){
+    public Controller() {
         users = new ArrayList<>();
+        this.medias = new MediaContainer();
+        try {
+            medias.loadSeries();
+            medias.loadMovies();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        medias.joinLists();
     }
 
-    public ArrayList<User> getUsers(){
+    public ArrayList<User> getUsers() {
         return users;
     }
 
-    public void addUser(User user){
+    public void addUser(User user) {
         users.add(user);
     }
 
     public void search() {
-
-        medias = new MediaContainer();
-        try {
-            medias.loadMovies();
-            medias.loadSeries();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        TilePane grid = new TilePane();
-        grid.setPrefColumns(5);
-
+        grid.getChildren().clear();
         mediasPane.setContent(grid);
 
-        medias.joinLists();
 
-        if(searchAll == true && searchMovies == false && searchSeries == false){
+        if (searchAll == true && searchMovies == false && searchSeries == false) {
 
             for (Watchable m : medias.searchTitle(titleSearch.getText())) {
-                File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg");
-                Image image = new Image(file.toURI().toString());
-
-                ImageView imgv = new ImageView();
-                imgv.setImage(image);
-                imgv.setFitWidth(140);
-                imgv.setPreserveRatio(true);
-                Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                        + m.getGenres() + "\n" + m.getYear());
-                imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent mouseEvent) {
-                        watchlistAddButton.setVisible(true);
-                        playButton.setVisible(true);
-
-                        imageBox.setImage(image);
-
-                        infoText.getChildren().clear();
-                        infoText.getChildren().add(text);
-
-                        selected = m;
-                    }
-                });
-
-                Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                        + m.getGenres() + "\n" + m.getYear()));
-
-                HBox imgbox = new HBox();
-
-                imgbox.getChildren().add(imgv);
-
-                grid.getChildren().add(imgbox);
+                toRuleThemAll(m);
             }
-        } else if (searchMovies == true){
+        } else if (searchMovies == true) {
 
             for (Watchable m : medias.searchTitle(titleSearch.getText())) {
-                if(m instanceof Movie){
-                    File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg");
-                    Image image = new Image(file.toURI().toString());
-
-                    ImageView imgv = new ImageView();
-                    imgv.setImage(image);
-                    imgv.setFitWidth(140);
-                    imgv.setPreserveRatio(true);
-                    Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                            + m.getGenres() + "\n" + m.getYear());
-                    imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent mouseEvent) {
-                            watchlistAddButton.setVisible(true);
-                            playButton.setVisible(true);
-
-                            imageBox.setImage(image);
-
-                            infoText.getChildren().clear();
-                            infoText.getChildren().add(text);
-
-                            selected = m;
-                        }
-                    });
-
-                    Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                            + m.getGenres() + "\n" + m.getYear()));
-
-                    HBox imgbox = new HBox();
-
-                    imgbox.getChildren().add(imgv);
-
-                    grid.getChildren().add(imgbox);
+                if (m instanceof Movie) {
+                    toRuleThemAll(m);
                 }
             }
-        } else if (searchSeries == true){
+        } else if (searchSeries == true) {
 
             for (Watchable m : medias.searchTitle(titleSearch.getText())) {
-                if(m instanceof Series){
-                    File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg");
-                    Image image = new Image(file.toURI().toString());
-
-                    ImageView imgv = new ImageView();
-                    imgv.setImage(image);
-                    imgv.setFitWidth(140);
-                    imgv.setPreserveRatio(true);
-
-                    Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                            + m.getGenres() + "\n" + m.getYear());
-                    imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent mouseEvent) {
-                            watchlistAddButton.setVisible(true);
-                            playButton.setVisible(true);
-
-                            imageBox.setImage(image);
-
-                            infoText.getChildren().clear();
-                            infoText.getChildren().add(text);
-
-                            selected = m;
-                        }
-                    });
-
-                    Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                            + m.getGenres() + "\n" + m.getYear()));
-
-                    HBox imgbox = new HBox();
-
-                    imgbox.getChildren().add(imgv);
-
-                    grid.getChildren().add(imgbox);
+                if (m instanceof Series) {
+                    toRuleThemAll(m);
                 }
             }
         }
@@ -192,57 +93,14 @@ public class Controller  {
     private boolean searchMovies;
     private boolean searchSeries;
 
-    public void searchAll(){
-        medias = new MediaContainer();
-        try {
-            medias.loadMovies();
-            medias.loadSeries();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void searchAll() {
 
-        TilePane grid = new TilePane();
-        grid.setPrefColumns(5);
+        grid.getChildren().clear();
 
         mediasPane.setContent(grid);
 
-        medias.joinLists();
-
         for (Watchable m : medias.getJoinedList()) {
-            File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg");
-            Image image = new Image(file.toURI().toString());
-            ImageView imgv = new ImageView();
-            imgv.setImage(image);
-            imgv.setFitWidth(140);
-            imgv.setPreserveRatio(true);
-
-            Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                    + m.getGenres() + "\n" + m.getYear());
-
-
-            imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-                    watchlistAddButton.setVisible(true);
-                    playButton.setVisible(true);
-
-                    imageBox.setImage(image);
-
-                    infoText.getChildren().clear();
-                    infoText.getChildren().add(text);
-
-                    selected = m;
-                }
-            });
-
-            Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                    + m.getGenres() + "\n" + m.getYear()));
-
-            HBox imgbox = new HBox();
-            imgbox.getChildren().add(imgv);
-
-            grid.getChildren().add(imgbox);
-
+            toRuleThemAll(m);
         }
 
         searchMovies = false;
@@ -251,56 +109,16 @@ public class Controller  {
         searchAll = true;
     }
 
-    public void searchMovies(){
+    public void searchMovies() {
 
-        medias = new MediaContainer();
-        try {
-            medias.loadMovies();
-            medias.loadSeries();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        grid.getChildren().clear();
 
-        TilePane grid = new TilePane();
-        grid.setPrefColumns(5);
 
         mediasPane.setContent(grid);
 
-        medias.joinLists();
 
         for (Movie m : medias.getMovies()) {
-            File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg");
-            Image image = new Image(file.toURI().toString());
-            ImageView imgv = new ImageView();
-            imgv.setImage(image);
-            imgv.setFitWidth(140);
-            imgv.setPreserveRatio(true);
-
-            Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                    + m.getGenres() + "\n" + m.getYear());
-            imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-                    watchlistAddButton.setVisible(true);
-                    playButton.setVisible(true);
-
-                    imageBox.setImage(image);
-
-                    infoText.getChildren().clear();
-                    infoText.getChildren().add(text);
-
-                    selected = m;
-                }
-            });
-
-            Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                    + m.getGenres() + "\n" + m.getYear()));
-
-            HBox imgbox = new HBox();
-            imgbox.getChildren().add(imgv);
-
-            grid.getChildren().add(imgbox);
-
+            toRuleThemAll(m);
         }
 
         searchAll = false;
@@ -309,56 +127,16 @@ public class Controller  {
         searchMovies = true;
     }
 
-    public void searchSeries(){
+    public void searchSeries() {
 
-        medias = new MediaContainer();
-        try {
-            medias.loadMovies();
-            medias.loadSeries();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
-        TilePane grid = new TilePane();
-        grid.setPrefColumns(5);
+        grid.getChildren().clear();
 
         mediasPane.setContent(grid);
 
-        medias.joinLists();
 
         for (Series m : medias.getSeries()) {
-            File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg");
-            Image image = new Image(file.toURI().toString());
-            ImageView imgv = new ImageView();
-            imgv.setImage(image);
-            imgv.setFitWidth(140);
-            imgv.setPreserveRatio(true);
-
-            Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                    + m.getGenres() + "\n" + m.getYear() +"\n" + m.getSeasons() + " seasons");
-            imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-                    watchlistAddButton.setVisible(true);
-                    playButton.setVisible(true);
-
-                    imageBox.setImage(image);
-
-                    infoText.getChildren().clear();
-                    infoText.getChildren().add(text);
-
-                    selected = m;
-                }
-            });
-
-            Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                    + m.getGenres() + "\n" + m.getYear()));
-
-            HBox imgbox = new HBox();
-            imgbox.getChildren().add(imgv);
-
-            grid.getChildren().add(imgbox);
-
+            toRuleThemAll(m);
         }
 
         searchAll = false;
@@ -367,210 +145,101 @@ public class Controller  {
         searchSeries = true;
     }
 
-    public void homescreen(){
+    @FXML
+    private MenuButton genreChooser;
+    @FXML
+    private MenuItem lilChooser;
+    public void chooseGenre() {
+        grid.getChildren().clear();
+
+
+        mediasPane.setContent(grid);
+
+
+        for (Watchable m : medias.getJoinedList()) {
+            if (m.getGenres().contains()) {
+                toRuleThemAll(m);
+            }
+            /*else if(m.getGenres().contains("Adventure")){
+            toRuleThemAll(m);
+            }
+
+             */
+        }
+    }
+
+    public void homescreen() {
         // homescreen() er en fuldstændig anden metode lige nu - laver en user og printer noget gøgl
 
         User user = new User("admin", "password");
         Controller controller = new Controller();
         controller.addUser(user);
 
-        MediaContainer medias = new MediaContainer();
-        try{
-            medias.loadSeries();
-            medias.loadMovies();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
 
-        if(controller.getUsers().contains(user)){
+        if (controller.getUsers().contains(user)) {
             System.out.println("jads");
         }
 
         currentUser = user;
         currentUser.addToWatchlist(medias.getMovies().get(0));
 
-        for(Watchable m : currentUser.getWatchlist()){
+        for (Watchable m : currentUser.getWatchlist()) {
             System.out.println(m.getTitle());
         }
     }
 
-    public void watchlistAdd(){
+    public void watchlistAdd() {
         //tilføj MovieAlreadyOnWatchlistException
         System.out.println("Added " + selected.getTitle() + " to watchlist.");
         currentUser.addToWatchlist(selected);
     }
 
-    public void showWatchlist(){
-        TilePane grid = new TilePane();
-        grid.setPrefColumns(5);
+    public void showWatchlist() {
+
+        grid.getChildren().clear();
+
 
         mediasPane.setContent(grid);
 
         for (Watchable m : currentUser.getWatchlist()) {
-            File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg");
-            Image image = new Image(file.toURI().toString());
-            ImageView imgv = new ImageView();
-            imgv.setImage(image);
-            imgv.setFitWidth(140);
-            imgv.setPreserveRatio(true);
 
-            Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                    + m.getGenres() + "\n" + m.getYear());
-
-
-            imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-                    watchlistAddButton.setVisible(true);
-                    playButton.setVisible(true);
-
-                    imageBox.setImage(image);
-
-                    infoText.getChildren().clear();
-                    infoText.getChildren().add(text);
-
-                    selected = m;
-                }
-            });
-
-            Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                    + m.getGenres() + "\n" + m.getYear()));
-
-            HBox imgbox = new HBox();
-            imgbox.getChildren().add(imgv);
-
-            grid.getChildren().add(imgbox);
-
+            toRuleThemAll(m);
         }
-
     }
 
-     /*
-    @FXML
-    private TextField genreSearch;
 
-    public void searchGenre() {
+    public void toRuleThemAll(Watchable m) { //bedste metode i verdenen :)
+        File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg");
+        Image image = new Image(file.toURI().toString());
 
-        MediaContainer medias = new MediaContainer();
-        try {
-            medias.loadMovies();
-            medias.loadSeries();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        ImageView imgv = new ImageView();
+        imgv.setImage(image);
+        imgv.setFitWidth(140);
+        imgv.setPreserveRatio(true);
+        Text text = new Text(m.getTitle() + "\n" + "Rating: " + m.getRating() + " / 10" + "\n"
+                + m.getGenres() + "\n" + m.getYear());
+        imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                watchlistAddButton.setVisible(true);
+                playButton.setVisible(true);
 
-        TilePane grid = new TilePane();
-        grid.setPrefColumns(5);
-        grid.setVgap(5);
-        // grid.setHgap(5);
+                imageBox.setImage(image);
 
-        mediasPane.setContent(grid);
+                infoText.getChildren().clear();
+                infoText.getChildren().add(text);
 
-        medias.joinLists();
-
-        if(searchAll == true && searchMovies == false && searchSeries == false){
-
-            for (Watchable m : medias.searchGenre(genreSearch.getText())) {
-                File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg");
-                Image image = new Image(file.toURI().toString());
-
-                ImageView imgv = new ImageView();
-                imgv.setImage(image);
-                imgv.setFitWidth(140);
-                imgv.setPreserveRatio(true);
-
-                Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                        + m.getGenres() + "\n" + m.getYear());
-                imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent mouseEvent) {
-                        imageBox.setImage(image);
-
-                        infoText.getChildren().clear();
-                        infoText.getChildren().add(text);
-                    }
-                });
-
-                Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                        + m.getGenres() + "\n" + m.getYear()));
-
-                HBox imgbox = new HBox();
-
-                imgbox.getChildren().add(imgv);
-
-                grid.getChildren().add(imgbox);
+                selected = m;
             }
-        } else if (searchMovies == true){
+        });
 
-            for (Watchable m : medias.searchGenre(genreSearch.getText())) {
-                if(m instanceof Movie){
-                    File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg");
-                    Image image = new Image(file.toURI().toString());
+        Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " + m.getRating() + " / 10" + "\n"
+                + m.getGenres() + "\n" + m.getYear()));
 
-                    ImageView imgv = new ImageView();
-                    imgv.setImage(image);
-                    imgv.setFitWidth(140);
-                    imgv.setPreserveRatio(true);
-                    Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                            + m.getGenres() + "\n" + m.getYear());
-                    imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent mouseEvent) {
-                            imageBox.setImage(image);
+        HBox imgbox = new HBox();
 
-                            infoText.getChildren().clear();
-                            infoText.getChildren().add(text);
-                        }
-                    });
+        imgbox.getChildren().add(imgv);
 
-                    Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                            + m.getGenres() + "\n" + m.getYear()));
-
-                    HBox imgbox = new HBox();
-
-                    imgbox.getChildren().add(imgv);
-
-                    grid.getChildren().add(imgbox);
-                }
-            }
-
-        } else if (searchSeries == true){
-
-            for (Watchable m : medias.searchGenre(genreSearch.getText())) {
-                if(m instanceof Series){
-                    File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg");
-                    Image image = new Image(file.toURI().toString());
-
-                    ImageView imgv = new ImageView();
-                    imgv.setImage(image);
-                    imgv.setFitWidth(140);
-                    imgv.setPreserveRatio(true);
-
-                    Text text = new Text(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                            + m.getGenres() + "\n" + m.getYear());
-                    imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent mouseEvent) {
-                            imageBox.setImage(image);
-
-                            infoText.getChildren().clear();
-                            infoText.getChildren().add(text);
-                        }
-                    });
-
-                    Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " +m.getRating() + " / 10" + "\n"
-                            + m.getGenres() + "\n" + m.getYear()));
-
-                    HBox imgbox = new HBox();
-
-                    imgbox.getChildren().add(imgv);
-
-                    grid.getChildren().add(imgbox);
-                }
-            }
-        }
-
+        grid.getChildren().add(imgbox);
     }
-
-     */
 }

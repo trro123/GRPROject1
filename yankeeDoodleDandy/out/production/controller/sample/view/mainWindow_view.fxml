@@ -10,6 +10,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
@@ -74,12 +75,15 @@
       </VBox>
       <TextField fx:id="titleSearch" layoutX="567.0" layoutY="31.0" onKeyTyped="#search" prefHeight="27.0" prefWidth="418.0" promptText="Search by title ..." />
 
-                  <ScrollPane fx:id="mediasPane" hbarPolicy="NEVER" layoutX="110.0" layoutY="147.0" prefHeight="600.0" prefWidth="700.0" vbarPolicy="NEVER" />
+                  <ScrollPane fx:id="mediasPane" hbarPolicy="NEVER" layoutX="110.0" layoutY="147.0" prefHeight="600.0" prefWidth="700.0" vbarPolicy="NEVER">
+         <content>
+            <TilePane fx:id="grid" prefHeight="598.0" prefRows="25" prefWidth="793.0" />
+         </content></ScrollPane>
       <MenuButton fx:id="genreChooser" layoutY="156.0" mnemonicParsing="false" text="Choose genre">
         <items>
-          <MenuItem fx:id="actionChooser" mnemonicParsing="false" text="Action" />
-          <MenuItem fx:id="adventureChooser" mnemonicParsing="false" text="Adventure" />
-            <MenuItem fx:id="animationChooser" mnemonicParsing="false" text="Animation" />
+          <MenuItem fx:id="lilChooser" mnemonicParsing="false" onAction="#chooseGenre" text="Action" />
+          <MenuItem fx:id="lilChooser" mnemonicParsing="false" onAction="#chooseGenre" text="Adventure" />
+            <MenuItem mnemonicParsing="false" onAction="#chooseGenre" text="Animation" />
             <MenuItem fx:id="biographyChooser" mnemonicParsing="false" text="Biography" />
             <MenuItem fx:id="comedyChooser" mnemonicParsing="false" text="Comedy" />
             <MenuItem fx:id="crimeChooser" mnemonicParsing="false" text="Crime" />
