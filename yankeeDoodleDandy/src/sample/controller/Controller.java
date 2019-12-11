@@ -144,7 +144,6 @@ public class Controller  {
                     grid.getChildren().add(imgbox);
                 }
             }
-
         } else if (searchSeries == true){
 
             for (Watchable m : medias.searchTitle(titleSearch.getText())) {
@@ -379,7 +378,6 @@ public class Controller  {
         try{
             medias.loadSeries();
             medias.loadMovies();
-            // user.addToWatchlist(medias.getMovies().get(0));
         }catch (Exception e){
             e.printStackTrace();
         }
