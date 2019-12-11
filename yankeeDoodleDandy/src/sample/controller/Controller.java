@@ -15,11 +15,13 @@ import javafx.scene.image.*;
 import javafx.scene.layout.*;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class Controller  {
     private MediaContainer medias;
-
     private Watchable selected;
+    private ArrayList<User> users;
+    private User currentUser;
 
     @FXML
     private ScrollPane mediasPane;
@@ -38,6 +40,18 @@ public class Controller  {
 
     @FXML
     private ImageView imageBox;
+
+    public Controller(){
+        users = new ArrayList<>();
+    }
+
+    public ArrayList<User> getUsers(){
+        return users;
+    }
+
+    public void addUser(User user){
+        users.add(user);
+    }
 
     public void search() {
 
@@ -355,27 +369,46 @@ public class Controller  {
     }
 
     public void homescreen(){
-        System.out.println("VIS MIG EN HOMESCREEN!!!!!!!!!!! !! ! /!!!!(/&");
-        System.out.println("... og kald på den når man trykker login");
+        // homescreen() er en fuldstændig anden metode lige nu - laver en user og printer noget gøgl
+
+        User user = new User("admin", "password");
+        Controller controller = new Controller();
+        controller.addUser(user);
+
+        MediaContainer medias = new MediaContainer();
+        try{
+            medias.loadSeries();
+            medias.loadMovies();
+            // user.addToWatchlist(medias.getMovies().get(0));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        if(controller.getUsers().contains(user)){
+            System.out.println("jads");
+        }
+
+        currentUser = user;
+        currentUser.addToWatchlist(medias.getMovies().get(0));
+
+        for(Watchable m : currentUser.getWatchlist()){
+            System.out.println(m.getTitle());
+        }
     }
 
     public void watchlistAdd(){
+        //tilføj MovieAlreadyOnWatchlistException
         System.out.println("Added " + selected.getTitle() + " to watchlist.");
-
-        //user.addToWatchlist(selected);
+        currentUser.addToWatchlist(selected);
     }
 
-    @FXML
-    private Button watchlistShowButton;
-
-    public void getWatchlist(){
-        /*
+    public void showWatchlist(){
         TilePane grid = new TilePane();
         grid.setPrefColumns(5);
 
         mediasPane.setContent(grid);
 
-        for (Watchable m : user.getWatchlist()) {
+        for (Watchable m : currentUser.getWatchlist()) {
             File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg");
             Image image = new Image(file.toURI().toString());
             ImageView imgv = new ImageView();
@@ -412,7 +445,6 @@ public class Controller  {
 
         }
 
-         */
     }
 
      /*

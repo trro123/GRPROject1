@@ -42,7 +42,7 @@
             <HBox alignment="CENTER_LEFT" prefHeight="19.0" prefWidth="333.0">
                <children>
                   <Button fx:id="homeScreenButton" minHeight="30.0" mnemonicParsing="false" onAction="#homescreen" prefHeight="30.0" prefWidth="96.0" text="Homescreen" />
-                  <Button fx:id="watchlistShowButton" minHeight="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="96.0" text="Watchlist" />
+                  <Button fx:id="watchlistShowButton" minHeight="30.0" mnemonicParsing="false" onAction="#showWatchlist" prefHeight="30.0" prefWidth="96.0" text="Watchlist" />
                </children>
             </HBox>
             <HBox alignment="BOTTOM_LEFT">

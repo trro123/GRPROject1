@@ -3,7 +3,7 @@ package sample.model;
 import java.util.*;
 
 public class User{
-    private List<Watchable> watchlist;
+    private ArrayList<Watchable> watchlist;
     private String username;
     private String password;
     
@@ -22,7 +22,7 @@ public class User{
     }
 
 // get methods
-    public List<Watchable> getWatchlist(){
+    public ArrayList<Watchable> getWatchlist(){
         return watchlist;
     }
 
