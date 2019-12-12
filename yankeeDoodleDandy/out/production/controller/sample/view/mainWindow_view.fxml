@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="767.0" prefWidth="1059.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="767.0" prefWidth="1071.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Controller">
    <children>
 
       <HBox layoutX="41.0" layoutY="20.0" prefHeight="38.0" prefWidth="512.0">
@@ -57,11 +57,11 @@
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="infoBox" layoutX="827.0" layoutY="147.0" prefHeight="582.0" prefWidth="231.0">
+      <VBox fx:id="infoBox" layoutX="817.0" layoutY="120.0" prefHeight="627.0" prefWidth="240.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="303.0" prefWidth="278.0">
+            <HBox alignment="CENTER" prefHeight="242.0" prefWidth="240.0">
                <children>
-                  <ImageView fx:id="imageBox" fitHeight="303.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imageBox" fitHeight="269.0" fitWidth="191.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </HBox>
             <HBox fx:id="infoButtonBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
@@ -75,7 +75,7 @@
                   </VBox>
                </children>
             </HBox>
-            <TextFlow fx:id="infoText" prefHeight="179.0" prefWidth="231.0" />
+            <TextFlow fx:id="infoText" prefHeight="282.0" prefWidth="240.0" />
          </children>
       </VBox>
       <TextField fx:id="titleSearch" layoutX="567.0" layoutY="31.0" onKeyTyped="#search" prefHeight="27.0" prefWidth="418.0" promptText="Search by title ..." />
