@@ -208,7 +208,7 @@ public class Controller {
         imgv.setFitWidth(140);
         imgv.setPreserveRatio(true);
         Text text = new Text(m.getTitle() + "\n" + "Rating: " + m.getRating() + " / 10" + "\n"
-                + m.getGenres() + "\n" + m.getYear());
+                + m.getGenres() + "\n" + m.getYear() + "\n" + "\n");
         imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -221,6 +221,14 @@ public class Controller {
                 infoText.getChildren().add(text);
 
                 selected = m;
+
+                if(m instanceof Series){
+                    for(int i = 0; i < ((Series) m).getSeasons(); i++){
+                        Text seasonText = new Text("Season " + (i+1) + ": " + ((Series) m).getEpisodeCount(i) + " episodes"
+                                + "\n");
+                        infoText.getChildren().add(seasonText);
+                    }
+                }
             }
         });
 
