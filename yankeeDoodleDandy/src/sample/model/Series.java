@@ -25,7 +25,7 @@ public class Series extends Watchable{
     }
 
     public int getEpisodeCount(int index){ // returnerer antal afsnit i en given sæson; index 0 = første sæson, index 1 = anden osv.
-        
+
         return numberOfEpisodes.get(index);
     }
 
