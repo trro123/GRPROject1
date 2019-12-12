@@ -64,7 +64,7 @@ public class Controller {
     @FXML
     private ImageView imageBox;
 
-    // søge-metoder nedeunder
+    // søge-metoder
 
     private boolean searchAll;
     private boolean searchMovies;
@@ -139,6 +139,8 @@ public class Controller {
         searchSeries = true;
     }
 
+    // homescreen
+
     public void homescreen() {
         // homescreen() er en fuldstændig anden metode lige nu - laver en user og printer noget gøgl
 
@@ -158,6 +160,8 @@ public class Controller {
             System.out.println(m.getTitle());
         }
     }
+
+    // watchlist
 
     private boolean viewingWatchlist;
 
@@ -186,6 +190,9 @@ public class Controller {
         }
         watchlistRemoveButton.setVisible(false);
     }
+
+    // GUDE metoden
+    // (laver en kasse med et media object m og tilføjer den til TilePane)
 
     public void toRuleThemAll(Watchable m) { //bedste metode i verdenen :)
         File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg");
