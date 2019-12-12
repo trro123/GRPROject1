@@ -61,7 +61,7 @@
                            <VBox.margin>
                               <Insets bottom="5.0" />
                            </VBox.margin></Button>
-                        <Button fx:id="removeButton" mnemonicParsing="false" onAction="#watchlistRemove" text="Remove from Watchlist" visible="false">
+                        <Button fx:id="watchlistRemoveButton" mnemonicParsing="false" onAction="#watchlistRemove" text="Remove from Watchlist" visible="false">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin></Button>

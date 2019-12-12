@@ -20,26 +20,7 @@ public class Controller {
     private ArrayList<User> users;
     private User currentUser;
 
-    @FXML
-    private TilePane grid;
-
-    @FXML
-    private ScrollPane mediasPane;
-
-    @FXML
-    private TextField titleSearch;
-
-    @FXML
-    private Button watchlistAddButton;
-
-    @FXML
-    private Button playButton;
-
-    @FXML
-    private TextFlow infoText;
-
-    @FXML
-    private ImageView imageBox;
+    private boolean viewingWatchlist;
 
     public Controller() {
         users = new ArrayList<>();
@@ -61,8 +42,35 @@ public class Controller {
         users.add(user);
     }
 
+    @FXML
+    private ScrollPane mediasPane;
+
+    @FXML
+    private TilePane grid;
+
+    @FXML
+    private TextField titleSearch;
+
+    @FXML
+    private Button playButton;
+
+    @FXML
+    private Button watchlistAddButton;
+
+    @FXML
+    private Button watchlistRemoveButton;
+
+    @FXML
+    private TextFlow infoText;
+
+    @FXML
+    private ImageView imageBox;
 
     // søge-metoder nedeunder
+
+    private boolean searchAll;
+    private boolean searchMovies;
+    private boolean searchSeries;
 
     public void search() {
         grid.getChildren().clear();
@@ -88,12 +96,8 @@ public class Controller {
                 }
             }
         }
-
+        viewingWatchlist = false;
     }
-
-    private boolean searchAll;
-    private boolean searchMovies;
-    private boolean searchSeries;
 
     public void searchAll() {
         grid.getChildren().clear();
@@ -108,6 +112,8 @@ public class Controller {
         searchSeries = false;
 
         searchAll = true;
+
+        viewingWatchlist = false;
     }
 
     public void searchMovies() {
@@ -125,6 +131,8 @@ public class Controller {
         searchSeries = false;
 
         searchMovies = true;
+
+        viewingWatchlist = false;
     }
 
     public void searchSeries() {
@@ -140,6 +148,8 @@ public class Controller {
         searchAll = false;
         searchMovies = false;
         searchSeries = true;
+
+        viewingWatchlist = false;
     }
 
     public void homescreen() {
@@ -162,30 +172,33 @@ public class Controller {
         }
     }
 
-    public void watchlistAdd() {
-        //tilføj MovieAlreadyOnWatchlistException
-        System.out.println("Added " + selected.getTitle() + " to watchlist.");
-        currentUser.addToWatchlist(selected);
-    }
-
-    public void watchlistRemove(){
-        System.out.println("Removed " + selected.getTitle() + " from watchlist.");
-        currentUser.removeFromWatchlist(selected);
-        showWatchlist();
-    }
-
-    @FXML
-    private Button removeButton;
-
     public void showWatchlist() {
         grid.getChildren().clear();
 
         mediasPane.setContent(grid);
 
         for (Watchable m : currentUser.getWatchlist()) {
-
             toRuleThemAll(m);
         }
+
+        viewingWatchlist = true;
+    }
+
+    public void watchlistAdd() {
+        //tilføj MovieAlreadyOnWatchlistException
+        System.out.println("Added " + selected.getTitle() + " to watchlist.");
+        currentUser.addToWatchlist(selected);
+        watchlistRemoveButton.setVisible(true);
+    }
+
+    public void watchlistRemove(){
+        //tilføj MovieNotOnWatchlistException
+        System.out.println("Removed " + selected.getTitle() + " from watchlist.");
+        currentUser.removeFromWatchlist(selected);
+        if(viewingWatchlist){
+            showWatchlist();
+        }
+        watchlistRemoveButton.setVisible(false);
     }
 
     public void toRuleThemAll(Watchable m) { //bedste metode i verdenen :)
@@ -222,9 +235,9 @@ public class Controller {
                 }
 
                 if(currentUser.getWatchlist().contains(selected)){
-                    removeButton.setVisible(true);
+                    watchlistRemoveButton.setVisible(true);
                 } else {
-                    removeButton.setVisible(false);
+                    watchlistRemoveButton.setVisible(false);
                 }
             }
         });
