@@ -187,8 +187,6 @@ public class Controller {
     private Button removeButton;
 
     public void showWatchlist() {
-        removeButton.setVisible(true);
-
         grid.getChildren().clear();
 
         mediasPane.setContent(grid);
@@ -207,11 +205,16 @@ public class Controller {
         imgv.setImage(image);
         imgv.setFitWidth(140);
         imgv.setPreserveRatio(true);
-        Text text = new Text(m.getTitle() + "\n" + "Rating: " + m.getRating() + " / 10" + "\n"
-                + m.getGenres() + "\n" + m.getYear() + "\n" + "\n");
+        Text text = new Text(m.getTitle() + "\n"
+                + "Rating: " + m.getRating() + " / 10" + "\n"
+                + m.getGenres() + "\n"
+                + m.getYear() + "\n"
+                + "\n");
+
         imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                selected = m;
                 watchlistAddButton.setVisible(true);
                 playButton.setVisible(true);
 
@@ -220,25 +223,27 @@ public class Controller {
                 infoText.getChildren().clear();
                 infoText.getChildren().add(text);
 
-                selected = m;
-
                 if(m instanceof Series){
-                    for(int i = 0; i < ((Series) m).getSeasons(); i++){
-                        Text seasonText = new Text("Season " + (i+1) + ": " + ((Series) m).getEpisodeCount(i) + " episodes"
-                                + "\n");
+                    for(int i=0; i < ((Series) m).getSeasons(); i++){
+                        Text seasonText = new Text("Season " + (i+1) + ": " + ((Series) m).getEpisodeCount(i) + " episodes" + "\n");
                         infoText.getChildren().add(seasonText);
                     }
                 }
+
+                if(currentUser.getWatchlist().contains(selected)){
+                    removeButton.setVisible(true);
+                } else {
+                    removeButton.setVisible(false);
+                }
             }
         });
-
-        Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " + m.getRating() + " / 10" + "\n"
-                + m.getGenres() + "\n" + m.getYear()));
+        Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n"
+                + "Rating: " + m.getRating() + " / 10" + "\n"
+                + m.getGenres() + "\n"
+                + m.getYear() + "\n"));
 
         HBox imgbox = new HBox();
-
         imgbox.getChildren().add(imgv);
-
         grid.getChildren().add(imgbox);
     }
 

@@ -30,14 +30,22 @@ public class User{
         return username;
     }
 
+    public boolean emptyWatchlist(){
+        if(watchlist.size() == 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 // mutator methods
     public void addToWatchlist(Watchable m){
         watchlist.add(m);
-        m.watchlistAddBool();
+        //m.watchlistAddBool();
     }
 
     public void removeFromWatchlist(Watchable m){
         watchlist.remove(m);
-        m.watchlistRemoveBool();
+        //m.watchlistRemoveBool();
     }
 }

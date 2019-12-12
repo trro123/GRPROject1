@@ -8,6 +8,7 @@ public abstract class Watchable extends Media{
         onWatchlist = false;
     }
 
+    /*
 // get methods
 
     public boolean onWatchlist(){
@@ -23,4 +24,6 @@ public abstract class Watchable extends Media{
     public void watchlistRemoveBool(){
         onWatchlist = false;
     }
+
+     */
 }
