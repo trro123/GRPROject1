@@ -240,7 +240,7 @@ public class Controller {
 
 
     // Eventhandling til genre-knapperne herfra og til slut i denne klasse. Lad være med at kigge på det, lad være med at røre ved det. Tak.
-
+    // if it looks stupid but it works, it ain't stupid.
     public void actionButton(){
         grid.getChildren().clear();
 
