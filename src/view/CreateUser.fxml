@@ -66,8 +66,8 @@
                                     <PasswordField fx:id="createPass" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <PasswordField fx:id="createRepeatPass" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                     <DatePicker fx:id="createDate" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                    <TextField fx:id="createDisplayAge" onMouseClicked="#showAge" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                    <Label fx:id="age" text="Age" GridPane.rowIndex="4" />
+                                    <TextField fx:id="createDisplayAge" onInputMethodTextChanged="#showAge" onMouseDragged="#showAge" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <Label fx:id="age" text="Rated R" GridPane.rowIndex="4" />
                                  </children>
                               </GridPane>
                            </children>

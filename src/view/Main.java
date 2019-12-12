@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -33,7 +34,7 @@ public class Main extends Application {
     public static void showCreateUser() throws IOException {
         FXMLLoader l = new FXMLLoader();
         l.setLocation(Main.class.getResource("/view/CreateUser.fxml"));
-        BorderPane newUser = l.load();
+        AnchorPane newUser = l.load();
 
         Stage addDialogStage = new Stage();
         addDialogStage.setTitle("Create New User");

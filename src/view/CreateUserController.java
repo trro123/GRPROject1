@@ -1,8 +1,12 @@
 package view;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
+import model.Media;
+import model.MediaContainer;
+import model.Watchable;
 
 import java.awt.*;
 import java.util.Calendar;
