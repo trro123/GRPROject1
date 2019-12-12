@@ -65,8 +65,6 @@ public class Controller {
     // søge-metoder nedeunder
 
     public void search() {
-        removeButton.setVisible(false);
-
         grid.getChildren().clear();
         mediasPane.setContent(grid);
 
@@ -98,8 +96,6 @@ public class Controller {
     private boolean searchSeries;
 
     public void searchAll() {
-        removeButton.setVisible(false);
-
         grid.getChildren().clear();
 
         mediasPane.setContent(grid);
@@ -115,8 +111,6 @@ public class Controller {
     }
 
     public void searchMovies() {
-        removeButton.setVisible(false);
-
         grid.getChildren().clear();
 
 
@@ -134,8 +128,6 @@ public class Controller {
     }
 
     public void searchSeries() {
-        removeButton.setVisible(false);
-
         grid.getChildren().clear();
 
         mediasPane.setContent(grid);
@@ -152,7 +144,6 @@ public class Controller {
 
     public void homescreen() {
         // homescreen() er en fuldstændig anden metode lige nu - laver en user og printer noget gøgl
-        removeButton.setVisible(false);
 
         User user = new User("admin", "password");
         Controller controller = new Controller();
