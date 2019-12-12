@@ -64,10 +64,15 @@
                   <ImageView fx:id="imageBox" fitHeight="303.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox fx:id="infoButtonBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="watchlistAddButton" mnemonicParsing="false" onAction="#watchlistAdd" text="Add to Watchlist" visible="false" />
-                  <Button fx:id="playButton" mnemonicParsing="false" text="Play" visible="false" />
+                  <VBox prefHeight="90.0" prefWidth="161.0">
+                     <children>
+                        <Button fx:id="playButton" mnemonicParsing="false" text="Play" visible="false" />
+                        <Button fx:id="watchlistAddButton" mnemonicParsing="false" onAction="#watchlistAdd" text="Add to Watchlist" visible="false" />
+                        <Button fx:id="removeButton" mnemonicParsing="false" onAction="#watchlistRemove" text="Remove from Watchlist" visible="false" />
+                     </children>
+                  </VBox>
                </children>
             </HBox>
             <TextFlow fx:id="infoText" prefHeight="179.0" prefWidth="231.0" />

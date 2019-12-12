@@ -16,7 +16,11 @@ public abstract class Watchable extends Media{
 
 // mutator methods
 
-    public void addToWatchlist(){
+    public void watchlistAddBool(){
         onWatchlist = true;
+    }
+
+    public void watchlistRemoveBool(){
+        onWatchlist = false;
     }
 }

@@ -33,9 +33,11 @@ public class User{
 // mutator methods
     public void addToWatchlist(Watchable m){
         watchlist.add(m);
+        m.watchlistAddBool();
     }
 
     public void removeFromWatchlist(Watchable m){
         watchlist.remove(m);
+        m.watchlistRemoveBool();
     }
 }

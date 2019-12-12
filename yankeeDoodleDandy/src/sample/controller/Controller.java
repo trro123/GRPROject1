@@ -19,6 +19,7 @@ public class Controller {
     private Watchable selected;
     private ArrayList<User> users;
     private User currentUser;
+
     @FXML
     private TilePane grid;
 
@@ -60,10 +61,14 @@ public class Controller {
         users.add(user);
     }
 
+
+    // søge-metoder nedeunder
+
     public void search() {
+        removeButton.setVisible(false);
+
         grid.getChildren().clear();
         mediasPane.setContent(grid);
-
 
         if (searchAll == true && searchMovies == false && searchSeries == false) {
 
@@ -88,12 +93,12 @@ public class Controller {
 
     }
 
-
     private boolean searchAll;
     private boolean searchMovies;
     private boolean searchSeries;
 
     public void searchAll() {
+        removeButton.setVisible(false);
 
         grid.getChildren().clear();
 
@@ -110,6 +115,7 @@ public class Controller {
     }
 
     public void searchMovies() {
+        removeButton.setVisible(false);
 
         grid.getChildren().clear();
 
@@ -128,7 +134,7 @@ public class Controller {
     }
 
     public void searchSeries() {
-
+        removeButton.setVisible(false);
 
         grid.getChildren().clear();
 
@@ -146,6 +152,7 @@ public class Controller {
 
     public void homescreen() {
         // homescreen() er en fuldstændig anden metode lige nu - laver en user og printer noget gøgl
+        removeButton.setVisible(false);
 
         User user = new User("admin", "password");
         Controller controller = new Controller();
@@ -170,10 +177,19 @@ public class Controller {
         currentUser.addToWatchlist(selected);
     }
 
+    public void watchlistRemove(){
+        System.out.println("Removed " + selected.getTitle() + " from watchlist.");
+        currentUser.removeFromWatchlist(selected);
+        showWatchlist();
+    }
+
+    @FXML
+    private Button removeButton;
+
     public void showWatchlist() {
+        removeButton.setVisible(true);
 
         grid.getChildren().clear();
-
 
         mediasPane.setContent(grid);
 
@@ -182,7 +198,6 @@ public class Controller {
             toRuleThemAll(m);
         }
     }
-
 
     public void toRuleThemAll(Watchable m) { //bedste metode i verdenen :)
         File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg");
