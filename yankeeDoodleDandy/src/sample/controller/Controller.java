@@ -20,8 +20,6 @@ public class Controller {
     private ArrayList<User> users;
     private User currentUser;
 
-    private boolean viewingWatchlist;
-
     public Controller() {
         users = new ArrayList<>();
         this.medias = new MediaContainer();
@@ -74,6 +72,7 @@ public class Controller {
 
     public void search() {
         grid.getChildren().clear();
+        viewingWatchlist = false;
         mediasPane.setContent(grid);
 
         if (searchAll == true && searchMovies == false && searchSeries == false) {
@@ -96,12 +95,11 @@ public class Controller {
                 }
             }
         }
-        viewingWatchlist = false;
     }
 
     public void searchAll() {
         grid.getChildren().clear();
-
+        viewingWatchlist = false;
         mediasPane.setContent(grid);
 
         for (Watchable m : medias.getJoinedList()) {
@@ -110,18 +108,13 @@ public class Controller {
 
         searchMovies = false;
         searchSeries = false;
-
         searchAll = true;
-
-        viewingWatchlist = false;
     }
 
     public void searchMovies() {
         grid.getChildren().clear();
-
-
+        viewingWatchlist = false;
         mediasPane.setContent(grid);
-
 
         for (Movie m : medias.getMovies()) {
             toRuleThemAll(m);
@@ -129,17 +122,13 @@ public class Controller {
 
         searchAll = false;
         searchSeries = false;
-
         searchMovies = true;
-
-        viewingWatchlist = false;
     }
 
     public void searchSeries() {
         grid.getChildren().clear();
-
+        viewingWatchlist = false;
         mediasPane.setContent(grid);
-
 
         for (Series m : medias.getSeries()) {
             toRuleThemAll(m);
@@ -148,8 +137,6 @@ public class Controller {
         searchAll = false;
         searchMovies = false;
         searchSeries = true;
-
-        viewingWatchlist = false;
     }
 
     public void homescreen() {
@@ -172,9 +159,10 @@ public class Controller {
         }
     }
 
+    private boolean viewingWatchlist;
+
     public void showWatchlist() {
         grid.getChildren().clear();
-
         mediasPane.setContent(grid);
 
         for (Watchable m : currentUser.getWatchlist()) {
@@ -186,14 +174,12 @@ public class Controller {
 
     public void watchlistAdd() {
         //tilføj MovieAlreadyOnWatchlistException
-        System.out.println("Added " + selected.getTitle() + " to watchlist.");
         currentUser.addToWatchlist(selected);
         watchlistRemoveButton.setVisible(true);
     }
 
     public void watchlistRemove(){
         //tilføj MovieNotOnWatchlistException
-        System.out.println("Removed " + selected.getTitle() + " from watchlist.");
         currentUser.removeFromWatchlist(selected);
         if(viewingWatchlist){
             showWatchlist();
