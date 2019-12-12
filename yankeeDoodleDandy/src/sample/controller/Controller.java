@@ -174,129 +174,71 @@ public class Controller {
              */
         }
     }
-    public void actionButton(){
+
+
+    @FXML
+    private MenuItem Action;
+    @FXML
+    private MenuItem Adventure;
+    @FXML
+    private MenuItem Animation;
+    @FXML
+    private MenuItem Biography;
+    @FXML
+    private MenuItem Comedy;
+
+    @FXML
+    private MenuItem Crime;
+    @FXML
+    private MenuItem Documentary;
+    @FXML
+    private MenuItem Family;
+    @FXML
+    private MenuItem Fantasy;
+    @FXML
+    private MenuItem FilmNoir;
+    @FXML
+    private MenuItem History;
+    @FXML
+    private MenuItem Horror;
+    @FXML
+    private MenuItem Music;
+    @FXML
+    private MenuItem Musical;
+    @FXML
+    private MenuItem Mystery;
+    @FXML
+    private MenuItem Romance;
+    @FXML
+    private MenuItem Scifi;
+    @FXML
+    private MenuItem Sport;
+    @FXML
+    private MenuItem Talkshow;
+    @FXML
+    private MenuItem Thriller;
+    @FXML
+    private MenuItem War;
+    @FXML
+    private MenuItem Western;
+
+    public void chooseGenre(MenuItem i) {
         grid.getChildren().clear();
 
-        for (Watchable m : medias.getJoinedList()){
-            if (m.getGenres().contains("Action")) {
-                toRuleThemAll(m);
-            }
-        }
-    }
-    public void adventureButton(){
-        grid.getChildren().clear();
-
-        for (Watchable m : medias.getJoinedList()){
-            if (m.getGenres().contains("Adventure")) {
-                toRuleThemAll(m);
-            }
-        }
-    }
-    public void animationButton(){
-        grid.getChildren().clear();
-
-        for (Watchable m : medias.getJoinedList()){
-            if (m.getGenres().contains("Animation")) {
-                toRuleThemAll(m);
-            }
-        }
-    }
-    public void biographyButton(){
-        grid.getChildren().clear();
-
-        for (Watchable m : medias.getJoinedList()){
+        for (Watchable m : medias.getJoinedList()) {
             if (searchAll == true) {
-                if (m.getGenres().contains("Biography")) {
+                if (m.getGenres().contains(i.getId())) {
                     toRuleThemAll(m);
                 }
-            }
-            else if (searchMovies == true){
-                if (m instanceof Movie){
-                    if (m.getGenres().contains("Biography")){
+            } else if (searchMovies == true) {
+                if (m instanceof Movie) {
+                    if (m.getGenres().contains(i.getId())) {
                         toRuleThemAll(m);
                     }
                 }
-            }
-            else if (searchSeries == true){
-                if (m instanceof Series){
-                    if (m.getGenres().contains("Biography")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-        }
-    }
-    public void comedyButton(){
-        grid.getChildren().clear();
-
-        for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
-                if (m.getGenres().contains("Comedy")) {
-                    toRuleThemAll(m);
-                }
-            }
-            else if (searchMovies == true){
-                if (m instanceof Movie){
-                    if (m.getGenres().contains("Comedy")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-            else if (searchSeries == true){
-                if (m instanceof Series){
-                    if (m.getGenres().contains("Comedy")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-        }
-    }
-
-    public void crimeButton(){
-        grid.getChildren().clear();
-
-        for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
-                if (m.getGenres().contains("Crime")) {
-                    toRuleThemAll(m);
-                }
-            }
-            else if (searchMovies == true){
-                if (m instanceof Movie){
-                    if (m.getGenres().contains("Crime")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-            else if (searchSeries == true){
-                if (m instanceof Series){
-                    if (m.getGenres().contains("Crime")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-        }
-    }
-
-    public void documentaryButton(){
-        grid.getChildren().clear();
-
-        for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
-                if (m.getGenres().contains("Documentary")) {
-                    toRuleThemAll(m);
-                }
-            }
-            else if (searchMovies == true){
-                if (m instanceof Movie){
-                    if (m.getGenres().contains("Documentary")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-            else if (searchSeries == true){
-                if (m instanceof Series){
-                    if (m.getGenres().contains("Documentary")){
+            } else if (searchSeries == true) {
+                if (m instanceof Series) {
+                    if (m.getGenres().contains(i.getId())) {
                         toRuleThemAll(m);
                     }
                 }
@@ -305,407 +247,6 @@ public class Controller {
     }
 
 
-    public void dramaButton(){
-        grid.getChildren().clear();
-
-        for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
-                if (m.getGenres().contains("Drama")) {
-                    toRuleThemAll(m);
-                }
-            }
-            else if (searchMovies == true){
-                if (m instanceof Movie){
-                    if (m.getGenres().contains("Drama")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-            else if (searchSeries == true){
-                if (m instanceof Series){
-                    if (m.getGenres().contains("Drama")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-        }
-    }
-    public void familyButton(){
-        grid.getChildren().clear();
-
-        for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
-                if (m.getGenres().contains("Family")) {
-                    toRuleThemAll(m);
-                }
-            }
-            else if (searchMovies == true){
-                if (m instanceof Movie){
-                    if (m.getGenres().contains("Family")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-            else if (searchSeries == true){
-                if (m instanceof Series){
-                    if (m.getGenres().contains("Family")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-        }
-    }
-    public void fantasyButton(){
-        grid.getChildren().clear();
-
-        for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
-                if (m.getGenres().contains("Fantasy")) {
-                    toRuleThemAll(m);
-                }
-            }
-            else if (searchMovies == true){
-                if (m instanceof Movie){
-                    if (m.getGenres().contains("Fantasy")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-            else if (searchSeries == true){
-                if (m instanceof Series){
-                    if (m.getGenres().contains("Fantasy")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-        }
-    }
-
-    public void filmnoirButton(){
-        grid.getChildren().clear();
-
-        for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
-                if (m.getGenres().contains("Film-Noir")) {
-                    toRuleThemAll(m);
-                }
-            }
-            else if (searchMovies == true){
-                if (m instanceof Movie){
-                    if (m.getGenres().contains("Film-Noir")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-            else if (searchSeries == true){
-                if (m instanceof Series){
-                    if (m.getGenres().contains("Film-Noir")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-        }
-    }
-    public void historyButton(){
-        grid.getChildren().clear();
-
-        for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
-                if (m.getGenres().contains("History")) {
-                    toRuleThemAll(m);
-                }
-            }
-            else if (searchMovies == true){
-                if (m instanceof Movie){
-                    if (m.getGenres().contains("History")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-            else if (searchSeries == true){
-                if (m instanceof Series){
-                    if (m.getGenres().contains("History")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-        }
-    }
-    public void horrorButton(){
-        grid.getChildren().clear();
-
-        for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
-                if (m.getGenres().contains("Horror")) {
-                    toRuleThemAll(m);
-                }
-            }
-            else if (searchMovies == true){
-                if (m instanceof Movie){
-                    if (m.getGenres().contains("Horror")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-            else if (searchSeries == true){
-                if (m instanceof Series){
-                    if (m.getGenres().contains("Horror")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-        }
-    }
-    public void musicButton(){
-        grid.getChildren().clear();
-
-        for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
-                if (m.getGenres().contains("Music")) {
-                    toRuleThemAll(m);
-                }
-            }
-            else if (searchMovies == true){
-                if (m instanceof Movie){
-                    if (m.getGenres().contains("Music")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-            else if (searchSeries == true){
-                if (m instanceof Series){
-                    if (m.getGenres().contains("Music")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-        }
-    }
-    public void musicalButton(){
-        grid.getChildren().clear();
-
-        for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
-                if (m.getGenres().contains("Musical")) {
-                    toRuleThemAll(m);
-                }
-            }
-            else if (searchMovies == true){
-                if (m instanceof Movie){
-                    if (m.getGenres().contains("Musical")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-            else if (searchSeries == true){
-                if (m instanceof Series){
-                    if (m.getGenres().contains("Musical")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-        }
-    }
-    public void mysteryButton(){
-        grid.getChildren().clear();
-
-        for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
-                if (m.getGenres().contains("Mystery")) {
-                    toRuleThemAll(m);
-                }
-            }
-            else if (searchMovies == true){
-                if (m instanceof Movie){
-                    if (m.getGenres().contains("Mystery")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-            else if (searchSeries == true){
-                if (m instanceof Series){
-                    if (m.getGenres().contains("Mystery")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-        }
-    }
-    public void romanceButton(){
-        grid.getChildren().clear();
-
-        for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
-                if (m.getGenres().contains("Romance")) {
-                    toRuleThemAll(m);
-                }
-            }
-            else if (searchMovies == true){
-                if (m instanceof Movie){
-                    if (m.getGenres().contains("Romance")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-            else if (searchSeries == true){
-                if (m instanceof Series){
-                    if (m.getGenres().contains("Romance")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-        }
-    }
-    public void scifiButton(){
-        grid.getChildren().clear();
-
-        for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
-                if (m.getGenres().contains("Sci-fi")) {
-                    toRuleThemAll(m);
-                }
-            }
-            else if (searchMovies == true){
-                if (m instanceof Movie){
-                    if (m.getGenres().contains("Sci-fi")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-            else if (searchSeries == true){
-                if (m instanceof Series){
-                    if (m.getGenres().contains("Sci-fi")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-        }
-    }
-    public void sportButton(){
-        grid.getChildren().clear();
-
-        for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
-                if (m.getGenres().contains("Sport")) {
-                    toRuleThemAll(m);
-                }
-            }
-            else if (searchMovies == true){
-                if (m instanceof Movie){
-                    if (m.getGenres().contains("Sport")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-            else if (searchSeries == true){
-                if (m instanceof Series){
-                    if (m.getGenres().contains("Sport")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-        }
-    }
-    public void talkshowButton(){
-        grid.getChildren().clear();
-
-        for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
-                if (m.getGenres().contains("Talk-show")) {
-                    toRuleThemAll(m);
-                }
-            }
-            else if (searchMovies == true){
-                if (m instanceof Movie){
-                    if (m.getGenres().contains("Talk-show")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-            else if (searchSeries == true){
-                if (m instanceof Series){
-                    if (m.getGenres().contains("Talk-show")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-        }
-    }
-    public void thrillerButton(){
-        grid.getChildren().clear();
-
-        for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
-                if (m.getGenres().contains("Thriller")) {
-                    toRuleThemAll(m);
-                }
-            }
-            else if (searchMovies == true){
-                if (m instanceof Movie){
-                    if (m.getGenres().contains("Thriller")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-            else if (searchSeries == true){
-                if (m instanceof Series){
-                    if (m.getGenres().contains("Thriller")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-        }
-    }
-    public void warButton(){
-        grid.getChildren().clear();
-
-        for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
-                if (m.getGenres().contains("War")) {
-                    toRuleThemAll(m);
-                }
-            }
-            else if (searchMovies == true){
-                if (m instanceof Movie){
-                    if (m.getGenres().contains("War")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-            else if (searchSeries == true){
-                if (m instanceof Series){
-                    if (m.getGenres().contains("War")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-        }
-    }
-    public void westernButton(){
-        grid.getChildren().clear();
-
-        for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
-                if (m.getGenres().contains("Western")) {
-                    toRuleThemAll(m);
-                }
-            }
-            else if (searchMovies == true){
-                if (m instanceof Movie){
-                    if (m.getGenres().contains("Western")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-            else if (searchSeries == true){
-                if (m instanceof Series){
-                    if (m.getGenres().contains("Western")){
-                        toRuleThemAll(m);
-                    }
-                }
-            }
-        }
-    }
     public void homescreen() {
         // homescreen() er en fuldstændig anden metode lige nu - laver en user og printer noget gøgl
 

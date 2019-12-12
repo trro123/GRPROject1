@@ -81,7 +81,7 @@
          </content></ScrollPane>
       <MenuButton fx:id="genreChooser" layoutY="156.0" mnemonicParsing="false" text="Choose genre">
         <items>
-          <MenuItem fx:id="action" mnemonicParsing="false" onAction="#actionButton" text="Action" />
+          <MenuItem fx:id="Action" mnemonicParsing="false" onAction="#actionButton" text="Action" />
           <MenuItem fx:id="adventure" mnemonicParsing="false" onAction="#adventureButton" text="Adventure" />
             <MenuItem fx:id="animation" mnemonicParsing="false" onAction="#animationButton" text="Animation" />
             <MenuItem fx:id="biographyChooser" mnemonicParsing="false" onAction="#biographyButton" text="Biography" />
