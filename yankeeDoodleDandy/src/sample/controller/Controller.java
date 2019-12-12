@@ -1,6 +1,5 @@
 package sample.controller;
 
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
@@ -145,62 +144,166 @@ public class Controller {
         searchSeries = true;
     }
 
-    @FXML
-    private MenuButton genreChooser;
-    @FXML
-    private MenuItem lilChooser;
+    public void homescreen() {
+        // homescreen() er en fuldstændig anden metode lige nu - laver en user og printer noget gøgl
 
-    private ArrayList<MenuItem> genres;
+        User user = new User("admin", "password");
+        Controller controller = new Controller();
+        controller.addUser(user);
 
-    public void chooseGenre() {
+
+        if (controller.getUsers().contains(user)) {
+            System.out.println("jads");
+        }
+
+        currentUser = user;
+        currentUser.addToWatchlist(medias.getMovies().get(99));
+
+        for (Watchable m : currentUser.getWatchlist()) {
+            System.out.println(m.getTitle());
+        }
+    }
+
+    public void watchlistAdd() {
+        //tilføj MovieAlreadyOnWatchlistException
+        System.out.println("Added " + selected.getTitle() + " to watchlist.");
+        currentUser.addToWatchlist(selected);
+    }
+
+    public void showWatchlist() {
+
         grid.getChildren().clear();
 
 
         mediasPane.setContent(grid);
-        System.out.println();
-//        genres.addAll();
 
-        for (Watchable m : medias.getJoinedList()) {
-            for (MenuItem n : genres) {
-                if (m.getGenres().contains(n.getId())) {
-                        toRuleThemAll(m);
-                        System.out.println("benis");
-                }
-            }
-            /*else if(m.getGenres().contains("Adventure")){
+        for (Watchable m : currentUser.getWatchlist()) {
+
             toRuleThemAll(m);
-            }
-
-             */
         }
     }
+
+
+    public void toRuleThemAll(Watchable m) { //bedste metode i verdenen :)
+        File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg");
+        Image image = new Image(file.toURI().toString());
+
+        ImageView imgv = new ImageView();
+        imgv.setImage(image);
+        imgv.setFitWidth(140);
+        imgv.setPreserveRatio(true);
+        Text text = new Text(m.getTitle() + "\n" + "Rating: " + m.getRating() + " / 10" + "\n"
+                + m.getGenres() + "\n" + m.getYear());
+        imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                watchlistAddButton.setVisible(true);
+                playButton.setVisible(true);
+
+                imageBox.setImage(image);
+
+                infoText.getChildren().clear();
+                infoText.getChildren().add(text);
+
+                selected = m;
+            }
+        });
+
+        Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " + m.getRating() + " / 10" + "\n"
+                + m.getGenres() + "\n" + m.getYear()));
+
+        HBox imgbox = new HBox();
+
+        imgbox.getChildren().add(imgv);
+
+        grid.getChildren().add(imgbox);
+    }
+
+
+
+
+
+
+    // Eventhandling til genre-knapperne herfra og til slut i denne klasse. Lad være med at kigge på det, lad være med at røre ved det. Tak.
+
     public void actionButton(){
         grid.getChildren().clear();
 
         for (Watchable m : medias.getJoinedList()){
-            if (m.getGenres().contains("Action")) {
-                toRuleThemAll(m);
+            if (searchAll == true) {
+                if (m.getGenres().contains("Action")) {
+                    toRuleThemAll(m);
+                }
+            }
+            else if (searchMovies == true){
+                if (m instanceof Movie){
+                    if (m.getGenres().contains("Action")){
+                        toRuleThemAll(m);
+                    }
+                }
+            }
+            else if (searchSeries == true){
+                if (m instanceof Series){
+                    if (m.getGenres().contains("Action")){
+                        toRuleThemAll(m);
+                    }
+                }
             }
         }
     }
+
     public void adventureButton(){
         grid.getChildren().clear();
 
         for (Watchable m : medias.getJoinedList()){
-            if (m.getGenres().contains("Adventure")) {
-                toRuleThemAll(m);
+            if (searchAll == true) {
+                if (m.getGenres().contains("Adventure")) {
+                    toRuleThemAll(m);
+                }
+            }
+            else if (searchMovies == true){
+                if (m instanceof Movie){
+                    if (m.getGenres().contains("Adventure")){
+                        toRuleThemAll(m);
+                    }
+                }
+            }
+            else if (searchSeries == true){
+                if (m instanceof Series){
+                    if (m.getGenres().contains("Adventure")){
+                        toRuleThemAll(m);
+                    }
+                }
             }
         }
     }
+
     public void animationButton(){
         grid.getChildren().clear();
 
         for (Watchable m : medias.getJoinedList()){
-            if (m.getGenres().contains("Animation")) {
-                toRuleThemAll(m);
+            if (searchAll == true) {
+                if (m.getGenres().contains("Animation")) {
+                    toRuleThemAll(m);
+                }
+            }
+            else if (searchMovies == true){
+                if (m instanceof Movie){
+                    if (m.getGenres().contains("Animation")){
+                        toRuleThemAll(m);
+                    }
+                }
+            }
+            else if (searchSeries == true){
+                if (m instanceof Series){
+                    if (m.getGenres().contains("Animation")){
+                        toRuleThemAll(m);
+                    }
+                }
             }
         }
     }
+
     public void biographyButton(){
         grid.getChildren().clear();
 
@@ -226,6 +329,7 @@ public class Controller {
             }
         }
     }
+
     public void comedyButton(){
         grid.getChildren().clear();
 
@@ -330,6 +434,7 @@ public class Controller {
             }
         }
     }
+
     public void familyButton(){
         grid.getChildren().clear();
 
@@ -355,6 +460,7 @@ public class Controller {
             }
         }
     }
+
     public void fantasyButton(){
         grid.getChildren().clear();
 
@@ -406,6 +512,7 @@ public class Controller {
             }
         }
     }
+
     public void historyButton(){
         grid.getChildren().clear();
 
@@ -431,6 +538,7 @@ public class Controller {
             }
         }
     }
+
     public void horrorButton(){
         grid.getChildren().clear();
 
@@ -456,6 +564,7 @@ public class Controller {
             }
         }
     }
+
     public void musicButton(){
         grid.getChildren().clear();
 
@@ -481,6 +590,7 @@ public class Controller {
             }
         }
     }
+
     public void musicalButton(){
         grid.getChildren().clear();
 
@@ -506,6 +616,7 @@ public class Controller {
             }
         }
     }
+
     public void mysteryButton(){
         grid.getChildren().clear();
 
@@ -531,6 +642,7 @@ public class Controller {
             }
         }
     }
+
     public void romanceButton(){
         grid.getChildren().clear();
 
@@ -556,6 +668,7 @@ public class Controller {
             }
         }
     }
+
     public void scifiButton(){
         grid.getChildren().clear();
 
@@ -581,6 +694,7 @@ public class Controller {
             }
         }
     }
+
     public void sportButton(){
         grid.getChildren().clear();
 
@@ -606,6 +720,7 @@ public class Controller {
             }
         }
     }
+
     public void talkshowButton(){
         grid.getChildren().clear();
 
@@ -631,6 +746,7 @@ public class Controller {
             }
         }
     }
+
     public void thrillerButton(){
         grid.getChildren().clear();
 
@@ -656,6 +772,7 @@ public class Controller {
             }
         }
     }
+
     public void warButton(){
         grid.getChildren().clear();
 
@@ -681,6 +798,7 @@ public class Controller {
             }
         }
     }
+
     public void westernButton(){
         grid.getChildren().clear();
 
@@ -705,79 +823,5 @@ public class Controller {
                 }
             }
         }
-    }
-    public void homescreen() {
-        // homescreen() er en fuldstændig anden metode lige nu - laver en user og printer noget gøgl
-
-        User user = new User("admin", "password");
-        Controller controller = new Controller();
-        controller.addUser(user);
-
-
-        if (controller.getUsers().contains(user)) {
-            System.out.println("jads");
-        }
-
-        currentUser = user;
-        currentUser.addToWatchlist(medias.getMovies().get(99));
-
-        for (Watchable m : currentUser.getWatchlist()) {
-            System.out.println(m.getTitle());
-        }
-    }
-
-    public void watchlistAdd() {
-        //tilføj MovieAlreadyOnWatchlistException
-        System.out.println("Added " + selected.getTitle() + " to watchlist.");
-        currentUser.addToWatchlist(selected);
-    }
-
-    public void showWatchlist() {
-
-        grid.getChildren().clear();
-
-
-        mediasPane.setContent(grid);
-
-        for (Watchable m : currentUser.getWatchlist()) {
-
-            toRuleThemAll(m);
-        }
-    }
-
-
-    public void toRuleThemAll(Watchable m) { //bedste metode i verdenen :)
-        File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg");
-        Image image = new Image(file.toURI().toString());
-
-        ImageView imgv = new ImageView();
-        imgv.setImage(image);
-        imgv.setFitWidth(140);
-        imgv.setPreserveRatio(true);
-        Text text = new Text(m.getTitle() + "\n" + "Rating: " + m.getRating() + " / 10" + "\n"
-                + m.getGenres() + "\n" + m.getYear());
-        imgv.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                watchlistAddButton.setVisible(true);
-                playButton.setVisible(true);
-
-                imageBox.setImage(image);
-
-                infoText.getChildren().clear();
-                infoText.getChildren().add(text);
-
-                selected = m;
-            }
-        });
-
-        Tooltip.install(imgv, new Tooltip(m.getTitle() + "\n" + "Rating: " + m.getRating() + " / 10" + "\n"
-                + m.getGenres() + "\n" + m.getYear()));
-
-        HBox imgbox = new HBox();
-
-        imgbox.getChildren().add(imgv);
-
-        grid.getChildren().add(imgbox);
     }
 }
