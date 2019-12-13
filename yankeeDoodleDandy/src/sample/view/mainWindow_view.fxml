@@ -71,7 +71,15 @@
             </HBox>
             <ScrollPane hbarPolicy="NEVER" prefHeight="279.0" prefWidth="240.0" vbarPolicy="NEVER">
                <content>
-                  <TextFlow fx:id="infoText" prefHeight="0.0" prefWidth="240.0" />
+                  <VBox>
+                     <children>
+                        <TextFlow fx:id="infoText" prefHeight="0.0" prefWidth="240.0">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </TextFlow>
+                     </children>
+                  </VBox>
                </content>
             </ScrollPane>
          </children>

@@ -104,6 +104,7 @@ public class Controller {
         grid.getChildren().clear();
         viewingWatchlist = false;
         mediasPane.setContent(grid);
+        genreChooser.setText("Choose genre");
 
         for (Watchable m : medias.getJoinedList()) {
             toRuleThemAll(m);
@@ -118,6 +119,7 @@ public class Controller {
         grid.getChildren().clear();
         viewingWatchlist = false;
         mediasPane.setContent(grid);
+        genreChooser.setText("Choose genre");
 
         for (Movie m : medias.getMovies()) {
             toRuleThemAll(m);
@@ -132,6 +134,7 @@ public class Controller {
         grid.getChildren().clear();
         viewingWatchlist = false;
         mediasPane.setContent(grid);
+        genreChooser.setText("Choose genre");
 
         for (Series m : medias.getSeries()) {
             toRuleThemAll(m);
@@ -197,6 +200,9 @@ public class Controller {
         watchlistRemoveButton.setVisible(false);
     }
 
+    @FXML
+    private MenuButton seasonChooser;
+
     // GUDE metoden
     // (laver en kasse med et media object m og tilføjer den til TilePane)
 
@@ -235,14 +241,18 @@ public class Controller {
                             + m.getYear() + " - "+ ((Series) m).getEndYearString()
                             + "\n"));
                     infoText.getChildren().add(text2);
+
                     MenuButton seasonButton = new MenuButton("Choose season");
                     infoText.getChildren().add(seasonButton);
-                    int endYear1 = ((Series) m).getEndYear();
+                    MenuButton episodeChooser = new MenuButton("Nothing here");
+                    infoText.getChildren().add(episodeChooser);
+
                     for(int i=0; i < ((Series) m).getSeasons(); i++){
                         MenuItem seasonItem = new MenuItem();
                         seasonItem.setText("season: " + (i+1));
                         seasonButton.getItems().add(seasonItem);
                         int finalI = i;
+
                         EventHandler bix = new EventHandler() {
                             @Override
                             public void handle(Event event) {
@@ -251,7 +261,14 @@ public class Controller {
 
                                 for (int j = 0; j < ((Series) m).getEpisodeCount(finalI); j++){
                                     MenuItem episodeItem = new MenuItem("Episode: " + (j+1));
-                                    seasonButton.getItems().add(episodeItem);
+                                    EventHandler episodeEvent = new EventHandler() {
+                                        @Override
+                                        public void handle(Event event) {
+                                            episodeChooser.setText(episodeItem.getText());
+                                        }
+                                    };
+                                    episodeItem.setOnAction(episodeEvent);
+                                    episodeChooser.getItems().add(episodeItem);
                                 }
 
                             }
