@@ -70,8 +70,8 @@
                                     <Label fx:id="repeatPass" text="Repeat Password" GridPane.rowIndex="2" />
                                     <Label fx:id="birthday" text="Date of Birth" GridPane.rowIndex="3" />
                                     <TextField fx:id="createUserName" GridPane.columnIndex="1" />
-                                    <PasswordField fx:id="createPass" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <PasswordField fx:id="createRepeatPass" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <PasswordField fx:id="createPassword" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <PasswordField fx:id="createPasswordRepeat" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                     <DatePicker fx:id="createDate" onAction="#showAge" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                     <Label fx:id="createAgeDisplay" text="Rated R status will show here." textFill="#000000ae" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                        <font>

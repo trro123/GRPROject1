@@ -47,9 +47,10 @@ public class CreateUserController {
         app_stage.hide();
     }
 
-    public void ok(javafx.event.ActionEvent actionEvent) throws IOException { System.out.println("Hej"); //IKKE SLET DENNE METODE. Den skal nok virke en dag.
-/*        if (createPassword.getText()!=(createPasswordRepeat.getText())){
+    public void ok(javafx.event.ActionEvent actionEvent) throws IOException {
+        if (createPassword.getText() != (createPasswordRepeat.getText())){
             errorMessage.setText("ERROR: Please make sure your passwords match.");
+            System.out.println(createPassword.getText()+ " "+ createPasswordRepeat.getText());
         }
         if (createUserName.getText()==null) {
             errorMessage.setText("ERROR: Please choose a username.");
@@ -61,8 +62,6 @@ public class CreateUserController {
         else{
             System.out.println("This user has chosen the username " + createUserName.getText() +". The user has also chosen a password. That password is: " + createPassword.getText() + ". Please don't tell anyone! The user named " + createUserName.getText() + " has enlightened us with their birthday, and we conclude that for this particular user, based on their age: "+createAgeDisplay.getText());
         }
-
- */
     }
 
 
