@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -19,11 +20,14 @@ public class CreateUserController {
     private Label createAgeDisplay;
     @FXML
     private DatePicker createDate;
-
-    public void cancel(javafx.event.ActionEvent actionEvent) throws IOException {
-        Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        app_stage.hide();
-    }
+    @FXML
+    private PasswordField createPassword;
+    @FXML
+    private PasswordField createPasswordRepeat;
+    @FXML
+    private TextField createUserName;
+    @FXML
+    private Label errorMessage;
 
     @FXML
     private void showAge() {
@@ -36,5 +40,30 @@ public class CreateUserController {
         } else {
             createAgeDisplay.setText("R-rated content enabled.");
         }
+
     }
+    public void cancel(javafx.event.ActionEvent actionEvent) throws IOException {
+        Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        app_stage.hide();
+    }
+
+    public void ok(javafx.event.ActionEvent actionEvent) throws IOException { System.out.println("Hej"); //IKKE SLET DENNE METODE. Den skal nok virke en dag.
+/*        if (createPassword.getText()!=(createPasswordRepeat.getText())){
+            errorMessage.setText("ERROR: Please make sure your passwords match.");
+        }
+        if (createUserName.getText()==null) {
+            errorMessage.setText("ERROR: Please choose a username.");
+        }
+
+        if (createAgeDisplay.getText()=="Rated R status will show here.") {
+            errorMessage.setText("ERROR: Birthday input invalid.");
+        }
+        else{
+            System.out.println("This user has chosen the username " + createUserName.getText() +". The user has also chosen a password. That password is: " + createPassword.getText() + ". Please don't tell anyone! The user named " + createUserName.getText() + " has enlightened us with their birthday, and we conclude that for this particular user, based on their age: "+createAgeDisplay.getText());
+        }
+
+ */
+    }
+
+
 }
