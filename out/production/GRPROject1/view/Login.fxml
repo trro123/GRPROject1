@@ -29,7 +29,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="newUserButton" layoutX="325.0" layoutY="370.0" mnemonicParsing="false" onAction="#newUser" text="New User?" textFill="#a2a2a2">
+      <Button layoutX="325.0" layoutY="370.0" mnemonicParsing="false" onAction="#newUser" text="New User?" textFill="#a2a2a2">
          <font>
             <Font size="14.0" />
          </font>

@@ -10,6 +10,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.awt.*;
@@ -29,8 +30,18 @@ public class LoginController {
     private Label loginStatus;
 
     @FXML
+    private Button newUserButton;
+
+    @FXML
     private void newUser() throws IOException{
-        main.showCreateUser();
+        Stage stage;
+        Parent root;
+
+        stage = new Stage();
+        root = FXMLLoader.load(getClass().getResource("/view/CreateUser.fxml"));
+        stage.setScene(new Scene(root));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
     }
 
     public void login(javafx.event.ActionEvent actionEvent) throws IOException {

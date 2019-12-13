@@ -22,8 +22,8 @@
    <bottom>
       <HBox alignment="TOP_CENTER" prefHeight="40.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="buttonOk" mnemonicParsing="false" prefWidth="80.0" text="Ok" />
-            <Button fx:id="buttonCancel" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefWidth="80.0" text="Cancel" />
+            <Button mnemonicParsing="false" prefWidth="80.0" text="Ok" />
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefWidth="80.0" text="Cancel" />
          </children>
       </HBox>
    </bottom>
@@ -62,12 +62,12 @@
                                     <Label fx:id="pass" text="Password" GridPane.rowIndex="1" />
                                     <Label fx:id="repeatPass" text="Repeat Password" GridPane.rowIndex="2" />
                                     <Label fx:id="birthday" text="Date of Birth" GridPane.rowIndex="3" />
-                                    <TextField fx:id="createName" GridPane.columnIndex="1" />
+                                    <TextField GridPane.columnIndex="1" />
                                     <PasswordField fx:id="createPass" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <PasswordField fx:id="createRepeatPass" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                     <DatePicker fx:id="createDate" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                    <TextField fx:id="createDisplayAge" onMouseClicked="#showAge" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                    <Label fx:id="age" text="Age" GridPane.rowIndex="4" />
+                                    <TextField fx:id="createDisplayAge" onInputMethodTextChanged="#showAge" onMouseDragged="#showAge" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <Label fx:id="age" text="Rated R" GridPane.rowIndex="4" />
                                  </children>
                               </GridPane>
                            </children>
