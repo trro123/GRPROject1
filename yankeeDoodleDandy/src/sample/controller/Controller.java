@@ -179,6 +179,9 @@ public class Controller {
     public void watchlistAdd() {
         //tilføj MovieAlreadyOnWatchlistException
         currentUser.addToWatchlist(selected);
+        if(viewingWatchlist){
+            showWatchlist();
+        }
         watchlistRemoveButton.setVisible(true);
     }
 
