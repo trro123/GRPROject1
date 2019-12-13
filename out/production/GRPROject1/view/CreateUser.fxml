@@ -23,7 +23,7 @@
       <HBox alignment="TOP_CENTER" prefHeight="40.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" prefWidth="80.0" text="Ok" />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefWidth="80.0" text="Cancel" />
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#cancel" prefWidth="80.0" text="Cancel" />
          </children>
       </HBox>
    </bottom>
@@ -66,7 +66,11 @@
                                     <PasswordField fx:id="createPass" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <PasswordField fx:id="createRepeatPass" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                     <DatePicker fx:id="createDate" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                    <Label fx:id="age" text="Rated R" GridPane.rowIndex="4" />
+                                    <Label text="Rated R status will show here." textFill="#000000ae" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font size="10.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </GridPane>
                            </children>
