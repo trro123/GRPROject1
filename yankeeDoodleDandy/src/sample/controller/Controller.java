@@ -282,7 +282,7 @@ public class Controller {
         grid.getChildren().add(imgbox);
     }
 
-    public void chooseGenreEvent(ActionEvent event){
+    public void playSeries(){
 
     }
 
