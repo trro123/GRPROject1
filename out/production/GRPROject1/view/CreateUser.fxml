@@ -65,8 +65,8 @@
                                     <TextField GridPane.columnIndex="1" />
                                     <PasswordField fx:id="createPass" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <PasswordField fx:id="createRepeatPass" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                    <DatePicker fx:id="createDate" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                    <Label text="Rated R status will show here." textFill="#000000ae" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                    <DatePicker fx:id="createDate" onAction="#showAge" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <Label fx:id="createAgeDisplay" text="Rated R status will show here." textFill="#000000ae" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                        <font>
                                           <Font size="10.0" />
                                        </font>
