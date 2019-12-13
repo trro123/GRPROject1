@@ -72,6 +72,7 @@ public class MediaContainer {
         ArrayList<Watchable> searchResults = new ArrayList<>();
 
         for(Movie m : movies){
+
             if(m.getYear() < year){
                 searchResults.add(m);
             }

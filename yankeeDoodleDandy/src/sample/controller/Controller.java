@@ -208,6 +208,7 @@ public class Controller {
         imgv.setImage(image);
         imgv.setFitWidth(140);
         imgv.setPreserveRatio(true);
+        final int[] endYear1 = {0};
         Text text = new Text(m.getTitle() + "\n"
                 + "Rating: " + m.getRating() + " / 10" + "\n"
                 + m.getGenres() + "\n"
@@ -224,11 +225,19 @@ public class Controller {
                 imageBox.setImage(image);
 
                 infoText.getChildren().clear();
-                infoText.getChildren().add(text);
-
+                if (m instanceof Movie){
+                    infoText.getChildren().add(text);
+                }
                 if(m instanceof Series){
+                    Text text2 = new Text((m.getTitle() + "\n"
+                            + "Rating: " + m.getRating() + " / 10" + "\n"
+                            + m.getGenres() + "\n"
+                            + m.getYear() + " - "+ ((Series) m).getEndYearString()
+                            + "\n"));
+                    infoText.getChildren().add(text2);
                     MenuButton seasonButton = new MenuButton("Choose season");
                     infoText.getChildren().add(seasonButton);
+                    int endYear1 = ((Series) m).getEndYear();
                     for(int i=0; i < ((Series) m).getSeasons(); i++){
                         MenuItem seasonItem = new MenuItem();
                         seasonItem.setText("season: " + (i+1));

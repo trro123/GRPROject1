@@ -17,7 +17,14 @@ public class Series extends Watchable{
 // get methods
 
     public int getEndYear(){
+
         return endYear;
+    }
+    public String getEndYearString(){
+        String endYearString= Integer.toString(endYear);
+        if (endYearString.equals("0"))
+            endYearString = "";
+        return endYearString;
     }
 
     public int getSeasons(){
