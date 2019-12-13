@@ -239,7 +239,7 @@ public class Controller {
                             public void handle(Event event) {
                                 seasonButton.setText("Choose Episode");
                                 seasonButton.getItems().clear();
-                                System.out.println(((Series) m).getEpisodeCount(0));
+
                                 for (int j = 0; j < ((Series) m).getEpisodeCount(finalI); j++){
                                     MenuItem episodeItem = new MenuItem("Episode: " + (j+1));
                                     seasonButton.getItems().add(episodeItem);
@@ -277,6 +277,8 @@ public class Controller {
 
     }
 
+    @FXML
+    private MenuButton genreChooser;
 
 
 
@@ -285,7 +287,6 @@ public class Controller {
     // if it looks stupid but it works, it ain't stupid.
     public void actionButton(){
         grid.getChildren().clear();
-
         for (Watchable m : medias.getJoinedList()){
             if (searchAll == true) {
                 if (m.getGenres().contains("Action")) {
@@ -307,6 +308,7 @@ public class Controller {
                 }
             }
         }
+        genreChooser.setText("Action");
     }
 
     public void adventureButton(){
@@ -333,6 +335,7 @@ public class Controller {
                 }
             }
         }
+        genreChooser.setText("Adventure");
     }
 
     public void animationButton(){
@@ -359,6 +362,7 @@ public class Controller {
                 }
             }
         }
+        genreChooser.setText("Animation");
     }
 
     public void biographyButton(){
@@ -385,6 +389,7 @@ public class Controller {
                 }
             }
         }
+        genreChooser.setText("Biography");
     }
 
     public void comedyButton(){
@@ -411,6 +416,7 @@ public class Controller {
                 }
             }
         }
+        genreChooser.setText("Comedy");
     }
 
     public void crimeButton(){
@@ -437,6 +443,7 @@ public class Controller {
                 }
             }
         }
+        genreChooser.setText("Crime");
     }
 
     public void documentaryButton(){
@@ -463,6 +470,7 @@ public class Controller {
                 }
             }
         }
+        genreChooser.setText("Documentary");
     }
 
 
@@ -490,6 +498,7 @@ public class Controller {
                 }
             }
         }
+        genreChooser.setText("Drama");
     }
 
     public void familyButton(){
@@ -516,6 +525,7 @@ public class Controller {
                 }
             }
         }
+        genreChooser.setText("Family");
     }
 
     public void fantasyButton(){
@@ -542,6 +552,7 @@ public class Controller {
                 }
             }
         }
+        genreChooser.setText("Fantasy");
     }
 
     public void filmnoirButton(){
@@ -568,6 +579,7 @@ public class Controller {
                 }
             }
         }
+        genreChooser.setText("Film-Noir");
     }
 
     public void historyButton(){
@@ -594,6 +606,7 @@ public class Controller {
                 }
             }
         }
+        genreChooser.setText("History");
     }
 
     public void horrorButton(){
@@ -620,6 +633,7 @@ public class Controller {
                 }
             }
         }
+        genreChooser.setText("Horror");
     }
 
     public void musicButton(){
@@ -646,6 +660,7 @@ public class Controller {
                 }
             }
         }
+        genreChooser.setText("Music");
     }
 
     public void musicalButton(){
@@ -672,6 +687,7 @@ public class Controller {
                 }
             }
         }
+        genreChooser.setText("Musical");
     }
 
     public void mysteryButton(){
@@ -698,6 +714,7 @@ public class Controller {
                 }
             }
         }
+        genreChooser.setText("Mystery");
     }
 
     public void romanceButton(){
@@ -724,6 +741,7 @@ public class Controller {
                 }
             }
         }
+        genreChooser.setText("Romance");
     }
 
     public void scifiButton(){
@@ -750,6 +768,7 @@ public class Controller {
                 }
             }
         }
+        genreChooser.setText("Sci-Fi");
     }
 
     public void sportButton(){
@@ -776,6 +795,7 @@ public class Controller {
                 }
             }
         }
+        genreChooser.setText("Sport");
     }
 
     public void talkshowButton(){
@@ -802,6 +822,7 @@ public class Controller {
                 }
             }
         }
+        genreChooser.setText("Talk-show");
     }
 
     public void thrillerButton(){
@@ -828,6 +849,7 @@ public class Controller {
                 }
             }
         }
+        genreChooser.setText("Thriller");
     }
 
     public void warButton(){
@@ -854,6 +876,7 @@ public class Controller {
                 }
             }
         }
+        genreChooser.setText("War");
     }
 
     public void westernButton(){
@@ -880,5 +903,6 @@ public class Controller {
                 }
             }
         }
+        genreChooser.setText("Horror");
     }
 }
