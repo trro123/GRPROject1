@@ -1,6 +1,9 @@
 package sample.controller;
 
+import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -224,10 +227,32 @@ public class Controller {
                 infoText.getChildren().add(text);
 
                 if(m instanceof Series){
+                    MenuButton seasonButton = new MenuButton("Choose season");
+                    infoText.getChildren().add(seasonButton);
                     for(int i=0; i < ((Series) m).getSeasons(); i++){
-                        Text seasonText = new Text("Season " + (i+1) + ": " + ((Series) m).getEpisodeCount(i) + " episodes" + "\n");
-                        infoText.getChildren().add(seasonText);
+                        MenuItem seasonItem = new MenuItem();
+                        seasonItem.setText("season: " + (i+1));
+                        seasonButton.getItems().add(seasonItem);
+                         EventHandler bix = new EventHandler() {
+                            @Override
+                            public void handle(Event event) {
+                                seasonButton.setText("Choose Episode");
+                                seasonButton.getItems().clear();
+                                System.out.println(((Series) m).getEpisodeCount(0));
+                                for (int j = 0; j < ((Series) m).getEpisodes().size(); j++){
+                                    MenuItem episodeItem = new MenuItem("Episode: " + (j+1));
+                                    seasonButton.getItems().add(episodeItem);
+                                }
+
+                            }
+
+                        };
+                         seasonItem.setOnAction(bix);
+                        //Text seasonText = new Text("Season " + (i+1) + ": " + ((Series) m).getEpisodeCount(i) + " episodes" + "\n");
+                        //infoText.getChildren().add(seasonText);
+
                     }
+
                 }
 
                 if(currentUser.getWatchlist().contains(selected)){
@@ -247,6 +272,9 @@ public class Controller {
         grid.getChildren().add(imgbox);
     }
 
+    public void chooseGenreEvent(ActionEvent event){
+
+    }
 
 
 
