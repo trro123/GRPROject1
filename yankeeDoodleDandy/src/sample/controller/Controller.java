@@ -233,13 +233,14 @@ public class Controller {
                         MenuItem seasonItem = new MenuItem();
                         seasonItem.setText("season: " + (i+1));
                         seasonButton.getItems().add(seasonItem);
-                         EventHandler bix = new EventHandler() {
+                        int finalI = i;
+                        EventHandler bix = new EventHandler() {
                             @Override
                             public void handle(Event event) {
                                 seasonButton.setText("Choose Episode");
                                 seasonButton.getItems().clear();
                                 System.out.println(((Series) m).getEpisodeCount(0));
-                                for (int j = 0; j < ((Series) m).getEpisodes().size(); j++){
+                                for (int j = 0; j < ((Series) m).getEpisodeCount(finalI); j++){
                                     MenuItem episodeItem = new MenuItem("Episode: " + (j+1));
                                     seasonButton.getItems().add(episodeItem);
                                 }
