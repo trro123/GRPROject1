@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="767.0" prefWidth="982.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Controller">
+   <children>
+
+      <HBox layoutX="26.0" layoutY="29.0" prefHeight="38.0" prefWidth="512.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <children>
+            <VBox>
+               <children>
+                  <Label text="Hello user.getName()! Welcome to RickFlix.">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label text="Browse the catalog by pressing the 'Movies', 'Series' or 'All' buttons.">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <VBox fx:id="infoBox" layoutX="728.0" layoutY="104.0" prefHeight="642.0" prefWidth="240.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="242.0" prefWidth="240.0">
+               <children>
+                  <ImageView fx:id="imageBox" fitHeight="257.0" fitWidth="191.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets bottom="10.0" />
+                     </HBox.margin></ImageView>
+               </children>
+            </HBox>
+            <HBox fx:id="infoButtonBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox prefHeight="0.0" prefWidth="161.0">
+                     <children>
+                        <Button fx:id="playButton" mnemonicParsing="false" text="Play" visible="false">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin></Button>
+                        <Button fx:id="watchlistAddButton" mnemonicParsing="false" onAction="#watchlistAdd" text="Add to Watchlist" visible="false">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin></Button>
+                        <Button fx:id="watchlistRemoveButton" mnemonicParsing="false" onAction="#watchlistRemove" text="Remove from Watchlist" visible="false">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin></Button>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <ScrollPane hbarPolicy="NEVER" prefHeight="279.0" prefWidth="240.0" vbarPolicy="NEVER">
+               <content>
+                  <VBox>
+                     <children>
+                        <TextFlow fx:id="infoText" prefHeight="0.0" prefWidth="240.0">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </TextFlow>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+      <TextField fx:id="titleSearch" layoutX="622.0" layoutY="34.0" onKeyTyped="#search" prefHeight="27.0" prefWidth="337.0" promptText="Search by title ..." />
+
+                  <ScrollPane fx:id="mediasPane" hbarPolicy="NEVER" layoutX="14.0" layoutY="147.0" prefHeight="600.0" prefWidth="708.0" vbarPolicy="NEVER">
+         <content>
+            <TilePane fx:id="grid" prefHeight="598.0" prefRows="25" prefWidth="707.0" />
+         </content></ScrollPane>
+      <HBox layoutX="19.0" layoutY="104.0">
+         <children>
+            <HBox alignment="BOTTOM_LEFT" prefHeight="30.0" prefWidth="502.0">
+               <children>
+                  <Button fx:id="searcMoviesButton" mnemonicParsing="false" onAction="#searchMovies" prefHeight="30.0" prefWidth="96.0" text="Movies">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="searchSeriesButton" mnemonicParsing="false" onAction="#searchSeries" prefHeight="30.0" prefWidth="96.0" text="Series">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="searchAllButton" mnemonicParsing="false" onAction="#searchAll" prefHeight="30.0" prefWidth="98.0" text="All">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <MenuButton fx:id="genreChooser" mnemonicParsing="false" prefHeight="30.0" text="Choose genre">
+                    <items>
+                      <MenuItem fx:id="action" mnemonicParsing="false" onAction="#actionButton" text="Action" />
+                      <MenuItem fx:id="adventure" mnemonicParsing="false" onAction="#adventureButton" text="Adventure" />
+                        <MenuItem fx:id="animation" mnemonicParsing="false" onAction="#animationButton" text="Animation" />
+                        <MenuItem fx:id="biographyChooser" mnemonicParsing="false" onAction="#biographyButton" text="Biography" />
+                        <MenuItem fx:id="comedyChooser" mnemonicParsing="false" onAction="#comedyButton" text="Comedy" />
+                        <MenuItem fx:id="crimeChooser" mnemonicParsing="false" onAction="#crimeButton" text="Crime" />
+                        <MenuItem fx:id="documentaryChooser" mnemonicParsing="false" onAction="#documentaryButton" text="Documentary" />
+                        <MenuItem fx:id="dramaChooser" mnemonicParsing="false" onAction="#dramaButton" text="Drama" />
+                        <MenuItem fx:id="familyChooser" mnemonicParsing="false" onAction="#familyButton" text="Family" />
+                        <MenuItem fx:id="fantasyChooser" mnemonicParsing="false" onAction="#fantasyButton" text="Fantasy" />
+                        <MenuItem fx:id="noirChooser" mnemonicParsing="false" onAction="#filmnoirButton" text="Film-Noir" />
+                        <MenuItem fx:id="historyChooser" mnemonicParsing="false" onAction="#historyButton" text="History" />
+                        <MenuItem fx:id="horrorChooser" mnemonicParsing="false" onAction="#horrorButton" text="Horror" />
+                        <MenuItem fx:id="musicChooser" mnemonicParsing="false" onAction="#musicButton" text="Music" />
+                        <MenuItem fx:id="musicalChooser" mnemonicParsing="false" onAction="#musicalButton" text="Musical" />
+                        <MenuItem fx:id="mysteryChooser" mnemonicParsing="false" onAction="#mysteryButton" text="Mystery" />
+                        <MenuItem fx:id="romanceChooser" mnemonicParsing="false" onAction="#romanceButton" text="Romance" />
+                        <MenuItem fx:id="scifiChooser" mnemonicParsing="false" onAction="#scifiButton" text="Sci-Fi" />
+                        <MenuItem fx:id="sportChooser" mnemonicParsing="false" onAction="#sportButton" text="Sport" />
+                        <MenuItem fx:id="talkshowChooser" mnemonicParsing="false" onAction="#talkshowButton" text="Talk-Show" />
+                        <MenuItem fx:id="thrillerChooser" mnemonicParsing="false" onAction="#thrillerButton" text="Thriller" />
+                        <MenuItem fx:id="warChooser" mnemonicParsing="false" onAction="#warButton" text="War" />
+                        <MenuItem fx:id="westernChooser" mnemonicParsing="false" onAction="#westernButton" text="Western" />
+                    </items>
+                  </MenuButton>
+               </children>
+            </HBox>
+      
+                                          <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="196.0">
+               <children>
+                  <Button fx:id="homeScreenButton" minHeight="30.0" mnemonicParsing="false" onAction="#homescreen" prefHeight="30.0" prefWidth="96.0" text="Homescreen">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="watchlistShowButton" minHeight="30.0" mnemonicParsing="false" onAction="#showWatchlist" prefHeight="30.0" prefWidth="96.0" text="Watchlist" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+
+   </children>
+</AnchorPane>
