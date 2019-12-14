@@ -246,17 +246,28 @@ public class Controller {
                     infoText.getChildren().add(seasonButton);
                     MenuButton episodeChooser = new MenuButton("Nothing here");
                     infoText.getChildren().add(episodeChooser);
+                    /*
+                    Dette her skulle meget gerne gøre så sæsonknappen ændre sit navn til valgte sæson.
+                    EventHandler seasonSaviour = new EventHandler() {
+                        @Override
+                        public void handle(Event event) {
+
+                        }
+                    };
+
+                     */
 
                     for(int i=0; i < ((Series) m).getSeasons(); i++){
                         MenuItem seasonItem = new MenuItem();
-                        seasonItem.setText("season: " + (i+1));
+                        seasonItem.setText("Season: " + (i+1));
                         seasonButton.getItems().add(seasonItem);
                         int finalI = i;
 
                         EventHandler bix = new EventHandler() {
                             @Override
                             public void handle(Event event) {
-                                seasonButton.setText("Choose Episode");
+                               // seasonButton.setText("Choose Episode");
+                                seasonButton.setText(seasonItem.getText());
                                 seasonButton.getItems().clear();
 
                                 for (int j = 0; j < ((Series) m).getEpisodeCount(finalI); j++){
@@ -264,7 +275,7 @@ public class Controller {
                                     EventHandler episodeEvent = new EventHandler() {
                                         @Override
                                         public void handle(Event event) {
-                                            episodeChooser.setText(episodeItem.getText());
+                                            //episodeChooser.setText(episodeItem.getText());
                                         }
                                     };
                                     episodeItem.setOnAction(episodeEvent);
@@ -274,12 +285,13 @@ public class Controller {
                             }
 
                         };
+                        //Her vil jeg gerne bruge en form for m.getEpisodeCount(int 0).toString(), det kan man dog ikke
                          seasonItem.setOnAction(bix);
                         //Text seasonText = new Text("Season " + (i+1) + ": " + ((Series) m).getEpisodeCount(i) + " episodes" + "\n");
                         //infoText.getChildren().add(seasonText);
 
                     }
-
+                    episodeChooser.setText("Episode: 1");
                 }
 
                 if(currentUser.getWatchlist().contains(selected)){
