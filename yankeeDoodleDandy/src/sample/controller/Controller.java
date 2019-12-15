@@ -21,10 +21,9 @@ public class Controller {
     private MediaContainer medias;
     private Watchable selected;
     private ArrayList<User> users;
-    private User currentUser;
+    private static User currentUser;
 
     public Controller() {
-        users = new ArrayList<>();
         this.medias = new MediaContainer();
         try {
             medias.loadSeries();
@@ -35,12 +34,8 @@ public class Controller {
         medias.joinLists();
     }
 
-    public ArrayList<User> getUsers() {
-        return users;
-    }
-
-    public void addUser(User user) {
-        users.add(user);
+    public static void setCurrentUser(User user){
+        currentUser = user;
     }
 
     @FXML
@@ -150,6 +145,7 @@ public class Controller {
     public void homescreen() {
         // homescreen() er en fuldstændig anden metode lige nu - laver en user og printer noget gøgl
 
+        /*
         User user = new User("admin", "password");
         Controller controller = new Controller();
         controller.addUser(user);
@@ -165,6 +161,8 @@ public class Controller {
         for (Watchable m : currentUser.getWatchlist()) {
             System.out.println(m.getTitle());
         }
+
+         */
     }
 
     // watchlist

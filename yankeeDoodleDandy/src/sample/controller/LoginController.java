@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import sample.model.User;
 
 import java.awt.*;
 import java.io.IOException;
@@ -41,6 +42,22 @@ public class LoginController {
     }
 
     public void login(javafx.event.ActionEvent event) throws IOException {
+        for(User u : CreateUserController.getUsers()){
+            if(loginUserField.getText().equals(u.getUsername()) && loginPassField.getText().equals(u.getPassword())){
+                Stage stage;
+                Parent root;
+
+                stage = new Stage();
+                root = FXMLLoader.load(getClass().getResource("/sample/view/mainWindow_view.fxml"));
+                stage.setScene(new Scene(root));
+                stage.show();
+
+                Controller.setCurrentUser(u);
+            }else{
+                System.out.println("grate suces");
+            }
+        }
+
         /*
         if (loginUserField.getText().equals("user") && loginPassField.getText().equals("password")){
             loginStatus.setText("Login Successful");
@@ -62,6 +79,7 @@ public class LoginController {
 
          */
 
+        /*
         ((Node)(event.getSource())).getScene().getWindow().hide();
 
         Stage stage;
@@ -71,5 +89,7 @@ public class LoginController {
         root = FXMLLoader.load(getClass().getResource("/sample/view/mainWindow_view.fxml"));
         stage.setScene(new Scene(root));
         stage.show();
+
+         */
     }
 }

@@ -30,6 +30,10 @@ public class User{
         return username;
     }
 
+    public String getPassword(){
+        return password;
+    }
+
     public boolean emptyWatchlist(){
         if(watchlist.size() == 0){
             return true;

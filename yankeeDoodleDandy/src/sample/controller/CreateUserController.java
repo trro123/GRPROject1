@@ -7,11 +7,23 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.model.User;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class CreateUserController {
+
+    private static ArrayList<User> users;
+
+    public CreateUserController(){
+        users = new ArrayList<>();
+    }
+
+    public static ArrayList<User> getUsers(){
+        return users;
+    }
 
     @FXML
     private Label createAgeDisplay;
@@ -45,6 +57,9 @@ public class CreateUserController {
     }
 
     public void ok(javafx.event.ActionEvent actionEvent) throws IOException {
+        users.add(new User(createUserName.getText(), createPassword.getText()));
+
+        /*
         if (createPassword.getText() != (createPasswordRepeat.getText())){
             errorMessage.setText("ERROR: Please make sure your passwords match.");
             System.out.println(createPassword.getText()+ " "+ createPasswordRepeat.getText());
@@ -59,6 +74,8 @@ public class CreateUserController {
         else{
             System.out.println("This user has chosen the username " + createUserName.getText() +". The user has also chosen a password. That password is: " + createPassword.getText() + ". Please don't tell anyone! The user named " + createUserName.getText() + " has enlightened us with their birthday, and we conclude that for this particular user, based on their age: "+createAgeDisplay.getText());
         }
+
+         */
     }
 
 
