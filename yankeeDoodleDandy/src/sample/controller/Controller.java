@@ -24,6 +24,7 @@ public class Controller {
 
     public Controller() {
         this.medias = new MediaContainer();
+
         try {
             medias.loadSeries();
             medias.loadMovies();
@@ -35,6 +36,7 @@ public class Controller {
 
     public static void setCurrentUser(User user){
         currentUser = user;
+        //welcomeLabel.setText("Hello " + currentUser.getUsername() +"! Welcome to RickFlix.");
     }
 
     @FXML
@@ -50,6 +52,9 @@ public class Controller {
     private Button playButton;
 
     @FXML
+    private Label welcomeLabel;
+
+    @FXML
     private Button watchlistAddButton;
 
     @FXML
@@ -61,7 +66,7 @@ public class Controller {
     @FXML
     private ImageView imageBox;
 
-    // søge-metoder
+    // søgemetoder
 
     private boolean searchAll;
     private boolean searchMovies;

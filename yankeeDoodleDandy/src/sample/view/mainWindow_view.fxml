@@ -27,7 +27,7 @@
          <children>
             <VBox>
                <children>
-                  <Label text="Hello user.getName()! Welcome to RickFlix.">
+                  <Label fx:id="welcomeLabel" text="Hello user.getName()! Welcome to RickFlix.">
                      <font>
                         <Font size="15.0" />
                      </font>
