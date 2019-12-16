@@ -57,26 +57,33 @@ public class CreateUserController {
     }
 
     public void ok(javafx.event.ActionEvent actionEvent) throws IOException {
-        users.add(new User(createUserName.getText(), createPassword.getText()));
+        boolean passwordChecked = false;
+        boolean usernameChecked = false;
 
-        /*
-        if (createPassword.getText() != (createPasswordRepeat.getText())){
-            errorMessage.setText("ERROR: Please make sure your passwords match.");
-            System.out.println(createPassword.getText()+ " "+ createPasswordRepeat.getText());
+        if(createPassword.getText().trim().equals(createPasswordRepeat.getText().trim())){
+            errorMessage.setText("ERROR: Please make sure the passwords match.");
+
+            if(!createPassword.getText().trim().isEmpty()){
+                passwordChecked = true;
+            }
+        }else{
+            errorMessage.setText("ERROR: Please make sure the passwords match.");
         }
-        if (createUserName.getText()==null) {
+
+        if(createPassword.getText().trim().equals("")){
+            errorMessage.setText("ERROR: Please choose a password.");
+        }
+
+        if(createUserName.getText().trim().equals("")){
             errorMessage.setText("ERROR: Please choose a username.");
+        }else{
+            usernameChecked = true;
         }
 
-        if (createAgeDisplay.getText()=="Rated R status will show here.") {
-            errorMessage.setText("ERROR: Birthday input invalid.");
+        if(usernameChecked && passwordChecked){
+            users.add(new User(createUserName.getText(), createPassword.getText()));
+            Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            app_stage.hide();
         }
-        else{
-            System.out.println("This user has chosen the username " + createUserName.getText() +". The user has also chosen a password. That password is: " + createPassword.getText() + ". Please don't tell anyone! The user named " + createUserName.getText() + " has enlightened us with their birthday, and we conclude that for this particular user, based on their age: "+createAgeDisplay.getText());
-        }
-
-         */
     }
-
-
 }
