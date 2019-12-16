@@ -20,7 +20,6 @@ import java.util.ArrayList;
 public class Controller {
     private MediaContainer medias;
     private Watchable selected;
-    private ArrayList<User> users;
     private static User currentUser;
 
     public Controller() {
@@ -73,19 +72,19 @@ public class Controller {
         viewingWatchlist = false;
         mediasPane.setContent(grid);
 
-        if (searchAll == true && searchMovies == false && searchSeries == false) {
+        if (searchAll && !searchMovies && !searchSeries) {
 
             for (Watchable m : medias.searchTitle(titleSearch.getText())) {
                 toRuleThemAll(m);
             }
-        } else if (searchMovies == true) {
+        } else if (searchMovies) {
 
             for (Watchable m : medias.searchTitle(titleSearch.getText())) {
                 if (m instanceof Movie) {
                     toRuleThemAll(m);
                 }
             }
-        } else if (searchSeries == true) {
+        } else if (searchSeries) {
 
             for (Watchable m : medias.searchTitle(titleSearch.getText())) {
                 if (m instanceof Series) {
@@ -205,15 +204,15 @@ public class Controller {
     // (laver en kasse med et media object m og tilføjer den til TilePane)
 
     public void toRuleThemAll(Watchable m) { //bedste metode i verdenen :)
-        File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg");
-        Image image = new Image(file.toURI().toString());
+        File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg"); //henter vores billeder.
+        Image image = new Image(file.toURI().toString());   //opretter et billede med ovenstående fil
 
-        ImageView imgv = new ImageView();
-        imgv.setImage(image);
-        imgv.setFitWidth(140);
+        ImageView imgv = new ImageView(); //opretter Imageview, til at vise billedet i.
+        imgv.setImage(image);  //sætter billedet ind i Imageviewet.
+        imgv.setFitWidth(140); //sætter størrelsen af Imageview.
         imgv.setPreserveRatio(true);
-        final int[] endYear1 = {0};
-        Text text = new Text(m.getTitle() + "\n"
+
+        Text text = new Text(m.getTitle() + "\n"  //Her oprettes teksten (for film kun), som skrives under valgte billede.
                 + "Rating: " + m.getRating() + " / 10" + "\n"
                 + m.getGenres() + "\n"
                 + m.getYear() + "\n"
@@ -232,7 +231,7 @@ public class Controller {
                 if (m instanceof Movie){
                     infoText.getChildren().add(text);
                 }
-                if(m instanceof Series){
+                if(m instanceof Series){ // her når vi til serier, de er anderledes da de har et endyear og seasons + episodes.
                     Text text2 = new Text((m.getTitle() + "\n"
                             + "Rating: " + m.getRating() + " / 10" + "\n"
                             + m.getGenres() + "\n"
@@ -240,10 +239,10 @@ public class Controller {
                             + "\n"));
                     infoText.getChildren().add(text2);
 
-                    MenuButton seasonButton = new MenuButton("Choose season");
+                    MenuButton seasonButton = new MenuButton("Choose season"); //Her
                     infoText.getChildren().add(seasonButton);
-                    MenuButton episodeChooser = new MenuButton("Nothing here");
-                    infoText.getChildren().add(episodeChooser);
+                    MenuButton episodeChooser = new MenuButton(); //her oprettes vores Menubutton, som vi har lagt ved siden af sæsonChooser.
+                    infoText.getChildren().add(episodeChooser); //og her tilføjer vi så knappen til vores infotext-felt, som er under billedet.
                     /*
                     Dette her skulle meget gerne gøre så sæsonknappen ændre sit navn til valgte sæson.
                     EventHandler seasonSaviour = new EventHandler() {
@@ -255,36 +254,30 @@ public class Controller {
 
                      */
 
-                    for(int i=0; i < ((Series) m).getSeasons(); i++){
+                    for(int i=0; i < ((Series) m).getSeasons(); i++){ //er køres et for-loop som gennemkøres for antallet af sæsoner en serie har.
                         MenuItem seasonItem = new MenuItem();
-                        seasonItem.setText("Season: " + (i+1));
-                        seasonButton.getItems().add(seasonItem);
+                        seasonItem.setText("Season: " + (i+1)); //her sættes teksten til at være i+1 (da array starter på 0. plads vil sæson 1 være 0+1.
+                        seasonButton.getItems().add(seasonItem); //tilføjer seasonitems (altså hver af de foreskellige sæsoner) til sæsonknappen.
                         int finalI = i;
 
-                        EventHandler bix = new EventHandler() {
-                            @Override
-                            public void handle(Event event) {
-                               // seasonButton.setText("Choose Episode");
-                                seasonButton.setText(seasonItem.getText());
-                                seasonButton.getItems().clear();
+                        EventHandler seasonClickEvent = event -> { // Dette er eventhandleren, som initialiseres når man vælger en sæson
+                            seasonButton.setText(seasonItem.getText()); //den sætter sæsonknappens tekst til at være den valgte sæsons tekst.
+                            episodeChooser.getItems().clear(); //fjerner alle episodeItems, så den kan putte ''friske'' ind efter
+                            episodeChooser.setText("Episode 1");
+                            for (int j = 0; j < ((Series) m).getEpisodeCount(finalI); j++){ //her gennemgår for-loopet antallet af afsnit, for den sæson som det ydre(int i loopet)
+                                //er i gang med at gennemgå.
+                                MenuItem episodeItem = new MenuItem("Episode: " + (j+1)); //her opretter den Menuitems for hver episode.
+                                EventHandler episodeEvent = event1 -> episodeChooser.setText(episodeItem.getText()); //når man trykker på episoden, sætter den menuButtonens tekst til at være valgte episode.
 
-                                for (int j = 0; j < ((Series) m).getEpisodeCount(finalI); j++){
-                                    MenuItem episodeItem = new MenuItem("Episode: " + (j+1));
-                                    EventHandler episodeEvent = new EventHandler() {
-                                        @Override
-                                        public void handle(Event event) {
-                                            //episodeChooser.setText(episodeItem.getText());
-                                        }
-                                    };
-                                    episodeItem.setOnAction(episodeEvent);
-                                    episodeChooser.getItems().add(episodeItem);
-                                }
+                                episodeChooser.getItems().add(episodeItem); //her tilføjer den de afsnit som er i sæsonen, til menuButton episodeChooser.
+                                episodeItem.setOnAction(episodeEvent); //her sætter vi at det er for alle ''afsnit'' som skal køre ovenståene episodeEvent.
 
                             }
 
                         };
+                        seasonItem.setOnAction(seasonClickEvent);
                         //Her vil jeg gerne bruge en form for m.getEpisodeCount(int 0).toString(), det kan man dog ikke
-                         seasonItem.setOnAction(bix);
+
                         //Text seasonText = new Text("Season " + (i+1) + ": " + ((Series) m).getEpisodeCount(i) + " episodes" + "\n");
                         //infoText.getChildren().add(seasonText);
 
@@ -324,19 +317,19 @@ public class Controller {
     public void actionButton(){
         grid.getChildren().clear();
         for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
+            if (searchAll) {
                 if (m.getGenres().contains("Action")) {
                     toRuleThemAll(m);
                 }
             }
-            else if (searchMovies == true){
+            else if (searchMovies){
                 if (m instanceof Movie){
                     if (m.getGenres().contains("Action")){
                         toRuleThemAll(m);
                     }
                 }
             }
-            else if (searchSeries == true){
+            else if (searchSeries){
                 if (m instanceof Series){
                     if (m.getGenres().contains("Action")){
                         toRuleThemAll(m);
@@ -351,19 +344,19 @@ public class Controller {
         grid.getChildren().clear();
 
         for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
+            if (searchAll) {
                 if (m.getGenres().contains("Adventure")) {
                     toRuleThemAll(m);
                 }
             }
-            else if (searchMovies == true){
+            else if (searchMovies){
                 if (m instanceof Movie){
                     if (m.getGenres().contains("Adventure")){
                         toRuleThemAll(m);
                     }
                 }
             }
-            else if (searchSeries == true){
+            else if (searchSeries){
                 if (m instanceof Series){
                     if (m.getGenres().contains("Adventure")){
                         toRuleThemAll(m);
@@ -378,19 +371,19 @@ public class Controller {
         grid.getChildren().clear();
 
         for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
+            if (searchAll) {
                 if (m.getGenres().contains("Animation")) {
                     toRuleThemAll(m);
                 }
             }
-            else if (searchMovies == true){
+            else if (searchMovies){
                 if (m instanceof Movie){
                     if (m.getGenres().contains("Animation")){
                         toRuleThemAll(m);
                     }
                 }
             }
-            else if (searchSeries == true){
+            else if (searchSeries){
                 if (m instanceof Series){
                     if (m.getGenres().contains("Animation")){
                         toRuleThemAll(m);
@@ -405,19 +398,19 @@ public class Controller {
         grid.getChildren().clear();
 
         for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
+            if (searchAll) {
                 if (m.getGenres().contains("Biography")) {
                     toRuleThemAll(m);
                 }
             }
-            else if (searchMovies == true){
+            else if (searchMovies){
                 if (m instanceof Movie){
                     if (m.getGenres().contains("Biography")){
                         toRuleThemAll(m);
                     }
                 }
             }
-            else if (searchSeries == true){
+            else if (searchSeries){
                 if (m instanceof Series){
                     if (m.getGenres().contains("Biography")){
                         toRuleThemAll(m);
@@ -432,19 +425,19 @@ public class Controller {
         grid.getChildren().clear();
 
         for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
+            if (searchAll) {
                 if (m.getGenres().contains("Comedy")) {
                     toRuleThemAll(m);
                 }
             }
-            else if (searchMovies == true){
+            else if (searchMovies){
                 if (m instanceof Movie){
                     if (m.getGenres().contains("Comedy")){
                         toRuleThemAll(m);
                     }
                 }
             }
-            else if (searchSeries == true){
+            else if (searchSeries){
                 if (m instanceof Series){
                     if (m.getGenres().contains("Comedy")){
                         toRuleThemAll(m);
@@ -459,19 +452,19 @@ public class Controller {
         grid.getChildren().clear();
 
         for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
+            if (searchAll) {
                 if (m.getGenres().contains("Crime")) {
                     toRuleThemAll(m);
                 }
             }
-            else if (searchMovies == true){
+            else if (searchMovies){
                 if (m instanceof Movie){
                     if (m.getGenres().contains("Crime")){
                         toRuleThemAll(m);
                     }
                 }
             }
-            else if (searchSeries == true){
+            else if (searchSeries){
                 if (m instanceof Series){
                     if (m.getGenres().contains("Crime")){
                         toRuleThemAll(m);
@@ -486,19 +479,19 @@ public class Controller {
         grid.getChildren().clear();
 
         for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
+            if (searchAll) {
                 if (m.getGenres().contains("Documentary")) {
                     toRuleThemAll(m);
                 }
             }
-            else if (searchMovies == true){
+            else if (searchMovies){
                 if (m instanceof Movie){
                     if (m.getGenres().contains("Documentary")){
                         toRuleThemAll(m);
                     }
                 }
             }
-            else if (searchSeries == true){
+            else if (searchSeries){
                 if (m instanceof Series){
                     if (m.getGenres().contains("Documentary")){
                         toRuleThemAll(m);
@@ -514,19 +507,19 @@ public class Controller {
         grid.getChildren().clear();
 
         for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
+            if (searchAll) {
                 if (m.getGenres().contains("Drama")) {
                     toRuleThemAll(m);
                 }
             }
-            else if (searchMovies == true){
+            else if (searchMovies){
                 if (m instanceof Movie){
                     if (m.getGenres().contains("Drama")){
                         toRuleThemAll(m);
                     }
                 }
             }
-            else if (searchSeries == true){
+            else if (searchSeries){
                 if (m instanceof Series){
                     if (m.getGenres().contains("Drama")){
                         toRuleThemAll(m);
@@ -541,19 +534,19 @@ public class Controller {
         grid.getChildren().clear();
 
         for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
+            if (searchAll) {
                 if (m.getGenres().contains("Family")) {
                     toRuleThemAll(m);
                 }
             }
-            else if (searchMovies == true){
+            else if (searchMovies){
                 if (m instanceof Movie){
                     if (m.getGenres().contains("Family")){
                         toRuleThemAll(m);
                     }
                 }
             }
-            else if (searchSeries == true){
+            else if (searchSeries){
                 if (m instanceof Series){
                     if (m.getGenres().contains("Family")){
                         toRuleThemAll(m);
@@ -568,19 +561,19 @@ public class Controller {
         grid.getChildren().clear();
 
         for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
+            if (searchAll) {
                 if (m.getGenres().contains("Fantasy")) {
                     toRuleThemAll(m);
                 }
             }
-            else if (searchMovies == true){
+            else if (searchMovies){
                 if (m instanceof Movie){
                     if (m.getGenres().contains("Fantasy")){
                         toRuleThemAll(m);
                     }
                 }
             }
-            else if (searchSeries == true){
+            else if (searchSeries){
                 if (m instanceof Series){
                     if (m.getGenres().contains("Fantasy")){
                         toRuleThemAll(m);
@@ -595,19 +588,19 @@ public class Controller {
         grid.getChildren().clear();
 
         for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
+            if (searchAll) {
                 if (m.getGenres().contains("Film-Noir")) {
                     toRuleThemAll(m);
                 }
             }
-            else if (searchMovies == true){
+            else if (searchMovies){
                 if (m instanceof Movie){
                     if (m.getGenres().contains("Film-Noir")){
                         toRuleThemAll(m);
                     }
                 }
             }
-            else if (searchSeries == true){
+            else if (searchSeries){
                 if (m instanceof Series){
                     if (m.getGenres().contains("Film-Noir")){
                         toRuleThemAll(m);
@@ -622,19 +615,19 @@ public class Controller {
         grid.getChildren().clear();
 
         for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
+            if (searchAll) {
                 if (m.getGenres().contains("History")) {
                     toRuleThemAll(m);
                 }
             }
-            else if (searchMovies == true){
+            else if (searchMovies){
                 if (m instanceof Movie){
                     if (m.getGenres().contains("History")){
                         toRuleThemAll(m);
                     }
                 }
             }
-            else if (searchSeries == true){
+            else if (searchSeries){
                 if (m instanceof Series){
                     if (m.getGenres().contains("History")){
                         toRuleThemAll(m);
@@ -649,19 +642,19 @@ public class Controller {
         grid.getChildren().clear();
 
         for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
+            if (searchAll) {
                 if (m.getGenres().contains("Horror")) {
                     toRuleThemAll(m);
                 }
             }
-            else if (searchMovies == true){
+            else if (searchMovies){
                 if (m instanceof Movie){
                     if (m.getGenres().contains("Horror")){
                         toRuleThemAll(m);
                     }
                 }
             }
-            else if (searchSeries == true){
+            else if (searchSeries){
                 if (m instanceof Series){
                     if (m.getGenres().contains("Horror")){
                         toRuleThemAll(m);
@@ -676,19 +669,19 @@ public class Controller {
         grid.getChildren().clear();
 
         for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
+            if (searchAll) {
                 if (m.getGenres().contains("Music")) {
                     toRuleThemAll(m);
                 }
             }
-            else if (searchMovies == true){
+            else if (searchMovies){
                 if (m instanceof Movie){
                     if (m.getGenres().contains("Music")){
                         toRuleThemAll(m);
                     }
                 }
             }
-            else if (searchSeries == true){
+            else if (searchSeries){
                 if (m instanceof Series){
                     if (m.getGenres().contains("Music")){
                         toRuleThemAll(m);
@@ -703,19 +696,19 @@ public class Controller {
         grid.getChildren().clear();
 
         for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
+            if (searchAll) {
                 if (m.getGenres().contains("Musical")) {
                     toRuleThemAll(m);
                 }
             }
-            else if (searchMovies == true){
+            else if (searchMovies){
                 if (m instanceof Movie){
                     if (m.getGenres().contains("Musical")){
                         toRuleThemAll(m);
                     }
                 }
             }
-            else if (searchSeries == true){
+            else if (searchSeries){
                 if (m instanceof Series){
                     if (m.getGenres().contains("Musical")){
                         toRuleThemAll(m);
@@ -730,19 +723,19 @@ public class Controller {
         grid.getChildren().clear();
 
         for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
+            if (searchAll) {
                 if (m.getGenres().contains("Mystery")) {
                     toRuleThemAll(m);
                 }
             }
-            else if (searchMovies == true){
+            else if (searchMovies){
                 if (m instanceof Movie){
                     if (m.getGenres().contains("Mystery")){
                         toRuleThemAll(m);
                     }
                 }
             }
-            else if (searchSeries == true){
+            else if (searchSeries){
                 if (m instanceof Series){
                     if (m.getGenres().contains("Mystery")){
                         toRuleThemAll(m);
@@ -757,19 +750,19 @@ public class Controller {
         grid.getChildren().clear();
 
         for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
+            if (searchAll) {
                 if (m.getGenres().contains("Romance")) {
                     toRuleThemAll(m);
                 }
             }
-            else if (searchMovies == true){
+            else if (searchMovies){
                 if (m instanceof Movie){
                     if (m.getGenres().contains("Romance")){
                         toRuleThemAll(m);
                     }
                 }
             }
-            else if (searchSeries == true){
+            else if (searchSeries){
                 if (m instanceof Series){
                     if (m.getGenres().contains("Romance")){
                         toRuleThemAll(m);
@@ -784,19 +777,19 @@ public class Controller {
         grid.getChildren().clear();
 
         for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
+            if (searchAll) {
                 if (m.getGenres().contains("Sci-fi")) {
                     toRuleThemAll(m);
                 }
             }
-            else if (searchMovies == true){
+            else if (searchMovies){
                 if (m instanceof Movie){
                     if (m.getGenres().contains("Sci-fi")){
                         toRuleThemAll(m);
                     }
                 }
             }
-            else if (searchSeries == true){
+            else if (searchSeries){
                 if (m instanceof Series){
                     if (m.getGenres().contains("Sci-fi")){
                         toRuleThemAll(m);
@@ -811,19 +804,19 @@ public class Controller {
         grid.getChildren().clear();
 
         for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
+            if (searchAll) {
                 if (m.getGenres().contains("Sport")) {
                     toRuleThemAll(m);
                 }
             }
-            else if (searchMovies == true){
+            else if (searchMovies){
                 if (m instanceof Movie){
                     if (m.getGenres().contains("Sport")){
                         toRuleThemAll(m);
                     }
                 }
             }
-            else if (searchSeries == true){
+            else if (searchSeries){
                 if (m instanceof Series){
                     if (m.getGenres().contains("Sport")){
                         toRuleThemAll(m);
@@ -838,19 +831,19 @@ public class Controller {
         grid.getChildren().clear();
 
         for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
+            if (searchAll) {
                 if (m.getGenres().contains("Talk-show")) {
                     toRuleThemAll(m);
                 }
             }
-            else if (searchMovies == true){
+            else if (searchMovies){
                 if (m instanceof Movie){
                     if (m.getGenres().contains("Talk-show")){
                         toRuleThemAll(m);
                     }
                 }
             }
-            else if (searchSeries == true){
+            else if (searchSeries){
                 if (m instanceof Series){
                     if (m.getGenres().contains("Talk-show")){
                         toRuleThemAll(m);
@@ -865,19 +858,19 @@ public class Controller {
         grid.getChildren().clear();
 
         for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
+            if (searchAll) {
                 if (m.getGenres().contains("Thriller")) {
                     toRuleThemAll(m);
                 }
             }
-            else if (searchMovies == true){
+            else if (searchMovies){
                 if (m instanceof Movie){
                     if (m.getGenres().contains("Thriller")){
                         toRuleThemAll(m);
                     }
                 }
             }
-            else if (searchSeries == true){
+            else if (searchSeries){
                 if (m instanceof Series){
                     if (m.getGenres().contains("Thriller")){
                         toRuleThemAll(m);
@@ -892,19 +885,19 @@ public class Controller {
         grid.getChildren().clear();
 
         for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
+            if (searchAll) {
                 if (m.getGenres().contains("War")) {
                     toRuleThemAll(m);
                 }
             }
-            else if (searchMovies == true){
+            else if (searchMovies){
                 if (m instanceof Movie){
                     if (m.getGenres().contains("War")){
                         toRuleThemAll(m);
                     }
                 }
             }
-            else if (searchSeries == true){
+            else if (searchSeries){
                 if (m instanceof Series){
                     if (m.getGenres().contains("War")){
                         toRuleThemAll(m);
@@ -919,19 +912,19 @@ public class Controller {
         grid.getChildren().clear();
 
         for (Watchable m : medias.getJoinedList()){
-            if (searchAll == true) {
+            if (searchAll) {
                 if (m.getGenres().contains("Western")) {
                     toRuleThemAll(m);
                 }
             }
-            else if (searchMovies == true){
+            else if (searchMovies){
                 if (m instanceof Movie){
                     if (m.getGenres().contains("Western")){
                         toRuleThemAll(m);
                     }
                 }
             }
-            else if (searchSeries == true){
+            else if (searchSeries){
                 if (m instanceof Series){
                     if (m.getGenres().contains("Western")){
                         toRuleThemAll(m);

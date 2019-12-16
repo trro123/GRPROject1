@@ -81,9 +81,10 @@ public class CreateUserController {
         }
 
         if(usernameChecked && passwordChecked){
-            users.add(new User(createUserName.getText(), createPassword.getText()));
+            //users.add(new User(createUserName.getText(), createPassword.getText()));
+            LoginController.makeActive(new User(createUserName.getText(), createPassword.getText()));
             Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            app_stage.hide();
+            app_stage.close();
         }
     }
 }
