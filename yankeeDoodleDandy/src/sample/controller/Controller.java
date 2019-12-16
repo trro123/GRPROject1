@@ -594,20 +594,20 @@ public class Controller {
 
         for (Watchable m : medias.getJoinedList()){
             if (searchAll) {
-                if (m.getGenres().contains("Film-Noir")) {
+                if (m.getGenres().contains("FilmNoir")) {
                     toRuleThemAll(m);
                 }
             }
             else if (searchMovies){
                 if (m instanceof Movie){
-                    if (m.getGenres().contains("Film-Noir")){
+                    if (m.getGenres().contains("FilmNoir")){
                         toRuleThemAll(m);
                     }
                 }
             }
             else if (searchSeries){
                 if (m instanceof Series){
-                    if (m.getGenres().contains("Film-Noir")){
+                    if (m.getGenres().contains("FilmNoir")){
                         toRuleThemAll(m);
                     }
                 }
@@ -783,20 +783,20 @@ public class Controller {
 
         for (Watchable m : medias.getJoinedList()){
             if (searchAll) {
-                if (m.getGenres().contains("Sci-fi")) {
+                if (m.getGenres().contains("SciFi")) {
                     toRuleThemAll(m);
                 }
             }
             else if (searchMovies){
                 if (m instanceof Movie){
-                    if (m.getGenres().contains("Sci-fi")){
+                    if (m.getGenres().contains("SciFi")){
                         toRuleThemAll(m);
                     }
                 }
             }
             else if (searchSeries){
                 if (m instanceof Series){
-                    if (m.getGenres().contains("Sci-fi")){
+                    if (m.getGenres().contains("SciFi")){
                         toRuleThemAll(m);
                     }
                 }
@@ -837,20 +837,20 @@ public class Controller {
 
         for (Watchable m : medias.getJoinedList()){
             if (searchAll) {
-                if (m.getGenres().contains("Talk-show")) {
+                if (m.getGenres().contains("Talkshow")) {
                     toRuleThemAll(m);
                 }
             }
             else if (searchMovies){
                 if (m instanceof Movie){
-                    if (m.getGenres().contains("Talk-show")){
+                    if (m.getGenres().contains("Talkshow")){
                         toRuleThemAll(m);
                     }
                 }
             }
             else if (searchSeries){
                 if (m instanceof Series){
-                    if (m.getGenres().contains("Talk-show")){
+                    if (m.getGenres().contains("Talkshow")){
                         toRuleThemAll(m);
                     }
                 }
