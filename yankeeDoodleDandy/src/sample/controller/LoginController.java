@@ -65,7 +65,7 @@ public class LoginController {
                 // for at kunne skifte bruger igen: login-vindue skal kaldes fra mainWindows menubar -> change user?
 
                  */
-
+                loginStatus.setText("Login Successful");
                 Stage stage;
                 Parent root;
 
@@ -75,6 +75,7 @@ public class LoginController {
                 stage.show();
             }else{
                 System.out.println("grate suces");
+                loginStatus.setText("Login Failed");
             }
         }
 
