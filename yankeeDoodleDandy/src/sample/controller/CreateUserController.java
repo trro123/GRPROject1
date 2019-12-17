@@ -8,6 +8,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.model.User;
+import sample.model.UsernameTakenException;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -51,6 +52,7 @@ public class CreateUserController {
         }
 
     }
+
     public void cancel(javafx.event.ActionEvent actionEvent) throws IOException {
         Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         app_stage.hide();
@@ -81,6 +83,12 @@ public class CreateUserController {
         }
 
         if(usernameChecked && passwordChecked){
+            for(User u : LoginController.getActiveUsers()){
+                if(u.getUsername().equals(createUserName.getText())){
+                    throw new UsernameTakenException("Username already taken");
+                }
+            }
+
             //users.add(new User(createUserName.getText(), createPassword.getText()));
             LoginController.makeActive(new User(createUserName.getText(), createPassword.getText()));
             Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

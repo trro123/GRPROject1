@@ -28,6 +28,10 @@ public class LoginController {
         activeUsers.add(user);
     }
 
+    public static ArrayList<User> getActiveUsers(){
+        return activeUsers;
+    }
+
     @FXML
     private TextField loginUserField;
 

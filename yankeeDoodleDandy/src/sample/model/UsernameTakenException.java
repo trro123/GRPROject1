@@ -2,18 +2,20 @@ package sample.model;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.stage.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
-public class AlreadyOnWatchlistException extends Exception {
+public class UsernameTakenException extends RuntimeException {
 
-    public AlreadyOnWatchlistException(String message){
+    public UsernameTakenException(String message){
         super(message);
 
         final Stage error = new Stage();
         error.initModality(Modality.APPLICATION_MODAL);
-        Label errorLabel = new Label("Woops, the movie is already on your watchlist!");
+        Label errorLabel = new Label("Woops, that username is already taken!");
         Scene dialogScene = new Scene(errorLabel, 300, 100);
         error.setScene(dialogScene);
         error.show();
     }
+
 }
