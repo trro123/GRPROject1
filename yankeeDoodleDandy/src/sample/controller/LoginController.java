@@ -41,7 +41,7 @@ public class LoginController {
     private Button newUserButton;
 
     @FXML
-    private void newUser() throws IOException{
+    public void newUser() throws IOException{
         Stage stage;
         Parent root;
 
