@@ -4,10 +4,15 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import sample.model.*;
 
 import javafx.fxml.*;
@@ -15,6 +20,7 @@ import javafx.scene.image.*;
 import javafx.scene.layout.*;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Controller {
@@ -144,29 +150,20 @@ public class Controller {
         searchSeries = true;
     }
 
-    // homescreen
+    public void logout(ActionEvent event){
+        Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        app_stage.hide();
+    }
 
-    public void homescreen() {
-        // homescreen() er en fuldstændig anden metode lige nu - laver en user og printer noget gøgl
+    public void newUser() throws IOException{
+        Stage stage;
+        Parent root;
 
-        /*
-        User user = new User("admin", "password");
-        Controller controller = new Controller();
-        controller.addUser(user);
-
-
-        if (controller.getUsers().contains(user)) {
-            System.out.println("jads");
-        }
-
-        currentUser = user;
-        currentUser.addToWatchlist(medias.getMovies().get(99));
-
-        for (Watchable m : currentUser.getWatchlist()) {
-            System.out.println(m.getTitle());
-        }
-
-         */
+        stage = new Stage();
+        root = FXMLLoader.load(getClass().getResource("/sample/view/createUser_view.fxml"));
+        stage.setScene(new Scene(root));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
     }
 
     // watchlist
