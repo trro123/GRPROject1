@@ -7,6 +7,7 @@ import javafx.event.EventType;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.ScatterChart;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -180,11 +181,21 @@ public class Controller {
 
         viewingWatchlist = true;
     }
+    @FXML
+    private TextFlow errorField;
 
-    public void watchlistAdd() {
+    public void watchlistAdd() throws AlreadyOnWatchListException {
         //tilføj MovieAlreadyOnWatchlistException
+        Text error1 = new Text ("Already on watchlist");
+        TextFlow errorField = new TextFlow();
+        if (currentUser.getWatchlist().contains(selected)){
+            errorField.getChildren().add(error1);
+            throw new AlreadyOnWatchListException("Already on watchlist");
+
+        }
+
         currentUser.addToWatchlist(selected);
-        if(viewingWatchlist){
+        if (viewingWatchlist) {
             showWatchlist();
         }
         watchlistRemoveButton.setVisible(true);
