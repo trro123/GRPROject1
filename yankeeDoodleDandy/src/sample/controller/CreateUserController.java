@@ -85,6 +85,7 @@ public class CreateUserController {
         if(usernameChecked && passwordChecked){
             for(User u : LoginController.getActiveUsers()){
                 if(u.getUsername().equals(createUserName.getText())){
+                    errorMessage.setText("");
                     throw new UsernameTakenException("Username already taken");
                 }
             }
