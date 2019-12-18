@@ -13,13 +13,6 @@ public class User{
         watchlist = new ArrayList<>();
     }
 
-    public boolean checkPassword(String input){
-        if(input == password){
-            return true;
-        } else {
-            return false;
-        }
-    }
 
 // get methods
     public ArrayList<Watchable> getWatchlist(){
@@ -34,22 +27,13 @@ public class User{
         return password;
     }
 
-    public boolean emptyWatchlist(){
-        if(watchlist.size() == 0){
-            return true;
-        } else {
-            return false;
-        }
-    }
 
 // mutator methods
     public void addToWatchlist(Watchable m){
         watchlist.add(m);
-        //m.watchlistAddBool();
     }
 
     public void removeFromWatchlist(Watchable m){
         watchlist.remove(m);
-        //m.watchlistRemoveBool();
     }
 }

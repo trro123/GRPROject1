@@ -2,8 +2,6 @@ package sample.model;
 
 import javafx.scene.image.Image;
 
-import java.io.File;
-import java.net.MalformedURLException;
 import java.util.*;
 import java.util.List;
 
@@ -34,10 +32,6 @@ public abstract class Media{ //abstract class fordi det skal være forbudt at la
 
     public double getRating(){
         return rating;
-    }
-
-    public Image getImg(){
-        return img;
     }
 
     public List<String> getGenres(){

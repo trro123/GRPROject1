@@ -14,7 +14,7 @@ public class Series extends Watchable{
         numberOfEpisodes = new ArrayList<>();
     }
 
-// get methods
+// accessor methods
 
     public int getEndYear(){
 
@@ -40,8 +40,5 @@ public class Series extends Watchable{
 
     public void addEpisodeCount(int episodeCount){ // tilføjer antal episoder til en ArrayList. Hver plads i ArrayListen svarer til en sæson og referencen peger så på antal afsnit i den givne sæson
         numberOfEpisodes.add(episodeCount);
-    }
-    public ArrayList<Integer> getEpisodes(){
-        return numberOfEpisodes;
     }
 }

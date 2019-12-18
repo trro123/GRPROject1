@@ -1,6 +1,5 @@
 package sample.model;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.*;
 
@@ -68,42 +67,6 @@ public class MediaContainer {
 
 // filter/search methods
 
-    public ArrayList<Watchable> searchBeforeYear(int year) { //søger efter alle film og serier før år x og tilføjer til en ArrayList<Watchable> searchResults
-        ArrayList<Watchable> searchResults = new ArrayList<>();
-
-        for(Movie m : movies){
-
-            if(m.getYear() < year){
-                searchResults.add(m);
-            }
-        }
-
-        for(Series s : series){
-            if(s.getYear() < year){
-                searchResults.add(s);
-            }
-        }
-
-        return searchResults;
-    }
-
-    public ArrayList<Watchable> searchAfterYear(int year){ //søger efter alle film og serier efter år x
-        ArrayList<Watchable> searchResults = new ArrayList<>();
-
-        for(Movie m : movies){
-            if(m.getYear() > year){
-                searchResults.add(m);
-            }
-        }
-
-        for(Series s : series){
-            if(s.getYear() > year){
-                searchResults.add(s);
-            }
-        }
-
-        return searchResults;
-    }
 
     public static ArrayList<Watchable> searchTitle(String userInput) { //søger efter en brugerdefineret teksttreng (til en eventuel searchbar?)
         ArrayList<Watchable> searchResults = new ArrayList<>();
@@ -120,36 +83,13 @@ public class MediaContainer {
             }
         }
 
-        /*
-        for(Watchable m : joined){
-            if(m.getTitle().toLowerCase().contains(userInput.toLowerCase())){
-                searchResults.add(m);
-            }
-        }
-
-         */
-
         return searchResults;
     }
 
-    public static ArrayList<Watchable> searchGenre(String userInput){
-        ArrayList<Watchable> searchResults = new ArrayList<>();
-                        int i = 0;
 
-        for (Watchable m : joined) {
-
-            if (m.getGenres().get(i).toLowerCase().contains(userInput.toLowerCase())){
-                searchResults.add(m);
-            }
-
-        }
-        // :-)
-
-        return searchResults;
-    }
-
-    
 // metoder der printer indholdet af listerne
+
+
 // for test purposes
 
     public static void seriesParserTest(){
