@@ -20,11 +20,22 @@ import javafx.scene.layout.*;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * MainWindowController har felterne:
+ * en MediaContainer- kaldet medias.
+ * et Watchable-objekt, selected, som repræsenterer valgte Movie/Series-objekt.
+ * samt et User-objekt, currentUser, som repræsenter den User som er logget ind.
+ */
 public class mainWindowController {
     private MediaContainer medias;
     private Watchable selected;
     private static User currentUser;
-
+    /**
+     * Constructor opretter en MainWindowController opretter en MediaContainer og sætter denne til medias.
+     * den forsøger at kører MediaContainer-klassens metoder loadSeries og LoadMovies
+     * Hvis ikke dette er muligt kastes en Exception, og kalder printStackTrace-metoden på Exceptionen.
+     * Slutteligt samler den de to ArrayLister til én samlet, vha. joinLists-metoden.
+     */
     public mainWindowController() {
         this.medias = new MediaContainer();
 
@@ -52,9 +63,6 @@ public class mainWindowController {
 
     @FXML
     private Button playButton;
-
-    @FXML
-    private Label welcomeLabel;
 
     @FXML
     private Button watchlistAddButton;

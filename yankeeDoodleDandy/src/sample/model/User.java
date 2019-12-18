@@ -29,10 +29,18 @@ public class User{
 
 
 // mutator methods
+
+    /**
+     * tilføjer et Watchable-objekt til ArrayListen watchlist.
+     * @param m: repræsentere et Watchable objekt (Movie/Series)
+     */
     public void addToWatchlist(Watchable m){
         watchlist.add(m);
     }
-
+    /**
+     * fjerner et Watchable-objekt fra ArrayListen watchlist.
+     * @param m: repræsentere et Watchable objekt (Movie/Series)
+     */
     public void removeFromWatchlist(Watchable m){
         watchlist.remove(m);
     }

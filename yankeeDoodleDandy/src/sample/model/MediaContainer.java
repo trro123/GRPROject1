@@ -48,7 +48,13 @@ public class MediaContainer {
         movies.add(m);
     }
 
-    public void loadMovies() throws IOException { //tror dette skal gøres modsat! tror for at scenebuilder kan forstå det, skal det være Imageobjekter.
+    /**
+     * LoadMovies() metoden kalder TxtParser-klassens parseMovies metode, som initialiserer Movie-objekter med værdier hentet fra .txt fil
+     * se evt. TxtParser-klassens dokumentation for forklaring.
+     * For-loop af Movie-objekter køres og Media-klassens setImg() metode køres, så alle Movie-objekter får et tilhørende billede.
+     * @throws IOException: kaster en IOException
+     */
+    public void loadMovies() throws IOException {
         // metode der initialiserer movie objekterne med værdier fra .txt fil
         TxtParser.parseMovies();
         
@@ -58,6 +64,12 @@ public class MediaContainer {
         }
     }
 
+    /** LoadSeries() metoden kalder TxtParser-klassens parseSeries metode, som initialiserer Movie-objekter med værdier hentet fra .txt fil
+     * se evt. TxtParser-klassens dokumentation for forklaring.
+     * Der køres et for-loop som gennemløber Series-objekter og kalder Media-klassens setImg()-metode
+     *
+     * @throws IOException: kaster IOException
+     */
     public void loadSeries() throws IOException{
         // metode der initialiserer series objekterne med værdier fra .txt fil
         TxtParser.parseSeries();
@@ -70,10 +82,15 @@ public class MediaContainer {
 
 // filter/search methods
 
-
+    /**
+     *  searchTitle() opretter en ArrayList af Watchable-objekter, kaldet searchResult
+     *  Kører et for-loop for Movie-objekter, med et underliggende if-statement, som tjekker om input passer til en film-titel, og tilføjer Movie-objekter som opfylder dette til searchResults.
+     *  Kører et for-loop for Series-objekter, med et underliggende if-statement, som tjekker om input passer til en film-titel. og tilføjer Series-objekter som opfylder dette til searchResults.
+     * @param userInput: det input som tastes i søgefeltet.
+     * @return ArrayListen searchResults af Watchable-objekter,
+     */
     public static ArrayList<Watchable> searchTitle(String userInput) { //søger efter en brugerdefineret teksttreng (til en eventuel searchbar?)
         ArrayList<Watchable> searchResults = new ArrayList<>();
-
         for (Movie m : movies) {
             if (m.getTitle().toLowerCase().contains(userInput.toLowerCase())) {
                 searchResults.add(m);

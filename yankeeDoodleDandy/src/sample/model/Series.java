@@ -38,7 +38,12 @@ public class Series extends Watchable{
 
 // mutator methods
 
-    public void addEpisodeCount(int episodeCount){ // tilføjer antal episoder til en ArrayList. Hver plads i ArrayListen svarer til en sæson og referencen peger så på antal afsnit i den givne sæson
+    /**
+     * // tilføjer antal episoder til en ArrayList.
+     * Hver plads i ArrayListen svarer til en sæson og referencen peger så på antal afsnit i den givne sæson
+     * @param episodeCount: Int, repræsenterer antallet af episoder i en sæson.
+     */
+    public void addEpisodeCount(int episodeCount){
         numberOfEpisodes.add(episodeCount);
     }
 }
