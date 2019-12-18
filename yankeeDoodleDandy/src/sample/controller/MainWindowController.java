@@ -30,7 +30,7 @@ import java.io.IOException;
  * samt et User-objekt, currentUser, som repræsenter den User som er logget ind.
  * Har ansvaret for at indsamle og modellere al data fra mainWindow_view.fxml
  */
-public class mainWindowController {
+public class MainWindowController {
     private MediaContainer medias;
     private Watchable selected;
     private static User currentUser;
@@ -40,7 +40,7 @@ public class mainWindowController {
      * Hvis ikke dette er muligt kastes en Exception, og kalder printStackTrace-metoden på Exceptionen.
      * Slutteligt samler den de to ArrayLister til én samlet, vha. joinLists-metoden.
      */
-    public mainWindowController() {
+    public MainWindowController() {
         this.medias = new MediaContainer();
 
         try {
