@@ -14,6 +14,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+/**
+ * har til ansvar at oprette brugere, ved modellering af data indsamlet fra createUser_View
+ */
 public class CreateUserController {
 
     @FXML
@@ -28,6 +31,7 @@ public class CreateUserController {
     private TextField createUserName;
     @FXML
     private Label errorMessage;
+
 
     @FXML
     private void showAge() {

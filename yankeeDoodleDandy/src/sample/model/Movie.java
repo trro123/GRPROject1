@@ -1,5 +1,8 @@
 package sample.model;
 
+/**
+ * Movie-klassens objekt er modelleret efter virkeligheden samt data i .txt-filen.
+ */
 public class Movie extends Watchable{
 
     /**

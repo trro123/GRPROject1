@@ -1,5 +1,8 @@
 package sample.model;
 
+/**
+ * Watchable er datterklasse til Media, samt forældreklasse til Movie og Series-klasserne.
+ */
 public abstract class Watchable extends Media{
     protected boolean onWatchlist;
 

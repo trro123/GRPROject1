@@ -28,6 +28,7 @@ import java.io.IOException;
  * en MediaContainer- kaldet medias.
  * et Watchable-objekt, selected, som repræsenterer valgte Movie/Series-objekt.
  * samt et User-objekt, currentUser, som repræsenter den User som er logget ind.
+ * Har ansvaret for at indsamle og modellere al data fra mainWindow_view.fxml
  */
 public class mainWindowController {
     private MediaContainer medias;

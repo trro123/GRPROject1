@@ -5,6 +5,9 @@ import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * UsernameTakenException er en exception som kastes hvis en bruger allerede er oprettet med samme brugernavn.
+ */
 public class UsernameTakenException extends RuntimeException {
 
     public UsernameTakenException(String message){

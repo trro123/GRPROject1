@@ -14,7 +14,9 @@ import sample.model.User;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
+/**
+ * Har til ansvar at modelere login_view samt tilføje brugere til ArrayList activeUsers.
+ */
 public class LoginController {
 
     private static ArrayList<User> activeUsers;

@@ -2,11 +2,20 @@ package sample.model;
 
 import java.util.*;
 
+/**
+ * User-klassen har til ansvar at holde på data vdr. brugernavn og adgangskode, samt tilføje Watchable objekter til watchlists.
+ */
+
 public class User{
     private ArrayList<Watchable> watchlist;
     private String username;
     private String password;
-    
+
+    /**
+     *
+     * @param username: String, repræsenterer et brugernavn.
+     * @param password: String, repræsenterer en adgangskode.
+     */
     public User(String username, String password){
         this.username = username;
         this.password = password;
