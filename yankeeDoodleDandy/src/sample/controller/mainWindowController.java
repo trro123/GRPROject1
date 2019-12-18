@@ -332,6 +332,16 @@ public class mainWindowController {
 
     // Eventhandling til genre-knapperne herfra og til slut i denne klasse. Lad være med at kigge på det, lad være med at røre ved det. Tak.
     // if it looks stupid but it works, it ain't stupid.
+
+    /**
+     * 1 metode pr. genre.
+     * rydder Gridpanet grid
+     * if-statement gennemløber booleans searchAll, searchMovies og searchSeries.
+     * instanceof statement definerer hvilke Watchable objekter toRuleThemAll skal kaldes på.
+     * kalder ArrayLists contains metode med passende genrenavn som argument på Watchable objekt m.
+     * kalder toRuleThemAll på m.
+     * Kalder MenuButtons setText metode, sætter teksten til valgte genrenavn.
+     */
     public void actionButton(){
         grid.getChildren().clear();
         for (Watchable m : medias.getJoinedList()){
