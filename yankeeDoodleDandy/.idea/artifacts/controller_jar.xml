@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="controller:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/controller_jar</output-path>
+    <root id="archive" name="controller.jar">
+      <element id="module-output" name="controller" />
+    </root>
+  </artifact>
+</component>

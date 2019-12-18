@@ -46,10 +46,10 @@ public class mainWindowController {
         try {
             medias.loadSeries();
             medias.loadMovies();
+            medias.joinLists();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        medias.joinLists();
     }
 
     public static void setCurrentUser(User user){
