@@ -18,7 +18,7 @@ public class TxtParser{
      * @throws IOException: kaster en IOException.
      */
     public static void parseMovies() throws IOException {
-        File f = new File("resources/movies.txt"); //fortæller java hvor .txt-filen er <-- for at køre på windows: skift fra "resources/movies.txt" til "resources\\movies.txt". Spørg ikke hvorfor...
+        File f = new File("resources/movies.txt"); //fortæller java hvor .txt-filen er
         BufferedReader reader = new BufferedReader(new FileReader(f));
         String line = reader.readLine(); //line = én linje i .txt filen
 

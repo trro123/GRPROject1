@@ -60,7 +60,7 @@ public class LoginController {
 
         for(User u : activeUsers){
             if(loginUserField.getText().equals(u.getUsername()) && loginPassField.getText().equals(u.getPassword())){
-                mainWindowController.setCurrentUser(u);
+                MainWindowController.setCurrentUser(u);
                 loginStatus.setText("Login Successful");
                 Stage stage;
                 Parent root;
