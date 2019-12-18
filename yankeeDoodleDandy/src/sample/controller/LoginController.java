@@ -14,6 +14,7 @@ import sample.model.User;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
 public class LoginController {
 
     private static ArrayList<User> activeUsers;

@@ -21,6 +21,9 @@ import java.io.File;
 import java.io.IOException;
 
 /**
+ * @author Trond Rossing
+ * @author Mikkel Lippert
+ * @author Veronika Raagaard Skotting
  * MainWindowController har felterne:
  * en MediaContainer- kaldet medias.
  * et Watchable-objekt, selected, som repræsenterer valgte Movie/Series-objekt.
@@ -216,6 +219,24 @@ public class mainWindowController {
     // GUDE metoden
     // (laver en kasse med et media object m og tilføjer den til TilePane)
 
+    /**
+     *
+     * @param m: repræsenterer et watchable objekt.
+     *  Der oprettes en billedefil og et ImageView.
+     *  billedfilen indsættes i ImageView.
+     *  En text for film oprettes, indeholdende passende data fra Watchables accessor metoder.
+     *  ImageViewet får en setOnMouseClicked metode, som sætter Watchable-objektet til at være valgt element.
+     *  Watchlist knap samt PlayButton sættes synlige og det valgte billede sættes i et prædefineret ImageView.
+     *  Der tilføjes tekst, og der skelnes mellem Movie og Series objekter vha. et instanceof statement.
+     *  For serier oprettes der to MenuButtons, en for Season og en for Episodes.
+     *  der oprettes et antal MenuItems i MenuBottenen, tilhørende Seasons vha. For-loop som gennemløber Series-objektet
+     *  vha. Series getSeasons metode.
+     *  ved tryk på et af disse MenuItems oprettes en eventhandler, som kører et indre for-loop, med det ydre forloops int som argument.
+     *  Dette for-loop har til ansvar at oprette x antal MenuItems for x antal episode i valgte sæson.
+     *  Herefter tjekker den vha. getWatchlist() om valgte medie er på watchlist.
+     *  hvis den er, sættes watchListButton synlig, ellers usynlig.
+     *  slutteligt oprettes et tooltip, som printer information om mediet, hvis man holder musen over objektet.
+     */
     public void toRuleThemAll(Watchable m) { //bedste metode i verdenen :)
         File file = new File("resources/movie_pictures/" + m.getTitle() + ".jpg"); //henter vores billeder.
         Image image = new Image(file.toURI().toString());   //opretter et billede med ovenstående fil
@@ -252,7 +273,7 @@ public class mainWindowController {
                             + "\n"));
                     infoText.getChildren().add(text2);
 
-                    MenuButton seasonButton = new MenuButton("Choose season"); //Her
+                    MenuButton seasonButton = new MenuButton("Choose season");
                     infoText.getChildren().add(seasonButton);
                     MenuButton episodeChooser = new MenuButton(); //her oprettes vores Menubutton, som vi har lagt ved siden af sæsonChooser.
                     infoText.getChildren().add(episodeChooser); //og her tilføjer vi så knappen til vores infotext-felt, som er under billedet.
@@ -302,7 +323,7 @@ public class mainWindowController {
         grid.getChildren().add(imgbox);
     }
 
-    public void playSeries(){
+    public void play(){
 
     }
 
