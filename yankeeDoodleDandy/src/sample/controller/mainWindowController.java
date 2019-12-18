@@ -82,10 +82,14 @@ public class mainWindowController {
     private boolean searchMovies;
     private boolean searchSeries;
 
+    /**
+     *
+     */
     public void search() {
         grid.getChildren().clear();
         viewingWatchlist = false;
         mediasPane.setContent(grid);
+        genreChooser.setText("Choose genre");
 
         if (searchAll && !searchMovies && !searchSeries) {
 
@@ -110,37 +114,45 @@ public class mainWindowController {
     }
 
     public void searchAll() {
-        grid.getChildren().clear();
+        /*    grid.getChildren().clear();
         viewingWatchlist = false;
         mediasPane.setContent(grid);
-        genreChooser.setText("Choose genre");
+
 
         for (Watchable m : medias.getJoinedList()) {
             toRuleThemAll(m);
         }
 
+
+         */
         searchMovies = false;
         searchSeries = false;
         searchAll = true;
+        search();
     }
 
     public void searchMovies() {
-        grid.getChildren().clear();
+      /*  grid.getChildren().clear();
         viewingWatchlist = false;
         mediasPane.setContent(grid);
         genreChooser.setText("Choose genre");
+
+
 
         for (Movie m : medias.getMovies()) {
             toRuleThemAll(m);
         }
 
+
+       */
         searchAll = false;
         searchSeries = false;
         searchMovies = true;
+        search();
     }
 
     public void searchSeries() {
-        grid.getChildren().clear();
+       /* grid.getChildren().clear();
         viewingWatchlist = false;
         mediasPane.setContent(grid);
         genreChooser.setText("Choose genre");
@@ -149,9 +161,12 @@ public class mainWindowController {
             toRuleThemAll(m);
         }
 
+
+        */
         searchAll = false;
         searchMovies = false;
         searchSeries = true;
+        search();
     }
 
     public void logout(ActionEvent event){
