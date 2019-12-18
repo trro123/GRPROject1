@@ -2,7 +2,9 @@ package sample.model;
 
 import java.io.*;
 
-// de to parse metoder læser .txt-filer linje for linje og spytter felter ud (title, year, rating osv.)
+/**
+ * de to parse metoder læser .txt-filer linje for linje og spytter felter ud (title, year, rating osv.)
+  */
 
 
 public class TxtParser{

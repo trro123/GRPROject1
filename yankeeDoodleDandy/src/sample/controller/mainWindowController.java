@@ -83,7 +83,15 @@ public class mainWindowController {
     private boolean searchSeries;
 
     /**
-     *
+     * Den overordnede søgemetoder.
+     * kører Gridpane, grids, clear metode for alle indestående elementer.
+     * sætter viewingWatchList til at være falsk, da man ikke kan søge i watchlist.
+     * herefter sættes grid til at ligge i mediasPane.
+     * genreChooser MenuButton's tekst sættes til "Choose genre".
+     * If-statement køres hvor der gennemløbes tre booleans, som sættes i searchSeries, searchMovies og searchAll-metoderne.
+     * efterfølgende køres et for-loop med passende Watchable element.
+     * Dette gøres ved et instance of statement.
+     * slutteligt køres toRuleThemAll-metoden for dette passende Watchable element.
      */
     public void search() {
         grid.getChildren().clear();
@@ -114,17 +122,6 @@ public class mainWindowController {
     }
 
     public void searchAll() {
-        /*    grid.getChildren().clear();
-        viewingWatchlist = false;
-        mediasPane.setContent(grid);
-
-
-        for (Watchable m : medias.getJoinedList()) {
-            toRuleThemAll(m);
-        }
-
-
-         */
         searchMovies = false;
         searchSeries = false;
         searchAll = true;
@@ -132,19 +129,6 @@ public class mainWindowController {
     }
 
     public void searchMovies() {
-      /*  grid.getChildren().clear();
-        viewingWatchlist = false;
-        mediasPane.setContent(grid);
-        genreChooser.setText("Choose genre");
-
-
-
-        for (Movie m : medias.getMovies()) {
-            toRuleThemAll(m);
-        }
-
-
-       */
         searchAll = false;
         searchSeries = false;
         searchMovies = true;
@@ -152,28 +136,33 @@ public class mainWindowController {
     }
 
     public void searchSeries() {
-       /* grid.getChildren().clear();
-        viewingWatchlist = false;
-        mediasPane.setContent(grid);
-        genreChooser.setText("Choose genre");
-
-        for (Series m : medias.getSeries()) {
-            toRuleThemAll(m);
-        }
-
-
-        */
         searchAll = false;
         searchMovies = false;
         searchSeries = true;
         search();
     }
 
+    /**
+     * Denne lukker nuværende Stage vha. getSource().getScene().getWindow().
+     * getSource() returnerer hvad der trykkes på.
+     * getScene() returnerer sourcens Scene.
+     * getWindow() returnerer ovenstående Scenes nuværende vindue.
+     * herefter lukkes usynliggøres dette vindue vha. Stage-metoden hide()
+     * @param event: et ActionEvent, som fortæller hvilket Stage der er i brug.
+     */
     public void logout(ActionEvent event){
         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         app_stage.hide();
     }
 
+    /**
+     * opretter en Stage, kaldet stage.
+     * opretter en Parent, hvori den vha.FXMLLoader-klassen load-metode, henter CreateUser Stagen.
+     * herefter sættes Stagens Scene til at være ovenævnte Stage.
+     * initModality-metoden, blokerer for input til alle andre Stages i programmet
+     * showAndWait blokerer for MainWindow indtil createUser lukkes igen.
+     * @throws IOException: kaster IOException.
+     */
     public void newUser() throws IOException{
         Stage stage;
         Parent root;
