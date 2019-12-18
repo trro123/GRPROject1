@@ -80,7 +80,7 @@ public class LoginController {
                 stage.show();
             }else{
                 System.out.println("grate suces");
-                loginStatus.setText("Login Failed");
+                loginStatus.setText("ERROR 04; Login Failed");
             }
         }
 
