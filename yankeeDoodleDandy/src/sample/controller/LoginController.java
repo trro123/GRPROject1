@@ -52,6 +52,7 @@ public class LoginController {
         stage = new Stage();
         root = FXMLLoader.load(getClass().getResource("/sample/view/createUser_view.fxml"));
         stage.setScene(new Scene(root));
+        stage.setResizable(false);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
     }

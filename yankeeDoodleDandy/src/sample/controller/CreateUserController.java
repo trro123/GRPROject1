@@ -63,21 +63,21 @@ public class CreateUserController {
         boolean usernameChecked = false;
 
         if(createPassword.getText().trim().equals(createPasswordRepeat.getText().trim())){
-            errorMessage.setText("ERROR: Please make sure the passwords match.");
+            errorMessage.setText("ERROR 03; Make sure the passwords match.");
 
             if(!createPassword.getText().trim().isEmpty()){
                 passwordChecked = true;
             }
         }else{
-            errorMessage.setText("ERROR: Please make sure the passwords match.");
+            errorMessage.setText("ERROR 03; Make sure the passwords match.");
         }
 
         if(createPassword.getText().trim().equals("")){
-            errorMessage.setText("ERROR: Please choose a password.");
+            errorMessage.setText("ERROR 02; Please choose a password.");
         }
 
         if(createUserName.getText().trim().equals("")){
-            errorMessage.setText("ERROR: Please choose a username.");
+            errorMessage.setText("ERROR 01; Please choose a username.");
         }else{
             usernameChecked = true;
         }
