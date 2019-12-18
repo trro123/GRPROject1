@@ -11,7 +11,7 @@ public class AlreadyOnWatchlistException extends Exception {
 
         final Stage error = new Stage();
         error.initModality(Modality.APPLICATION_MODAL);
-        Label errorLabel = new Label("Woops, the movie is already on your watchlist!");
+        Label errorLabel = new Label("Woops, this is already on your watchlist!");
         Scene dialogScene = new Scene(errorLabel, 300, 100);
         error.setScene(dialogScene);
         error.show();
