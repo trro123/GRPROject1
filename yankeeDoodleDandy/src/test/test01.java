@@ -21,7 +21,7 @@ public class test01 {
         }
         catch (UsernameTakenException ute)
         {
-            System.out.println(ute.getMessage()+": "+u.getUsername());
+            System.out.println(ute.getMessage();
         }
     }
     public static void test33() throws AlreadyOnWatchlistException{
