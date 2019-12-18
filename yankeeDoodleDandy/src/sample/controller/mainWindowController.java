@@ -20,12 +20,12 @@ import javafx.scene.layout.*;
 import java.io.File;
 import java.io.IOException;
 
-public class Controller {
+public class mainWindowController {
     private MediaContainer medias;
     private Watchable selected;
     private static User currentUser;
 
-    public Controller() {
+    public mainWindowController() {
         this.medias = new MediaContainer();
 
         try {

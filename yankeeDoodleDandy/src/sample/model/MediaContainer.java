@@ -2,7 +2,11 @@ package sample.model;
 
 import java.io.IOException;
 import java.util.*;
-
+/**
+ * MediaContainer.java er et objekt der holder listerne med film, serier og en samlet med begge dele.
+ * Det er disse lister der gennemløbes i de forskellige søgemetoder.
+ * MediaContaineren initialiseres i mainWindows controller, altså når mainWindow vises.
+ */
 public class MediaContainer {
     private static ArrayList<Series> series;
     private static ArrayList<Movie> movies;
@@ -12,7 +16,6 @@ public class MediaContainer {
     public MediaContainer() {
         series = new ArrayList<>();
         movies = new ArrayList<>();
-
         joined = new ArrayList<>();
     }
 

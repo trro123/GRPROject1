@@ -57,7 +57,7 @@ public class LoginController {
 
         for(User u : activeUsers){
             if(loginUserField.getText().equals(u.getUsername()) && loginPassField.getText().equals(u.getPassword())){
-                Controller.setCurrentUser(u);
+                mainWindowController.setCurrentUser(u);
                 loginStatus.setText("Login Successful");
                 Stage stage;
                 Parent root;

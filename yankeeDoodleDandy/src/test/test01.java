@@ -1,6 +1,6 @@
 package test;
 
-import sample.controller.Controller;
+import sample.controller.mainWindowController;
 import sample.model.AlreadyOnWatchlistException;
 import sample.model.User;
 import sample.model.UsernameTakenException;
@@ -26,7 +26,7 @@ public class test01 {
     }
     public static void test33() throws AlreadyOnWatchlistException{
         try {
-            Controller c = new Controller();
+            mainWindowController c = new mainWindowController();
             User u3 = new User("hassan","skorpion");
             c.setCurrentUser(u3);
             c.watchlistAdd();

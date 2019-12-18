@@ -4,6 +4,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.*;
 
+/**
+ * En checked exception. Hvis fremprovokeret: Åbner et popup-vindue med teksten "ERROR 06; this is already on your watchlist!"
+ */
 public class AlreadyOnWatchlistException extends Exception {
 
     public AlreadyOnWatchlistException(String message){
