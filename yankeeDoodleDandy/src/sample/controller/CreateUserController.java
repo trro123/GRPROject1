@@ -16,16 +16,6 @@ import java.util.Calendar;
 
 public class CreateUserController {
 
-    private static ArrayList<User> users;
-
-    public CreateUserController(){
-        users = new ArrayList<>();
-    }
-
-    public static ArrayList<User> getUsers(){
-        return users;
-    }
-
     @FXML
     private Label createAgeDisplay;
     @FXML
@@ -53,12 +43,12 @@ public class CreateUserController {
 
     }
 
-    public void cancel(javafx.event.ActionEvent actionEvent) throws IOException {
+    public void cancel(javafx.event.ActionEvent actionEvent){
         Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         app_stage.hide();
     }
 
-    public void ok(javafx.event.ActionEvent actionEvent) throws IOException {
+    public void ok(javafx.event.ActionEvent actionEvent){
         boolean passwordChecked = false;
         boolean usernameChecked = false;
 
@@ -90,7 +80,6 @@ public class CreateUserController {
                 }
             }
 
-            //users.add(new User(createUserName.getText(), createPassword.getText()));
             LoginController.makeActive(new User(createUserName.getText(), createPassword.getText()));
             Stage app_stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             app_stage.close();

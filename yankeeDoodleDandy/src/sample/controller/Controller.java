@@ -39,7 +39,6 @@ public class Controller {
 
     public static void setCurrentUser(User user){
         currentUser = user;
-        //welcomeLabel.setText("Hello " + currentUser.getUsername() +"! Welcome to RickFlix.");
     }
 
     @FXML
@@ -177,8 +176,6 @@ public class Controller {
 
         viewingWatchlist = true;
     }
-    @FXML
-    private TextFlow errorField;
 
     public void watchlistAdd() throws AlreadyOnWatchlistException {
 
@@ -203,8 +200,6 @@ public class Controller {
         watchlistRemoveButton.setVisible(false);
     }
 
-    @FXML
-    private MenuButton seasonChooser;
 
     // GUDE metoden
     // (laver en kasse med et media object m og tilføjer den til TilePane)
@@ -249,18 +244,9 @@ public class Controller {
                     infoText.getChildren().add(seasonButton);
                     MenuButton episodeChooser = new MenuButton(); //her oprettes vores Menubutton, som vi har lagt ved siden af sæsonChooser.
                     infoText.getChildren().add(episodeChooser); //og her tilføjer vi så knappen til vores infotext-felt, som er under billedet.
-                    /*
-                    Dette her skulle meget gerne gøre så sæsonknappen ændre sit navn til valgte sæson.
-                    EventHandler seasonSaviour = new EventHandler() {
-                        @Override
-                        public void handle(Event event) {
 
-                        }
-                    };
 
-                     */
-
-                    for(int i=0; i < ((Series) m).getSeasons(); i++){ //er køres et for-loop som gennemkøres for antallet af sæsoner en serie har.
+                    for(int i=0; i < ((Series) m).getSeasons(); i++){ //her køres et for-loop som gennemkøres for antallet af sæsoner en serie har.
                         MenuItem seasonItem = new MenuItem();
                         seasonItem.setText("Season: " + (i+1)); //her sættes teksten til at være i+1 (da array starter på 0. plads vil sæson 1 være 0+1.
                         seasonButton.getItems().add(seasonItem); //tilføjer seasonitems (altså hver af de foreskellige sæsoner) til sæsonknappen.
@@ -282,10 +268,6 @@ public class Controller {
 
                         };
                         seasonItem.setOnAction(seasonClickEvent);
-                        //Her vil jeg gerne bruge en form for m.getEpisodeCount(int 0).toString(), det kan man dog ikke
-
-                        //Text seasonText = new Text("Season " + (i+1) + ": " + ((Series) m).getEpisodeCount(i) + " episodes" + "\n");
-                        //infoText.getChildren().add(seasonText);
 
                     }
                     episodeChooser.setText("Episode: 1");
@@ -314,9 +296,6 @@ public class Controller {
 
     @FXML
     private MenuButton genreChooser;
-
-
-
 
     // Eventhandling til genre-knapperne herfra og til slut i denne klasse. Lad være med at kigge på det, lad være med at røre ved det. Tak.
     // if it looks stupid but it works, it ain't stupid.
