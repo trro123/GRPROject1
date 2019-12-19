@@ -18,6 +18,7 @@ import javafx.scene.image.*;
 import javafx.scene.layout.*;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 /**
@@ -42,7 +43,6 @@ public class MainWindowController {
      */
     public MainWindowController() {
         this.medias = new MediaContainer();
-
         try {
             medias.loadSeries();
             medias.loadMovies();
@@ -325,6 +325,21 @@ public class MainWindowController {
     }
 
     public void play(){
+        final Stage play = new Stage();
+        play.initModality(Modality.APPLICATION_MODAL);
+        File gify = new File("resources/playGif.gif");
+        Image rickGif = new Image(gify.toURI().toString());
+
+        ImageView rickRoll = new ImageView();
+        rickRoll.setImage(rickGif);
+
+        Label rollLabel = new Label("Never gonna give you up -");
+        VBox hh = new VBox(rickRoll, rollLabel);
+        Scene dialogScene = new Scene(hh, 300, 260);
+
+        play.setScene(dialogScene);
+        play.setResizable(false);
+        play.show();
 
     }
 

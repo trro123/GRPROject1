@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="767.0" prefWidth="982.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.mainWindowController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="767.0" prefWidth="982.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.MainWindowController">
    <children>
 
       <HBox layoutX="30.0" layoutY="23.0" prefHeight="38.0" prefWidth="512.0">
@@ -53,7 +53,7 @@
                <children>
                   <VBox prefHeight="0.0" prefWidth="161.0">
                      <children>
-                        <Button fx:id="playButton" mnemonicParsing="false" text="Play" visible="false">
+                        <Button fx:id="playButton" mnemonicParsing="false" onAction="#play" text="Play" visible="false">
                            <VBox.margin>
                               <Insets bottom="5.0" />
                            </VBox.margin></Button>
